@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "导入学生";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model  FATS.Models.TeachingRoutine
+
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/User/ImportUser.js")"></script>
+}
+
+<div class="pagetitle">导入学生</div>
+
+<div style="line-height: 20px;">
+    请按照如下格式组织数据：<br />
+    登录名(最长30字符)  是否学生(1或者0)  是否教师(1或者0)<br />
+    字段与字段之间用TAB分隔，如果导入失败，系统会给出失败的原因
+</div>
+
+<div class="importcont">
+    <textarea style="width: 600px; height: 400px; line-height: 20px; padding: 2px; "></textarea>
+</div>
+
+<div class="actbar" style="height: 30px; margin-top: 20px;">
+    <a class="easyui-linkbutton l-btn" iconcls="icon-save" href="javascript:void(0)">提交</a>
+</div>

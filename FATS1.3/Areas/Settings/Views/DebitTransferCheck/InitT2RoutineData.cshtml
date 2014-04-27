@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "转账支票数据设置";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model  List<FATS.Models.TransferCheck>
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Settings/SettingCommon.css")" rel="Stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Settings/InitT1RoutineData.js")" ></script>
+}
+
+<div class='pagetitle'>@ViewBag.Title</div>
+<div id="editcontainer">
+    @Html.Hidden("PostUrl", "/Settings/" + ViewContext.Controller.ValueProvider.GetValue("controller").RawValue + "/SaveT2RoutineData")
+    
+    <fieldset data-bill-type="tc">
+        <legend>转账支票数据设置</legend>
+        @{ Html.RenderPartial("R_TransferCheck", @Model.FirstOrDefault(item => item.TchRoutineTag == "tc")); }
+    </fieldset>
+
+    <fieldset data-bill-type="ib">
+        <legend>进账单数据设置</legend>
+        <div class="utilact">
+            如果你需要将上面的数据复制到下面的表格中，请点击  <a class="easyui-linkbutton l-btn" iconcls="icon-copy" href="javascript:CopyFromArea('tc')">拷贝</a>
+        </div>
+        @{ Html.RenderPartial("R_TransferCheck", @Model.FirstOrDefault(item => item.TchRoutineTag == "ib")); }
+    </fieldset>
+
+    <div id="actbar" class="actbar">
+        <a class="easyui-linkbutton l-btn" iconcls="icon-save" href="javascript:SaveNodeData()">保存</a>
+        <a class="easyui-linkbutton l-btn" iconcls="icon-back" href="javascript:BackToRoutine()">返回</a>
+    </div>  
+</div>

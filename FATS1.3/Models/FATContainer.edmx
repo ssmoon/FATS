@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FATSystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FATSystemModelStoreContainer">
+          <EntitySet Name="CustomerLedger" EntityType="FATSystemModel.Store.CustomerLedger" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DetailedLedger" EntityType="FATSystemModel.Store.DetailedLedger" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FATUser" EntityType="FATSystemModel.Store.FATUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FATUserGroup" EntityType="FATSystemModel.Store.FATUserGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GeneralLedger" EntityType="FATSystemModel.Store.GeneralLedger" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentActivity" EntityType="FATSystemModel.Store.StudentActivity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubjectItem" EntityType="FATSystemModel.Store.SubjectItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TeachingNode" EntityType="FATSystemModel.Store.TeachingNode" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TeachingRoutine" EntityType="FATSystemModel.Store.TeachingRoutine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TemplateNode" EntityType="FATSystemModel.Store.TemplateNode" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TemplateRoutine" EntityType="FATSystemModel.Store.TemplateRoutine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TransferCheck" EntityType="FATSystemModel.Store.TransferCheck" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="CustomerLedger">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TimeMark" Type="datetime" Nullable="false" />
+          <Property Name="BalanceSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="BalanceAbstract" Type="nvarchar" MaxLength="20" />
+          <Property Name="BalanceTime" Type="datetime" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TargetSubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="DebitSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="CreditSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Abstract" Type="nvarchar" MaxLength="20" />
+          <Property Name="FinalSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="DCChoice" Type="nvarchar" MaxLength="20" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchNodeID" Type="int" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerAccNo" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="DetailedLedger">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BalanceSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="BanalceOrient" Type="smallint" Nullable="false" />
+          <Property Name="BalanceAbstract" Type="nvarchar" MaxLength="30" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DebitSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="CreditSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Abstract" Type="nvarchar" MaxLength="30" />
+          <Property Name="TimeMark" Type="datetime" Nullable="false" />
+          <Property Name="FinalSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchNodeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FATUser">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="30" />
+          <Property Name="IsStudent" Type="smallint" Nullable="false" />
+          <Property Name="IsTeacher" Type="smallint" Nullable="false" />
+          <Property Name="IsAdmin" Type="smallint" Nullable="false" />
+          <Property Name="CurrStatus" Type="smallint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FATUserGroup">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="GeneralLedger">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BalanceSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="BanalceOrient" Type="smallint" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DebitSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="CreditSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Abstract" Type="nvarchar" MaxLength="20" />
+          <Property Name="TimeMark" Type="datetime" Nullable="false" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchNodeID" Type="int" Nullable="false" />
+          <Property Name="BalanceAbstract" Type="nvarchar(max)" />
+          <Property Name="FinalSum" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="StudentActivity">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TimeMark" Type="datetime" Nullable="false" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchNodeID" Type="int" Nullable="false" />
+          <Property Name="IsFinished" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectItem">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="40" />
+          <Property Name="SubjectType" Type="nvarchar" MaxLength="20" />
+          <Property Name="ChangeOrient" Type="nvarchar" MaxLength="10" />
+          <Property Name="SubjectOrient" Type="nvarchar" MaxLength="10" />
+          <Property Name="SubSubject" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="NextLedger" Type="nvarchar" MaxLength="20" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchNodeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeachingNode">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TmpNodeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoutineID" Type="int" Nullable="false" />
+          <Property Name="CurrStatus" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeachingRoutine">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CaseText" Type="nvarchar" MaxLength="300" />
+          <Property Name="TmpRoutineID" Type="nvarchar" MaxLength="30" />
+          <Property Name="CaseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrStatus" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplateNode">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="NodeName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="30" />
+          <Property Name="Index" Type="int" Nullable="false" />
+          <Property Name="NodeType" Type="nvarchar" MaxLength="30" />
+          <Property Name="RoutineID" Type="nvarchar" MaxLength="30" />
+          <Property Name="GroupIdx" Type="int" Nullable="false" />
+          <Property Name="RequireRecord" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplateRoutine">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="RoutineName" Type="nvarchar" MaxLength="40" />
+          <Property Name="RoutineDesc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="RoutineType" Type="int" Nullable="false" />
+          <Property Name="RoutineTag" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TransferCheck">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="CheckNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="ChequeDate" Type="datetime" Nullable="false" />
+          <Property Name="IncomeBillDate" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FATSystemModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FATContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerLedger" EntityType="FATSystemModel.CustomerLedger" />
+          <EntitySet Name="DetailedLedger" EntityType="FATSystemModel.DetailedLedger" />
+          <EntitySet Name="FATUser" EntityType="FATSystemModel.FATUser" />
+          <EntitySet Name="FATUserGroup" EntityType="FATSystemModel.FATUserGroup" />
+          <EntitySet Name="GeneralLedger" EntityType="FATSystemModel.GeneralLedger" />
+          <EntitySet Name="StudentActivity" EntityType="FATSystemModel.StudentActivity" />
+          <EntitySet Name="SubjectItem" EntityType="FATSystemModel.SubjectItem" />
+          <EntitySet Name="TeachingNode" EntityType="FATSystemModel.TeachingNode" />
+          <EntitySet Name="TeachingRoutine" EntityType="FATSystemModel.TeachingRoutine" />
+          <EntitySet Name="TemplateNode" EntityType="FATSystemModel.TemplateNode" />
+          <EntitySet Name="TemplateRoutine" EntityType="FATSystemModel.TemplateRoutine" />
+          <EntitySet Name="TransferCheck" EntityType="FATSystemModel.TransferCheck" />
+        </EntityContainer>
+        <EntityType Name="CustomerLedger">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeMark" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BalanceSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BalanceAbstract" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="BalanceTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TargetSubject" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DebitSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CreditSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Abstract" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="FinalSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="VoucherNo" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="DCChoice" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchNodeID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerAccNo" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DetailedLedger">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BalanceSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BanalceOrient" Type="Int16" Nullable="false" />
+          <Property Name="BalanceAbstract" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DebitSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CreditSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Abstract" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="TimeMark" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FinalSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchNodeID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FATUser">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="IsStudent" Type="Int16" Nullable="false" />
+          <Property Name="IsTeacher" Type="Int16" Nullable="false" />
+          <Property Name="IsAdmin" Type="Int16" Nullable="false" />
+          <Property Name="CurrStatus" Type="Int16" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="FATUserGroup">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GeneralLedger">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BalanceSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BanalceOrient" Type="Int16" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DebitSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CreditSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Abstract" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TimeMark" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchNodeID" Type="Int32" Nullable="false" />
+          <Property Name="BalanceAbstract" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FinalSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="StudentActivity">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TimeMark" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchNodeID" Type="Int32" Nullable="false" />
+          <Property Name="IsFinished" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectItem">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectName" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="SubjectType" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ChangeOrient" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="SubjectOrient" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="SubSubject" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NextLedger" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchNodeID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeachingNode">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TmpNodeID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RoutineID" Type="Int32" Nullable="false" />
+          <Property Name="CurrStatus" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeachingRoutine">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaseText" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="TmpRoutineID" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CaseName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CurrStatus" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplateNode">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="NodeName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Tag" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <Property Name="NodeType" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="RoutineID" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="GroupIdx" Type="Int32" Nullable="false" />
+          <Property Name="RequireRecord" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplateRoutine">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="RoutineName" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="RoutineDesc" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="RoutineType" Type="Int32" Nullable="false" />
+          <Property Name="RoutineTag" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TransferCheck">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RemitterAcc" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RemitterBank" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="PayeeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PayeeAcc" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PayeeBank" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CheckNo" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ChequeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IncomeBillDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FATSystemModelStoreContainer" CdmEntityContainer="FATContainer">
+          <EntitySetMapping Name="CustomerLedger">
+            <EntityTypeMapping TypeName="FATSystemModel.CustomerLedger">
+              <MappingFragment StoreEntitySet="CustomerLedger">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="TimeMark" ColumnName="TimeMark" />
+                <ScalarProperty Name="BalanceSum" ColumnName="BalanceSum" />
+                <ScalarProperty Name="BalanceAbstract" ColumnName="BalanceAbstract" />
+                <ScalarProperty Name="BalanceTime" ColumnName="BalanceTime" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="TargetSubject" ColumnName="TargetSubject" />
+                <ScalarProperty Name="DebitSum" ColumnName="DebitSum" />
+                <ScalarProperty Name="CreditSum" ColumnName="CreditSum" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="FinalSum" ColumnName="FinalSum" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="DCChoice" ColumnName="DCChoice" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="TchNodeID" ColumnName="TchNodeID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAccNo" ColumnName="CustomerAccNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailedLedger">
+            <EntityTypeMapping TypeName="FATSystemModel.DetailedLedger">
+              <MappingFragment StoreEntitySet="DetailedLedger">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="BalanceSum" ColumnName="BalanceSum" />
+                <ScalarProperty Name="BanalceOrient" ColumnName="BanalceOrient" />
+                <ScalarProperty Name="BalanceAbstract" ColumnName="BalanceAbstract" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="DebitSum" ColumnName="DebitSum" />
+                <ScalarProperty Name="CreditSum" ColumnName="CreditSum" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="TimeMark" ColumnName="TimeMark" />
+                <ScalarProperty Name="FinalSum" ColumnName="FinalSum" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="TchNodeID" ColumnName="TchNodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FATUser">
+            <EntityTypeMapping TypeName="FATSystemModel.FATUser">
+              <MappingFragment StoreEntitySet="FATUser">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsStudent" ColumnName="IsStudent" />
+                <ScalarProperty Name="IsTeacher" ColumnName="IsTeacher" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="CurrStatus" ColumnName="CurrStatus" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FATUserGroup">
+            <EntityTypeMapping TypeName="FATSystemModel.FATUserGroup">
+              <MappingFragment StoreEntitySet="FATUserGroup">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralLedger">
+            <EntityTypeMapping TypeName="FATSystemModel.GeneralLedger">
+              <MappingFragment StoreEntitySet="GeneralLedger">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="BalanceSum" ColumnName="BalanceSum" />
+                <ScalarProperty Name="BanalceOrient" ColumnName="BanalceOrient" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="DebitSum" ColumnName="DebitSum" />
+                <ScalarProperty Name="CreditSum" ColumnName="CreditSum" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="TimeMark" ColumnName="TimeMark" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="TchNodeID" ColumnName="TchNodeID" />
+                <ScalarProperty Name="BalanceAbstract" ColumnName="BalanceAbstract" />
+                <ScalarProperty Name="FinalSum" ColumnName="FinalSum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentActivity">
+            <EntityTypeMapping TypeName="FATSystemModel.StudentActivity">
+              <MappingFragment StoreEntitySet="StudentActivity">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TimeMark" ColumnName="TimeMark" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="TchNodeID" ColumnName="TchNodeID" />
+                <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectItem">
+            <EntityTypeMapping TypeName="FATSystemModel.SubjectItem">
+              <MappingFragment StoreEntitySet="SubjectItem">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SubjectType" ColumnName="SubjectType" />
+                <ScalarProperty Name="ChangeOrient" ColumnName="ChangeOrient" />
+                <ScalarProperty Name="SubjectOrient" ColumnName="SubjectOrient" />
+                <ScalarProperty Name="SubSubject" ColumnName="SubSubject" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="NextLedger" ColumnName="NextLedger" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="TchNodeID" ColumnName="TchNodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeachingNode">
+            <EntityTypeMapping TypeName="FATSystemModel.TeachingNode">
+              <MappingFragment StoreEntitySet="TeachingNode">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="TmpNodeID" ColumnName="TmpNodeID" />
+                <ScalarProperty Name="RoutineID" ColumnName="RoutineID" />
+                <ScalarProperty Name="CurrStatus" ColumnName="CurrStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeachingRoutine">
+            <EntityTypeMapping TypeName="FATSystemModel.TeachingRoutine">
+              <MappingFragment StoreEntitySet="TeachingRoutine">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="CaseText" ColumnName="CaseText" />
+                <ScalarProperty Name="TmpRoutineID" ColumnName="TmpRoutineID" />
+                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+                <ScalarProperty Name="CurrStatus" ColumnName="CurrStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateNode">
+            <EntityTypeMapping TypeName="FATSystemModel.TemplateNode">
+              <MappingFragment StoreEntitySet="TemplateNode">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="NodeName" ColumnName="NodeName" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="NodeType" ColumnName="NodeType" />
+                <ScalarProperty Name="RoutineID" ColumnName="RoutineID" />
+                <ScalarProperty Name="GroupIdx" ColumnName="GroupIdx" />
+                <ScalarProperty Name="RequireRecord" ColumnName="RequireRecord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateRoutine">
+            <EntityTypeMapping TypeName="FATSystemModel.TemplateRoutine">
+              <MappingFragment StoreEntitySet="TemplateRoutine">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="RoutineName" ColumnName="RoutineName" />
+                <ScalarProperty Name="RoutineDesc" ColumnName="RoutineDesc" />
+                <ScalarProperty Name="RoutineType" ColumnName="RoutineType" />
+                <ScalarProperty Name="RoutineTag" ColumnName="RoutineTag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferCheck">
+            <EntityTypeMapping TypeName="FATSystemModel.TransferCheck">
+              <MappingFragment StoreEntitySet="TransferCheck">
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+                <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
+                <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
+                <ScalarProperty Name="PayeeName" ColumnName="PayeeName" />
+                <ScalarProperty Name="PayeeAcc" ColumnName="PayeeAcc" />
+                <ScalarProperty Name="PayeeBank" ColumnName="PayeeBank" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="CheckNo" ColumnName="CheckNo" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="IncomeBillDate" ColumnName="IncomeBillDate" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

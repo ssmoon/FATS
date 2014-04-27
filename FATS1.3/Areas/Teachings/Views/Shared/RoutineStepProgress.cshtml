@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "案例概览";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using FATS.Models;
+
+@model  FATS.Models.TeachingRoutine
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Teachings/RoutineStepProgress.css")" rel="Stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Teachings/Teaching1Common.css")" rel="Stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/RoutineStepProgress.js")" ></script>    
+        <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/Teaching1Common.js")" ></script>
+}   
+
+<div class='pagetitle'>@ViewBag.CaseName 流程概览</div>
+<input id="CurrGroup" value="@ViewBag.CurrGroup" type="hidden" />
+<input type="hidden" id="TchRoutineID" value="@Model.Row_ID" />
+<input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
+@{ int lastGroup = -1; }
+@foreach (TeachingNode tchNode in Model.NodeList.Values)
+{
+    if (lastGroup != tchNode.GroupIdx)
+    {
+        <div class="group" data-groupidx="@tchNode.RelTmpNode.GroupIdx">  
+            <div class="grouptitle">@tchNode.RelTmpNode.NodeName</div>
+        </div>
+        <div class="steparrow"></div>       
+    }
+    else 
+    {
+         <div class="step" data-stepidx="@tchNode.RelTmpNode.Index" data-groupidx="@tchNode.RelTmpNode.GroupIdx">        
+        @tchNode.RelTmpNode.NodeName       
+    </div>
+    }
+    lastGroup = tchNode.RelTmpNode.GroupIdx;
+}
+
+
+
+@{  Html.RenderPartial("Teaching1Navigator"); }

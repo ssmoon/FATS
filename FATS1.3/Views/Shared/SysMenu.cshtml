@@ -1,0 +1,13 @@
+﻿
+
+<ul>
+    <li>Hello: </li>
+    @if (FATS.BusinessObject.CurrentUser.GetUserInfo().IsAdmin == 1)
+    { 
+    <li>@Html.ActionLink("案例设置", "Index", "Teaching1Setting", new { area = "Settings" }, new { })   </li>
+    <li>@Html.ActionLink("用户管理", "Index", "UserMng", new { area = "Settings" }, new { })   </li>
+    <li>@Html.ActionLink("审核设置", "Index", "Teaching2Setting", new { area = "Settings" }, new { })   </li>
+    }
+    <li>@Html.ActionLink("银行会计教学1", "Index", "TeachingInit", new { area = "Teachings" }, new { })   </li>
+    <li>@Html.ActionLink("审核练习", "Index", "Auditing", new { area = "Teaching2" }, new { })   </li> 
+</ul>

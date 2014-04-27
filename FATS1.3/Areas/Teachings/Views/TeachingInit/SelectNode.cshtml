@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "案例流程";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model  FATS.Models.TeachingRoutine
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Settings/EditCase.css")" rel="Stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Teaching1/SelectNode.js")" ></script>    
+}   
+
+<div class='pagetitle'>@ViewBag.Title</div>
+
+<table class="viewarea">
+    <tr>
+        <td style="width: 150px"><b>案例名称</b></td>
+        <td style="width: 450px">
+            @Html.DisplayTextFor(model => model.CaseName)
+        </td>
+    </tr>
+    <tr>
+        <td><b>案例说明</b></td>
+        <td>
+            @Html.DisplayTextFor(model => model.CaseText)
+        </td>
+    </tr>
+</table>
+
+<div class="divdivider">&nbsp;</div>
+<div id="nodebox" data_rid="@Model.Row_ID">
+    <table id="nodelist"></table>
+</div>

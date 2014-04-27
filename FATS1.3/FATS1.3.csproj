@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94371100-980B-42C3-B4C9-5AC266D96A09}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FATS</RootNamespace>
+    <AssemblyName>FATS1.3</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.BulkInsert">
+      <HintPath>..\packages\EntityFramework.BulkInsert-ef6.6.0.2.7\lib\Net40\EntityFramework.BulkInsert.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.95\lib\net40\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.0.0.7\lib\net40\EntityFramework.MappingAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Settings\Controllers\CommonNodeController.cs" />
+    <Compile Include="Areas\Settings\Controllers\DebitTransferCheckController.cs" />
+    <Compile Include="Areas\Settings\Controllers\Teaching1SettingController.cs" />
+    <Compile Include="Areas\Settings\Controllers\Teaching2SettingController.cs" />
+    <Compile Include="Areas\Settings\Controllers\UserMngController.cs" />
+    <Compile Include="Areas\Settings\SettingsAreaRegistration.cs" />
+    <Compile Include="Areas\Teachings\Controllers\CommonNodeController.cs" />
+    <Compile Include="Areas\Teachings\Controllers\DebitTransferCheckController.cs" />
+    <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
+    <Compile Include="Areas\Teachings\Models\V_IncomeBill.cs" />
+    <Compile Include="Areas\Teachings\Models\V_TransferCheck.cs" />
+    <Compile Include="Areas\Teachings\TeachingsAreaRegistration.cs" />
+    <Compile Include="BusinessObject\Converters\DebitTransferCheckConverter.cs" />
+    <Compile Include="BusinessObject\CurrentUser.cs" />
+    <Compile Include="BusinessObject\SharedCasePool.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UICommonController.cs" />
+    <Compile Include="Models\CustomerLedger.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataDefine\ClientContext.cs" />
+    <Compile Include="DataDefine\ClientDataWrapper.cs" />
+    <Compile Include="DataDefine\CommFunctions.cs" />
+    <Compile Include="DataDefine\ConstDefine.cs" />
+    <Compile Include="DataDefine\ResourceFileDefine.cs" />
+    <Compile Include="DataDefine\RoutineConstDefine.cs" />
+    <Compile Include="Models\DetailedLedger.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\BusinessRuleCheckExcpetions.cs" />
+    <Compile Include="Exceptions\UserSessionExpiredException.cs" />
+    <Compile Include="Models\FATContainer.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FATContainer.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FATContainer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FATContainer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FATContainer.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FATUser.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FATUserGroup.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GeneralLedger.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartialObjs\StudentActivity.cs" />
+    <Compile Include="Models\PartialObjs\TeachingNode.cs" />
+    <Compile Include="Models\PartialObjs\TeachingRoutine.cs" />
+    <Compile Include="Models\PartialObjs\TemplateRoutine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\StudentActivity.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubjectItem.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachingNode.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachingRoutine.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TemplateNode.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TemplateRoutine.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransferCheck.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\datatables.css" />
+    <Content Include="css\jquery.dataTables.css" />
+    <Content Include="css\Mainpage.css" />
+    <Content Include="css\Settings\T1RoutineList.css" />
+    <Content Include="css\siteschema.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_asc_disabled.png" />
+    <Content Include="images\sort_both.png" />
+    <Content Include="images\sort_desc.png" />
+    <Content Include="images\sort_desc_disabled.png" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\datatables.js" />
+    <Content Include="js\jquery-1.11.0.min.js" />
+    <Content Include="js\jquery.dataTables.min.js" />
+    <Content Include="js\jquery.tmpl.min.js" />
+    <Content Include="js\jquery.confirm.min.js" />
+    <Content Include="js\Settings\T1RoutineList.js" />
+    <Content Include="js\underscore-min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Settings\Models\" />
+    <Folder Include="css\Teachings\" />
+    <Folder Include="js\Teachings\" />
+    <Folder Include="Views\ProcessGuide\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Settings\Views\CommonNode\CustomerLedger_Init.cshtml" />
+    <Content Include="Areas\Settings\Views\CommonNode\DetailedLedger_Init.cshtml" />
+    <Content Include="Areas\Settings\Views\CommonNode\GeneralLedger_Init.cshtml" />
+    <Content Include="Areas\Settings\Views\DebitTransferCheck\InitT1RoutineData.cshtml" />
+    <Content Include="Areas\Settings\Views\DebitTransferCheck\InitT2RoutineData.cshtml" />
+    <Content Include="Areas\Settings\Views\DebitTransferCheck\Step1_Init.cshtml" />
+    <Content Include="Areas\Settings\Views\Shared\EditAuditingCase.cshtml" />
+    <Content Include="Areas\Settings\Views\Shared\EditSubjectItem.cshtml" />
+    <Content Include="Areas\Settings\Views\Shared\EditSubjectItem1.cshtml" />
+    <Content Include="Areas\Settings\Views\Shared\R_TransferCheck.cshtml" />
+    <Content Include="Areas\Settings\Views\Teaching1Setting\CaseDetail.cshtml" />
+    <Content Include="Areas\Settings\Views\Teaching1Setting\T1RoutineDetail.cshtml" />
+    <Content Include="Areas\Settings\Views\Teaching1Setting\T1RoutineList.cshtml" />
+    <Content Include="Areas\Settings\Views\Teaching2Setting\T2RoutineDetail.cshtml" />
+    <Content Include="Areas\Settings\Views\Teaching2Setting\T2RoutineList.cshtml" />
+    <Content Include="Areas\Settings\Views\UserMng\UserImport.cshtml" />
+    <Content Include="Areas\Settings\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Teachings\Views\CommonNode\Comm_CL.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\Comm_DL.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\Comm_GL.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\CustomerLedger_Init.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\DetailedLedger_Init.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\GeneralLedger_Init.cshtml" />
+    <Content Include="Areas\Teachings\Views\DebitTransferCheck\Step_Init1.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\IncomeBill.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\RoutineStepProgress.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\SubjectFiller.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\Teaching1Navigator.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\TransferCheck.cshtml" />
+    <Content Include="Areas\Teachings\Views\TeachingInit\SelectNode.cshtml" />
+    <Content Include="Areas\Teachings\Views\TeachingInit\SelectT1Case.cshtml" />
+    <Content Include="Areas\Teachings\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Mainpage.cshtml" />
+    <Content Include="Views\Shared\CaseHeaderDesc.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Login1.cshtml" />
+    <Content Include="Views\Shared\SysMenu.cshtml" />
+    <Content Include="Views\Shared\Teaching1Navigator.cshtml" />
+    <Content Include="Views\Shared\Teaching1Responsor.cshtml" />
+    <Content Include="Views\Shared\T_TransferCheck.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\UICommon\CapitalDate.cshtml" />
+    <Content Include="Views\UICommon\CapitalMoney.cshtml" />
+    <Content Include="Views\UICommon\TabledMoney.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\FATContainer.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FATContainer.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\FATContainer.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FATContainer.edmx</DependentUpon>
+      <LastGenOutput>FATContainer.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FATContainer.edmx.diagram">
+      <DependentUpon>FATContainer.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\FATContainer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FATContainer.edmx</DependentUpon>
+      <LastGenOutput>FATContainer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4637/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
