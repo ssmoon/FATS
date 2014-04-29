@@ -1,19 +1,5 @@
 ﻿$(document).ready(function () {
-    $.ajax({
-        type: "GET",
-        url: "/Settings/Teaching1Setting/LoadCase",
-        data: '',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            alert(result.length);
-        }
-    });
     caseSettingMgr.initTable();
-
-    $(".currname button").click(function () {
-        caseSettingMgr.reloadCaseTable();
-    });
     
     $("#accordion").on("click", "a.list-group-item", function () {
         if ($(this).hasClass("active"))
@@ -112,16 +98,30 @@ var caseSettingMgr = {
                     }
                 }
             ],
-            "fnDrawCallback": function (oSettings) {            
+            "fnDrawCallback": function (oSettings) {
+                $("#caselist a[data-act=del]").unbind();
                 $("#caselist a[data-act=del]").confirm({
                     title: "删除确认",
                     text: "真的要删除这个案例吗？删除后将无法恢复?",
                     confirm: function (button) {
                         var aPos = caseSettingMgr.caseTable.fnGetPosition(button.closest('tr').get(0));
+                        var routineID = caseSettingMgr.caseTable.fnGetData(aPos).Row_ID;
                         caseSettingMgr.caseTable.fnDeleteRow(aPos);
+                        $.ajax({
+                            type: "POST",
+                            url: "/Settings/Teaching1Setting/DeleteCase",
+                            data: '{ "teachingRoutineID": "' + routineID + '" }',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function () {
+                            },
+                            error: function () {
+                            }
+                        });
+                        
                     },
                     cancel: function (button) {
-                       
+                        
                     },
                     confirmButton: "确定",
                     cancelButton: "取消"
