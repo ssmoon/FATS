@@ -19,20 +19,64 @@
         if ($(this).hasClass("active"))
             return;
         $("#casearea .currname .namelabel").html($(this).html());
+        caseSettingMgr.selectedRID = $(this).attr("data-dbid");
         caseSettingMgr.tableData = { tmpRoutineID: $(this).attr("data-dbid") };
         caseSettingMgr.reloadCaseTable();
         $("#accordion a.list-group-item").removeClass("active");
         $(this).addClass("active");
     });
     $("#accordion a.list-group-item:eq(0)").click();
+    $('#frmNewCase').bootstrapValidator({    
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            n_CaseName: {
+                validators: {
+                    notEmpty: {
+                        message: '名称不可以为空'
+                    }
+                }
+            }
+        }
+    });
+    $("#frmNewCase").on("click", "button[data-act=save]", function () {
+        $("#frmNewCase").bootstrapValidator('validate');
+        if (!$("#frmNewCase").data('bootstrapValidator').isValid())
+            return;
+        $(this).button('loading');
+        var dataCarrier = new Object();
+        dataCarrier.routine = new Object();
+        dataCarrier.routine.CaseText = " ";
+        dataCarrier.routine.CurrStatus = 0;
+        dataCarrier.routine.CaseName = $("#frmNewCase input[name=n_CaseName]").val();
+        dataCarrier.routine.TmpRoutineID = caseSettingMgr.selectedRID;
+        $.ajax({
+            type: "POST",
+            url: "/Settings/Teaching1Setting/AppendCase",
+            data: JSON.stringify(dataCarrier),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                $("#frmNewCase input[name=n_CaseName]").val("");
+                $("#frmNewCase button[data-act=save]").button('reset');
+                $("#pop_NewCase").modal('hide');
+                caseSettingMgr.reloadCaseTable();
+            },
+            error: function (err) {
 
-   
+            }
+        });
+    });
 })
 
 
 var caseSettingMgr = {
     caseTable: null,
     tableData: null,
+    selectedRID: "",
 
     initTable: function () {
         caseSettingMgr.caseTable = $('#caselist').dataTable({

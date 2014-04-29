@@ -41,7 +41,7 @@ namespace FATS.Models
         {
             get
             {
-                return RelTmpNode.Index;
+                return RelTmpNode.NodeIndex;
             }
         }
 

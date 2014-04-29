@@ -17,10 +17,10 @@ namespace FATS.Models
         public string Row_ID { get; set; }
         public string NodeName { get; set; }
         public string Tag { get; set; }
-        public int Index { get; set; }
         public string NodeType { get; set; }
         public string RoutineID { get; set; }
         public int GroupIdx { get; set; }
         public int RequireRecord { get; set; }
+        public int NodeIndex { get; set; }
     }
 }

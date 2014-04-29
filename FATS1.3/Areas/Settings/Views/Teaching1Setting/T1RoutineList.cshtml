@@ -10,21 +10,23 @@
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/js/Settings/T1RoutineList.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/js/Settings/T1RoutineList.js")"></script>
 }
 
 <div class="panel-group" id="accordion">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">支票
+                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    支票
                 </a>
             </h4>
         </div>
         <div id="collapseOne" class="list-group panel-collapse collapse in">
 
 
-            <a href="javascript:void(0)" class="list-group-item" data-dbid="T1_DebitTransferCheck">跨行借记支票付款与收款
+            <a href="javascript:void(0)" class="list-group-item" data-dbid="T1_DebitTransferCheck">
+                跨行借记支票付款与收款
             </a>
             <a href="javascript:void(0)" class="list-group-item">跨行贷记支票付款与收款</a>
             <a href="javascript:void(0)" class="list-group-item">Morbi leo risus</a>
@@ -35,12 +37,14 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">托收承付
+                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    托收承付
                 </a>
             </h4>
         </div>
         <div id="collapseTwo" class="list-group panel-collapse collapse">
-            <a href="javascript:void(0)" class="list-group-item">跨行借记支票付款与收款
+            <a href="javascript:void(0)" class="list-group-item">
+                跨行借记支票付款与收款
             </a>
             <a href="javascript:void(0)" class="list-group-item">跨行贷记支票付款与收款</a>
             <a href="javascript:void(0)" class="list-group-item">Morbi leo risus</a>
@@ -50,12 +54,14 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">存款
+                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    存款
                 </a>
             </h4>
         </div>
         <div id="collapseThree" class="list-group panel-collapse collapse">
-            <a href="javascript:void(0)" class="list-group-item">跨行借记支票付款与收款
+            <a href="javascript:void(0)" class="list-group-item">
+                跨行借记支票付款与收款
             </a>
             <a href="javascript:void(0)" class="list-group-item">跨行贷记支票付款与收款</a>
             <a href="javascript:void(0)" class="list-group-item">Morbi leo risus</a>
@@ -66,11 +72,13 @@
 
 <div id="casearea">
     <h3 class="currname">
-        <button type="button" class="btn btn-default btn-lg"  data-toggle="modal" data-target="#pop_NewCase">
+        <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#pop_NewCase">
             <span class="glyphicon glyphicon-plus"></span>增加新案例
         </button>
         <span class="namelabel"></span>
     </h3>
+
+
 
     <div class="tablecont">
         <table id="caselist" class="datatable table table-bordered table-striped"></table>
@@ -80,25 +88,31 @@
 <div class="clearfix"></div>
 
 
+
+
+
+
 <div class="modal fade" id="pop_NewCase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-             <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-    </div>
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">保存</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    <form id="frmNewCase" class="form-horizontal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">案例名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="n_CaseName" class="form-control" placeholder="新案例名称(小于20个字)" maxlength="20" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" data-act="save" data-loading-text="保存中.." autocomplete="off">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

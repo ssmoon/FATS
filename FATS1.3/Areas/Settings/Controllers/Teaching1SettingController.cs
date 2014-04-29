@@ -119,7 +119,7 @@ namespace FATS.Areas.Settings.Controllers
 
                 var tempateNodeList = from node in dataContainer.TemplateNode
                                       where node.RoutineID == routine.TmpRoutineID
-                                      orderby node.Index
+                                      orderby node.NodeIndex
                                       select node;
                 foreach (TemplateNode tmpNode in tempateNodeList)
                 {
