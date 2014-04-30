@@ -26,7 +26,7 @@ namespace FATS.Areas.Settings.Controllers
         {
             using (FATContainer dataContainer = new FATContainer())
             {
-                TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
+                TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["tchRoutineID"]));
                 TransferCheck tcInfo = dataContainer.TransferCheck.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
                 if (tcInfo == null)
                 {
@@ -35,7 +35,7 @@ namespace FATS.Areas.Settings.Controllers
                     dataContainer.TransferCheck.Add(tcInfo);
                     dataContainer.SaveChanges();
                 }
-                return View(tcInfo);
+                return View("TransferCheck", tcInfo);
             }            
         }
 

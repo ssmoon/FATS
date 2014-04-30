@@ -6,49 +6,64 @@
 @model  FATS.Models.TeachingRoutine
 
 @section Styles {
-    <link href="@Url.Content("~/Content/Settings/T1RoutineDetail.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Settings/T1RoutineDetail.css")" rel="Stylesheet" type="text/css" />
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Settings/T1RoutineDetail.js")" ></script>    
+    <script type="text/javascript" src="@Url.Content("~/js/Settings/T1RoutineDetail.js")" ></script>    
 }   
 
+<div class="page-header page-header-fix">
+    <h3>案例设置<small>@Model.CaseName</small></h3>
+</div>
 
-<div class='pagetitle'>编辑案例</div>
+<input type="hidden" id="hidTchRoutineID" value="@Model.Row_ID" />
 
-<table class="viewarea">
-    <tr>
-        <td>案例名称</td>
-        <td style="width: 200px">
-            @Html.TextBoxFor(model => model.CaseName, new Dictionary<string, object>(){{ "maxlength", 20 }, { "required", true },{ "class", "easyui-validatebox"} })
-        </td>
-        <td>当前状态</td>
-        <td  style="width: 200px">
-            <input type="checkbox" id="CurrStatus" name="CurrStatus" @( (Model.CurrStatus == 1) ? "checked='checked'" : "") /><label for="CurrStatus">是否可用</label>
-        </td>
-    </tr>
-    <tr>
-        <td>案例数据</td>
-        <td colspan="3">
-             <a href="javascript:EditRoutineData()" class="easyui-linkbutton" iconCls="icon-save" data-act='EditRoutine'>编辑</a>
-        </td>
-    </tr>
-    <tr>
-        <td>案例说明</td>
-        <td colspan="3">
-            @Html.TextAreaFor(model => model.CaseText, new Dictionary<string, object>() { { "cols", "50"  } })
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <div id="actbar">
-            <a href="javascript:UpdateCase()" class="easyui-linkbutton" iconCls="icon-save" data-act='SaveCase'>保存</a>
+<div class="panel panel-default">
+    <div class="panel-heading">名称与描述 </div>
+    <div class="panel-body">
+        <form id="frmCaseInfo" class="form-horizontal">
+            <div class="form-group">
+                <label for="CaseName" class="col-sm-2 control-label">案例名称</label>
+                <div class="col-sm-3">
+                    <input type="text" name="CaseName" class="form-control" id="CaseName" maxlength="20" value="@Model.CaseName" />
+                </div>
             </div>
-        </td>
-    </tr>
-</table>
+            <div class="form-group">
+                <label for="i_CaseName" class="col-sm-2 control-label">案例文字</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="CaseText" id="CaseText" rows="3">@Model.CaseText</textarea>
+                </div>
+            </div>
+            <p class="actionbar">
+                <button type="button" class="btn btn-primary" data-loading-text="保存中.." data-act="savecase">保 存</button>
+            </p>
+        </form>
+    </div>
+</div>
 
-<div class="divdivider">&nbsp;</div>
-<div id="nodebox" data-rid="@Model.Row_ID" data-rtag="@Model.RelTmpRoutine.RoutineTag">
-    <table id="nodelist"></table>
+<div class="page-header page-header-fix">
+    <h3>案例相关数据</h3>
+</div>
+
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a href="javascript:void(0)" data-target="basic">基础数据</a></li>
+    <li><a href="javascript:void(0)" data-target="subject">科目</a></li>
+    <li><a href="javascript:void(0)" data-target="dl">明细账</a></li>
+    <li><a href="javascript:void(0)" data-target="cl">分户账</a></li>
+    <li><a href="javascript:void(0)" data-target="gl">总账</a></li>
+</ul>
+
+<div class="tabcontainer">
+    <div data-target="basic">
+        @{  Html.RenderAction("InitT1RoutineData", Model.RelTmpRoutine.RoutineTag, new { tchRoutineID = Model.Row_ID }); }
+        <p class="actionbar">
+            <button type="button" class="btn btn-primary" data-act="savecase" data-controller="@Model.RelTmpRoutine.RoutineTag">保 存</button>
+        </p>
+    </div>
+    <div data-target="subject"></div>
+    <div data-target="dl"></div>
+    <div data-target="cl"></div>
+    <div data-target="gl"></div>
+
 </div>

@@ -1,0 +1,68 @@
+﻿@model  FATS.Models.TransferCheck
+    @Html.HiddenFor(item => item.TchRoutineID)
+    @Html.HiddenFor(item => item.Row_ID)
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <label for="i_RemitterName" class="col-xs-2 control-label">出票人全称</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="RemitterName" name="RemitterName" />
+        </div>
+        <label for="inputEmail3" class="col-xs-2 control-label">出票人账号</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="RemitterAcc" name="RemitterAcc" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="i_RemitterName" class="col-xs-2 control-label">出票人银行</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="RemitterBank" name="RemitterBank" />
+        </div>        
+    </div>
+    <div class="form-group">
+        <label for="i_RemitterName" class="col-xs-2 control-label">收款人全称</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="PayeeName" name="PayeeName" />
+        </div>
+        <label for="inputEmail3" class="col-xs-2 control-label">收款人账号</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="PayeeAcc" name="PayeeAcc" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="i_RemitterName" class="col-xs-2 control-label">收款人银行</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="PayeeBank" name="PayeeBank" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="i_RemitterName" class="col-xs-2 control-label">金额</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="MoneyAmount" name="MoneyAmount" />
+        </div>
+        <label for="inputEmail3" class="col-xs-2 control-label">支票号</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="CheckNo" name="CheckNo" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="i_RemitterName" class="col-xs-2 control-label">转账支票日期</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="ChequeDate" name="ChequeDate" />
+        </div>
+        <label for="inputEmail3" class="col-xs-2 control-label">进账单日期</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="IncomeBillDate" name="IncomeBillDate" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="i_RemitterName" class="col-xs-2 control-label">转账支票日期</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="ChequeDate" name="ChequeDate" />
+        </div>
+        <label for="inputEmail3" class="col-xs-2 control-label">用途</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="Purpose" name="Purpose" />
+        </div>
+    </div>
+</div>

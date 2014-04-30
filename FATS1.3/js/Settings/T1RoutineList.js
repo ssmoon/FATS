@@ -126,6 +126,11 @@ var caseSettingMgr = {
                     confirmButton: "确定",
                     cancelButton: "取消"
                 });
+                $("#caselist a[data-act=edit]").off().on("click", function () {
+                    var aPos = caseSettingMgr.caseTable.fnGetPosition($(this).closest('tr').get(0));
+                    var routineID = caseSettingMgr.caseTable.fnGetData(aPos).Row_ID;
+                    window.location = "/Settings/Teaching1Setting/Edit/" + routineID;
+                })
             }
         });
     },

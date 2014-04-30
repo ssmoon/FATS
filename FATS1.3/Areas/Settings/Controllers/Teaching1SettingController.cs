@@ -70,7 +70,9 @@ namespace FATS.Areas.Settings.Controllers
                 
                 dataContainer.SaveChanges();
             }
-            return null;
+            JsonResult result = new JsonResult();
+            result.Data = string.Empty;
+            return result;
         }
 
         [HttpPost]

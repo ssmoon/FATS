@@ -249,6 +249,7 @@
     <Content Include="js\jquery.confirm.min.js" />
     <Content Include="js\jquery.validate.bootstrap.popover.min.js" />
     <Content Include="js\jQuery.Validation.min.js" />
+    <Content Include="js\Settings\T1RoutineDetail.js" />
     <Content Include="js\Settings\T1RoutineList.js" />
     <Content Include="js\underscore-min.js" />
     <Content Include="Web.config" />
@@ -351,6 +352,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Settings\Views\Shared\TransferCheck.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

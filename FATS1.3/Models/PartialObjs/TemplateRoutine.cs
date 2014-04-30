@@ -10,6 +10,11 @@ namespace FATS.Models
 {
     public partial class TemplateRoutine
     {
+        public TemplateRoutine()
+        {
+            NodeDict = new Dictionary<string, TemplateNode>(10);
+        }
+
         [NotMapped]
         public Dictionary<string, TemplateNode> NodeDict { get; set; }
     }
