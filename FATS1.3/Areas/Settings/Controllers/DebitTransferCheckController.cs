@@ -26,12 +26,14 @@ namespace FATS.Areas.Settings.Controllers
         {
             using (FATContainer dataContainer = new FATContainer())
             {
-                TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["tchRoutineID"]));
-                TransferCheck tcInfo = dataContainer.TransferCheck.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                int tchRoutineID = Convert.ToInt32(RouteData.Values["tchRoutineID"]);
+                TransferCheck tcInfo = dataContainer.TransferCheck.FirstOrDefault(info => (info.TchRoutineID == tchRoutineID));
                 if (tcInfo == null)
                 {
                     tcInfo = dataContainer.TransferCheck.Create();
-                    tcInfo.TchRoutineID = node.RoutineID;
+                    tcInfo.TchRoutineID = tchRoutineID;
+                    tcInfo.IncomeBillDate = DateTime.Now;
+                    tcInfo.ChequeDate = DateTime.Now;
                     dataContainer.TransferCheck.Add(tcInfo);
                     dataContainer.SaveChanges();
                 }
@@ -49,6 +51,7 @@ namespace FATS.Areas.Settings.Controllers
                 dataContainer.SaveChanges();
 
                 JsonResult result = new JsonResult();
+                result.Data = string.Empty;
                 return result;
             }
         }
@@ -98,10 +101,5 @@ namespace FATS.Areas.Settings.Controllers
 
         #endregion
 
-        #region input phase  Step 1
-
-
-
-        #endregion
     }
 }

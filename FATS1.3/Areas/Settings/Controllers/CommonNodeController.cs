@@ -34,12 +34,12 @@ namespace FATS.Areas.Settings.Controllers
             }
         }
 
-        public ActionResult DetailedLedger_List(int tNodeID, int tRoutineID)
+        public ActionResult DetailedLedger_List(int tRoutineID)
         {
             using (FATContainer dataContainer = new FATContainer())
             {
                 JsonResult result = new JsonResult();
-                result.Data = CommFunctions.WrapClientGridData(dataContainer.DetailedLedger.Where((item => (item.TchNodeID == tNodeID) && (item.TchRoutineID == tRoutineID))).ToList());
+                result.Data = CommFunctions.WrapClientGridData(dataContainer.DetailedLedger.Where(item => item.TchRoutineID == tRoutineID).OrderBy(item => item.RoutineDesc).ToList());
                 return result;
             }
         }
@@ -112,12 +112,12 @@ namespace FATS.Areas.Settings.Controllers
             }
         }
 
-        public ActionResult GeneralLedger_List(int tNodeID, int tRoutineID)
+        public ActionResult GeneralLedger_List(int tRoutineID)
         {
             using (FATContainer dataContainer = new FATContainer())
             {
                 JsonResult result = new JsonResult();
-                result.Data = CommFunctions.WrapClientGridData(dataContainer.GeneralLedger.Where((item => (item.TchNodeID == tNodeID) && (item.TchRoutineID == tRoutineID))).ToList());
+                result.Data = CommFunctions.WrapClientGridData(dataContainer.GeneralLedger.Where(item => item.TchRoutineID == tRoutineID).OrderBy(item => item.RoutineDesc).ToList());
                 return result;
             }
         }
@@ -190,12 +190,12 @@ namespace FATS.Areas.Settings.Controllers
             }
         }
 
-        public ActionResult CustomerLedger_List(int tNodeID, int tRoutineID)
+        public ActionResult CustomerLedger_List(int tRoutineID)
         {
             using (FATContainer dataContainer = new FATContainer())
             {
                 JsonResult result = new JsonResult();
-                result.Data = CommFunctions.WrapClientGridData(dataContainer.CustomerLedger.Where((item => (item.TchNodeID == tNodeID) && (item.TchRoutineID == tRoutineID))).ToList());
+                result.Data = CommFunctions.WrapClientGridData(dataContainer.CustomerLedger.Where(item => item.TchRoutineID == tRoutineID).OrderBy(item => item.RoutineDesc).ToList());
                 return result;
             }
         }
@@ -253,6 +253,36 @@ namespace FATS.Areas.Settings.Controllers
                 return result;
             }
         }
+        #endregion
+
+        #region subject item
+
+        public ActionResult ListSubjectItem(int tRoutineID)
+        {
+            using (FATContainer dbContainer = new FATContainer())
+            {
+                JsonResult result = new JsonResult();
+                result.Data = CommFunctions.WrapClientGridData(dbContainer.SubjectItem.Where(subject => subject.TchRoutineID == tRoutineID).OrderBy(subject => subject.RoutineDesc).ToList());
+                return result;
+            }
+        }
+
+        public ActionResult UpdateSubjectItem(SubjectItem subject)
+        {
+            using (FATContainer dbContainer = new FATContainer())
+            {
+                SubjectItem existedItem = dbContainer.SubjectItem.FirstOrDefault(item => item.Row_ID == subject.Row_ID);
+                if (existedItem == null)
+                    return null;
+                dbContainer.Entry<SubjectItem>(existedItem).CurrentValues.SetValues(subject);
+                dbContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = "SUCC";
+                return result;
+            }
+        }
+
         #endregion
 
     }

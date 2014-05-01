@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 using FATS.DataDefine;
 using FATS.Models;
@@ -20,14 +21,14 @@ namespace FATS.Areas.Settings.Controllers
             using (FATContainer dataContainer = new FATContainer())
             {
                 return View("T1RoutineList", dataContainer.TemplateRoutine.Where(routine => routine.RoutineType == ConstDefine.RoutineType_Teaching1).ToList());
-            }            
+            }
         }
 
 
         public ActionResult Edit()
         {
             TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(Convert.ToInt32(RouteData.Values["id"]));
-            return View("T1RoutineDetail", routine);            
+            return View("T1RoutineDetail", routine);
         }
 
         [HttpPost]
@@ -53,7 +54,7 @@ namespace FATS.Areas.Settings.Controllers
                 var routineList = dataContainer.TeachingRoutine.AsNoTracking().Where(routine => routine.TmpRoutineID == tmpRoutineID).ToList();
                 result.Data = CommFunctions.WrapClientGridData(routineList);
                 return result;
-            }            
+            }
         }
 
         [HttpPost]
@@ -67,7 +68,7 @@ namespace FATS.Areas.Settings.Controllers
 
                 TeachingRoutine dbRoutine = dataContainer.TeachingRoutine.Find(tchRoutineID);
                 dataContainer.Entry<TeachingRoutine>(dbRoutine).CurrentValues.SetValues(cachedRoutine);
-                
+
                 dataContainer.SaveChanges();
             }
             JsonResult result = new JsonResult();
@@ -94,13 +95,13 @@ namespace FATS.Areas.Settings.Controllers
 
         [HttpPost]
         public ActionResult DeleteCase(int teachingRoutineID)
-        {            
+        {
             using (FATContainer dataContainer = new FATContainer())
             {
                 dataContainer.TeachingRoutine.Remove(dataContainer.TeachingRoutine.Find(teachingRoutineID));
                 IEnumerable<TeachingNode> nodeList = from node in dataContainer.TeachingNode
-                               where node.RoutineID == teachingRoutineID
-                               select node;
+                                                     where node.RoutineID == teachingRoutineID
+                                                     select node;
                 foreach (TeachingNode node in nodeList)
                 {
                     dataContainer.TeachingNode.Remove(node);
@@ -115,7 +116,7 @@ namespace FATS.Areas.Settings.Controllers
         public ActionResult AppendCase(TeachingRoutine routine)
         {
             using (FATContainer dataContainer = new FATContainer())
-            {                
+            {
                 dataContainer.TeachingRoutine.Add(routine);
                 dataContainer.SaveChanges();
 
@@ -123,10 +124,85 @@ namespace FATS.Areas.Settings.Controllers
                                       where node.RoutineID == routine.TmpRoutineID
                                       orderby node.NodeIndex
                                       select node;
+                List<TeachingNode> tchNodeList = new List<TeachingNode>();
                 foreach (TemplateNode tmpNode in tempateNodeList)
                 {
                     TeachingNode newNode = new TeachingNode() { CurrStatus = 0, RelTmpNode = tmpNode, RoutineID = routine.Row_ID, TmpNodeID = tmpNode.Row_ID };
+                    tchNodeList.Add(newNode);
                     dataContainer.TeachingNode.Add(newNode);
+                }
+                dataContainer.SaveChanges();
+
+                string currPhaseName = string.Empty;
+                foreach (TeachingNode tchNode in tchNodeList)
+                {
+                   
+                    switch (tchNode.NodeTag)
+                    {
+                        case "Guide":
+                            {
+                                currPhaseName = tchNode.NodeName;
+                                break;
+                            }
+                        #region common node
+                        case "DetailedLedger":
+                            {
+                                for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                {
+                                    DetailedLedger info = dataContainer.DetailedLedger.Create();
+                                    info.TchNodeID = tchNode.Row_ID;
+                                    info.TchRoutineID = routine.Row_ID;
+                                    info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                    info.TimeMark = DateTime.Now;
+                                    dataContainer.DetailedLedger.Add(info);
+                                }
+                                break;
+                            }
+                        case "CustomerLedger":
+                            {
+                                for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                {
+                                    CustomerLedger info = dataContainer.CustomerLedger.Create();
+                                    info.TchNodeID = tchNode.Row_ID;
+                                    info.TchRoutineID = routine.Row_ID;
+                                    info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                    info.TimeMark = DateTime.Now;
+                                    info.BalanceTime = DateTime.Now;
+                                    dataContainer.CustomerLedger.Add(info);
+                                }
+                                break;
+                            }
+                        case "GeneralLedger":
+                            {
+                                for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                {
+                                    GeneralLedger info = dataContainer.GeneralLedger.Create();
+                                    info.TchNodeID = tchNode.Row_ID;
+                                    info.TchRoutineID = routine.Row_ID;
+                                    info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                    info.TimeMark = DateTime.Now;                                    
+                                    dataContainer.GeneralLedger.Add(info);
+                                }
+                                break;
+                            }
+                        default:
+                            {
+                                for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                {
+                                    SubjectItem info = dataContainer.SubjectItem.Create();
+                                    info.TchNodeID = tchNode.Row_ID;
+                                    info.TchRoutineID = routine.Row_ID;
+                                    info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;                                    
+                                    dataContainer.SubjectItem.Add(info);
+                                }
+                                break;
+                            }
+                        #endregion
+                        #region special node
+                      
+
+                        #endregion
+                    }                    
                 }
                 dataContainer.SaveChanges();
             }
@@ -143,7 +219,7 @@ namespace FATS.Areas.Settings.Controllers
             {
                 TeachingNode tchNode = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
                 ViewBag.TchRoutineID = tchNode.RoutineID;
-                ViewBag.TchNodeID = tchNode.Row_ID;                
+                ViewBag.TchNodeID = tchNode.Row_ID;
                 TemplateNode tmpNode = dataContainer.TemplateNode.FirstOrDefault(n => n.Row_ID == tchNode.TmpNodeID);
                 TemplateRoutine tmpRoutine = dataContainer.TemplateRoutine.FirstOrDefault(n => n.Row_ID == tmpNode.RoutineID);
                 ViewBag.NodeTitle = tmpRoutine.RoutineName + " " + tmpNode.NodeName + "记账科目设置";
@@ -158,7 +234,7 @@ namespace FATS.Areas.Settings.Controllers
                 JsonResult result = new JsonResult();
                 result.Data = CommFunctions.WrapClientGridData(dbContainer.SubjectItem.Where(subject => subject.TchNodeID == tchNodeID && subject.TchRoutineID == tchRoutineID).OrderBy(subject => subject.SubjectOrient).ToList());
                 return result;
-            }            
+            }
         }
 
         public ActionResult GetTemplateSubjectItem()

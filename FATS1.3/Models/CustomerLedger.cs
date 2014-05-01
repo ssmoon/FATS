@@ -31,5 +31,6 @@ namespace FATS.Models
         public int TchNodeID { get; set; }
         public string CustomerName { get; set; }
         public string CustomerAccNo { get; set; }
+        public string RoutineDesc { get; set; }
     }
 }

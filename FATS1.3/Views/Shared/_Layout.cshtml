@@ -6,6 +6,7 @@
     <link href="@Url.Content("~/css/datatables.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/siteschema.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/bootstrapValidator.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/bootstrap-datetimepicker.min.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/js/jquery-1.11.0.min.js")" type="text/javascript"></script>
     @RenderSection("Styles", false)
 
@@ -54,13 +55,21 @@
         @RenderBody()
     </div>
 
+    <footer>
+        <span class="right">@@cheeserush</span>
+        FATS 1.3   2007-2014
+    </footer>
+
     <script src="@Url.Content("~/js/jquery.tmpl.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/moment-with-langs.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/bootstrap.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/jquery.dataTables.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/dataTables.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/underscore-min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/jquery.confirm.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/bootstrapValidator.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/bootstrap-datetimepicker.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/SiteShared.js")" type="text/javascript"></script>
 
 
     @RenderSection("Scripts", false)

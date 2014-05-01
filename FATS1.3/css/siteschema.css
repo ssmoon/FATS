@@ -29,3 +29,6 @@ body {
 
 .page-header-fix { margin-top: 0px; border-bottom: 0px none; }
 .page-header-fix small { margin-left: 30px; }
+
+footer { width: 1110px; margin: 30px auto; }
+footer .right { float: right; } 

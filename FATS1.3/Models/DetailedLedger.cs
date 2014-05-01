@@ -26,5 +26,6 @@ namespace FATS.Models
         public decimal FinalSum { get; set; }
         public int TchRoutineID { get; set; }
         public int TchNodeID { get; set; }
+        public string RoutineDesc { get; set; }
     }
 }

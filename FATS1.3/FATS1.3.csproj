@@ -222,6 +222,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -230,6 +231,7 @@
     <Content Include="css\datatables.css" />
     <Content Include="css\jquery.dataTables.css" />
     <Content Include="css\Mainpage.css" />
+    <Content Include="css\Settings\T1RoutineDetail.css" />
     <Content Include="css\Settings\T1RoutineList.css" />
     <Content Include="css\siteschema.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -239,6 +241,7 @@
     <Content Include="images\sort_both.png" />
     <Content Include="images\sort_desc.png" />
     <Content Include="images\sort_desc_disabled.png" />
+    <Content Include="js\bootstrap-datetimepicker.min.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\bootstrapValidator.min.js" />
@@ -249,8 +252,12 @@
     <Content Include="js\jquery.confirm.min.js" />
     <Content Include="js\jquery.validate.bootstrap.popover.min.js" />
     <Content Include="js\jQuery.Validation.min.js" />
+    <Content Include="js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="js\moment-with-langs.min.js" />
+    <Content Include="js\Settings\DebitTransferCheck.js" />
     <Content Include="js\Settings\T1RoutineDetail.js" />
     <Content Include="js\Settings\T1RoutineList.js" />
+    <Content Include="js\SiteShared.js" />
     <Content Include="js\underscore-min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -354,7 +361,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Settings\Views\Shared\TransferCheck.cshtml" />
+    <Content Include="Areas\Settings\Views\DebitTransferCheck\TransferCheck.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -10,8 +10,8 @@
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/js/Settings/T1RoutineDetail.js")" ></script>    
-}   
+    <script type="text/javascript" src="@Url.Content("~/js/Settings/T1RoutineDetail.js")" ></script>
+}
 
 <div class="page-header page-header-fix">
     <h3>案例设置<small>@Model.CaseName</small></h3>
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="i_CaseName" class="col-sm-2 control-label">案例文字</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" name="CaseText" id="CaseText" rows="3">@Model.CaseText</textarea>
+                    <textarea class="form-control" name="CaseText" id="CaseText" rows="4">@Model.CaseText</textarea>
                 </div>
             </div>
             <p class="actionbar">
@@ -46,7 +46,7 @@
     <h3>案例相关数据</h3>
 </div>
 
-<ul class="nav nav-tabs nav-justified">
+<ul id="subdatanav" class="nav nav-tabs nav-justified">
     <li class="active"><a href="javascript:void(0)" data-target="basic">基础数据</a></li>
     <li><a href="javascript:void(0)" data-target="subject">科目</a></li>
     <li><a href="javascript:void(0)" data-target="dl">明细账</a></li>
@@ -55,15 +55,401 @@
 </ul>
 
 <div class="tabcontainer">
-    <div data-target="basic">
+    <div class="subdata" data-target="basic" style="display: block">
         @{  Html.RenderAction("InitT1RoutineData", Model.RelTmpRoutine.RoutineTag, new { tchRoutineID = Model.Row_ID }); }
-        <p class="actionbar">
-            <button type="button" class="btn btn-primary" data-act="savecase" data-controller="@Model.RelTmpRoutine.RoutineTag">保 存</button>
-        </p>
-    </div>
-    <div data-target="subject"></div>
-    <div data-target="dl"></div>
-    <div data-target="cl"></div>
-    <div data-target="gl"></div>
 
+    </div>
+    <div class="subdata" data-target="subject" >
+        <dl>
+            <dt>科目设置操作指导</dt>
+            <dd>下面是整个教学流程在各个步骤中涉及的科目，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
+        </dl>
+        <div class="tablecont">
+            <table id="subjectitemlist" class="datatable table table-bordered table-striped"></table>
+        </div>
+
+    </div>
+    <div class="subdata" data-target="dl">
+         <dl>
+            <dt>明细账设置操作指导</dt>
+            <dd>下面是整个教学流程在各个步骤中涉及的明细账分录，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
+        </dl>
+        <div class="tablecont">
+            <table id="detailedledgerlist" class="datatable table table-bordered table-striped"></table>
+        </div>
+    </div>
+    <div class="subdata" data-target="cl">
+         <dl>
+            <dt>分户账设置操作指导</dt>
+            <dd>下面是整个教学流程在各个步骤中涉及的分户账分录，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
+        </dl>
+        <div class="tablecont">
+            <table id="customerledgerlist" class="datatable table table-bordered table-striped"></table>
+        </div>
+    </div>
+    <div class="subdata" data-target="gl">
+          <dl>
+            <dt>总账设置操作指导</dt>
+            <dd>下面是整个教学流程在各个步骤中涉及的总账分录，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
+        </dl>
+        <div class="tablecont">
+            <table id="generalledgerlist" class="datatable table table-bordered table-striped"></table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="pop_SubjectItem" tabindex="-1" role="dialog" aria-labelledby="subjectModalLabel" aria-hidden="true">
+    <form id="frmSubjectItem" class="form-horizontal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="subjectModalLabel">编辑科目信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="SubjectName" class="col-xs-2 control-label">科目名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="SubjectName" name="SubjectName" value="" />
+                            <span class="help-block" id="h_SubjectName"></span>
+                        </div>
+                        <label for="SubjectType" class="col-xs-2 control-label">科目类型</label>
+                        <div class="col-xs-3">
+                            <select name="SubjectType" class="form-control" id="SubjectType">
+                                <option value="资产" selected="selected">资产</option>
+                                <option value="负债">负债</option>
+                                <option value="所有者权益">所有者权益</option>
+                                <option value="收入">收入</option>
+                                <option value="成本或费用">成本或费用</option>
+                                <option value="资产负债共同类">资产负债共同类</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ChangeOrient" class="col-xs-2 control-label">增减方向</label>
+                        <div class="col-xs-3">
+                            <select name="ChangeOrient" class="form-control" id="ChangeOrient">
+                                <option value="增加" selected="selected">增加</option>
+                                <option value="减少">减少</option>
+                            </select>
+                        </div>
+                        <label for="SubjectOrient" class="col-xs-2 control-label">科目方向</label>
+                        <div class="col-xs-3">
+                            <select name="SubjectOrient" class="form-control" id="SubjectOrient">
+                                <option value="借" selected="selected">借</option>
+                                <option value="贷">贷</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="SubSubject" class="col-xs-2 control-label">下级科目</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="SubSubject" name="SubSubject" value="" />
+                            <span class="help-block" id="h_SubSubject"></span>
+                        </div>
+                        <label for="Amount" class="col-xs-2 control-label">发生额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="Amount" name="Amount" value="" />
+                            <span class="help-block" id="h_Amount"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NextLedger" class="col-xs-2 control-label">下一步</label>
+                        <div class="col-xs-3">
+                            <select name="NextLedger" class="form-control" id="NextLedger">
+                                <option value="客户分户账" selected="selected">客户分户账</option>
+                                <option value="明细账">明细账</option>
+                                <option value="现金收入日记账">现金收入日记账</option>
+                                <option value="现金支出日记账">现金支出日记账</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" data-act="save">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="pop_DetailedLedger" tabindex="-1" role="dialog" aria-labelledby="dlModalLabel" aria-hidden="true">
+    <form id="frmDetailedLedger" class="form-horizontal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="dlModalLabel">编辑明细账</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="dl_TimeMark" class="col-xs-2 control-label">日期</label>
+                        <div class="col-xs-3">
+                            <div class="input-group date" id="dodl_TimeMark" data-date-format="YYYY-MM-DD">
+                                <input type="text" data-valuetype="date" class="form-control" name="TimeMark" id="dl_TimeMark" value="" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon-calendar glyphicon"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <label for="dl_SubjectName" class="col-xs-2 control-label">科目名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_SubjectName" name="SubjectName" value="" />
+                            <span class="help-block" id="h_dl_SubjectName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BalanceAbstract" class="col-xs-2 control-label">余额摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_BalanceAbstract" name="BalanceAbstract" value="" />
+                            <span class="help-block" id="h_dl_BalanceAbstract"></span>
+                        </div>
+                        <label for="dl_BalanceOrient" class="col-xs-2 control-label">科目方向</label>
+                        <div class="col-xs-3">
+                            <select id="dl_BalanceOrient" class="form-control"  name="BalanceOrient">
+                                <option value="1" selected="selected">借方</option>
+                                <option value="-1">贷方</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dl_BalanceSum" class="col-xs-2 control-label">余额数额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_BalanceSum" name="BalanceSum" value="" />
+                            <span class="help-block" id="h_dl_BalanceSum"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dl_DebitSum" class="col-xs-2 control-label">借方发生</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_DebitSum" name="DebitSum" value="" />
+                            <span class="help-block" id="h_dl_DebitSum"></span>
+                        </div>
+                        <label for="dl_CreditSum" class="col-xs-2 control-label">贷方发生</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_CreditSum" name="CreditSum" value="" />
+                            <span class="help-block" id="h_dl_CreditSum"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dl_Abstract" class="col-xs-2 control-label">发生项摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_Abstract" name="Abstract" value="" />
+                            <span class="help-block" id="h_dl_Abstract"></span>
+                        </div>
+                        <label for="dl_FinalSum" class="col-xs-2 control-label">最终余额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_FinalSum" name="FinalSum" value="" />
+                            <span class="help-block" id="h_dl_FinalSum"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" data-act="save">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="pop_GeneralLedger" tabindex="-1" role="dialog" aria-labelledby="glModalLabel" aria-hidden="true">
+    <form id="frmGeneralLedger" class="form-horizontal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="glModalLabel">编辑总账</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="gl_TimeMark" class="col-xs-2 control-label">日期</label>
+                        <div class="col-xs-3">
+                            <div class="input-group date" id="dogl_TimeMark" data-date-format="YYYY-MM-DD">
+                                <input type="text"   data-valuetype="date"  class="form-control" name="TimeMark" id="gl_TimeMark" value="" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon-calendar glyphicon"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <label for="gl_SubjectName" class="col-xs-2 control-label">科目名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_SubjectName" name="SubjectName" value="" />
+                            <span class="help-block" id="h_gl_SubjectName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BalanceAbstract" class="col-xs-2 control-label">余额摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_BalanceAbstract" name="BalanceAbstract" value="" />
+                            <span class="help-block" id="h_gl_BalanceAbstract"></span>
+                        </div>
+                        <label for="gl_BalanceOrient" class="col-xs-2 control-label">科目方向</label>
+                        <div class="col-xs-3">
+                            <select id="gl_BalanceOrient" name="BalanceOrient" class="form-control" >
+                                <option value="1" selected="selected">借方</option>
+                                <option value="-1">贷方</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gl_BalanceSum" class="col-xs-2 control-label">余额数额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_BalanceSum" name="BalanceSum" value="" />
+                            <span class="help-block" id="h_gl_BalanceSum"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gl_DebitSum" class="col-xs-2 control-label">借方发生</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_DebitSum" name="DebitSum" value="" />
+                            <span class="help-block" id="h_gl_DebitSum"></span>
+                        </div>
+                        <label for="gl_CreditSum" class="col-xs-2 control-label">贷方发生</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_CreditSum" name="CreditSum" value="" />
+                            <span class="help-block" id="h_gl_CreditSum"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gl_Abstract" class="col-xs-2 control-label">发生项摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_Abstract" name="Abstract" value="" />
+                            <span class="help-block" id="h_gl_Abstract"></span>
+                        </div>
+                        <label for="gl_FinalSum" class="col-xs-2 control-label">最终余额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_FinalSum" name="FinalSum" value="" />
+                            <span class="help-block" id="h_gl_FinalSum"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" data-act="save">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="pop_CustomerLedger" tabindex="-1" role="dialog" aria-labelledby="clModalLabel" aria-hidden="true">
+    <form id="frmCustomerLedger" class="form-horizontal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="clModalLabel">编辑总账</h4>
+                </div>
+                <div class="modal-body">
+                      <div class="form-group">
+                        <label for="cl_CustomerName" class="col-xs-2 control-label">客户名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_CustomerName" name="CustomerName" value="" />
+                            <span class="help-block" id="h_cl_CustomerName"></span>
+                        </div>
+                        <label for="cl_CustomerAccNo" class="col-xs-2 control-label">客户账户</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_CustomerAccNo" name="CustomerAccNo" value="" />
+                            <span class="help-block" id="h_cl_CustomerAccNo"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cl_BalanceTime" class="col-xs-2 control-label">余额日期</label>
+                        <div class="col-xs-3">
+                            <div class="input-group date"  data-valuetype="date"  id="docl_BalanceTime" data-date-format="YYYY-MM-DD">
+                                <input type="text" class="form-control"  name="BalanceTime" id="cl_BalanceTime" value="" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon-calendar glyphicon"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <label for="cl_SubjectName" class="col-xs-2 control-label">科目名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_SubjectName" name="SubjectName" value="" />
+                            <span class="help-block" id="h_cl_SubjectName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BalanceAbstract" class="col-xs-2 control-label">余额摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_BalanceAbstract" name="BalanceAbstract" value="" />
+                            <span class="help-block" id="h_cl_BalanceAbstract"></span>
+                        </div>
+                        <label for="cl_BalanceSum" class="col-xs-2 control-label">余额金额</label>
+                        <div class="col-xs-3">
+                             <input type="text" class="form-control" id="cl_BalanceSum" name="BalanceSum" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cl_TargetSubject" class="col-xs-2 control-label">对方科目</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_TargetSubject" name="TargetSubject" value="" />
+                            <span class="help-block" id="h_cl_TargetSubject"></span>
+                        </div>
+                        <label for="cl_TimeMark"  data-valuetype="date"  class="col-xs-2 control-label">发生日期</label>
+                        <div class="col-xs-3">
+                            <div class="input-group date" id="docl_TimeMark" data-date-format="YYYY-MM-DD">
+                                <input type="text" class="form-control" name="TimeMark" id="cl_TimeMark" value="" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon-calendar glyphicon"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                              <div class="form-group">
+                        <label for="cl_VoucherNo" class="col-xs-2 control-label">发生项摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_VoucherNo" name="VoucherNo" value="" />
+                            <span class="help-block" id="h_cl_VoucherNo"></span>
+                        </div>
+                        <label for="cl_DCChoice" class="col-xs-2 control-label">借或贷</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_DCChoice" name="DCChoice" value="" />
+                            <span class="help-block" id="h_cl_DCChoice"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cl_DebitSum" class="col-xs-2 control-label">借方发生</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_DebitSum" name="DebitSum" value="" />
+                            <span class="help-block" id="h_cl_DebitSum"></span>
+                        </div>
+                        <label for="cl_CreditSum" class="col-xs-2 control-label">贷方发生</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_CreditSum" name="CreditSum" value="" />
+                            <span class="help-block" id="h_cl_CreditSum"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cl_Abstract" class="col-xs-2 control-label">发生项摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_Abstract" name="Abstract" value="" />
+                            <span class="help-block" id="h_cl_Abstract"></span>
+                        </div>
+                        <label for="cl_FinalSum" class="col-xs-2 control-label">最终余额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_FinalSum" name="FinalSum" value="" />
+                            <span class="help-block" id="h_cl_FinalSum"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" data-act="save">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
