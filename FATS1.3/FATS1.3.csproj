@@ -142,6 +142,7 @@
     <Compile Include="Areas\Teachings\Controllers\CommonNodeController.cs" />
     <Compile Include="Areas\Teachings\Controllers\DebitTransferCheckController.cs" />
     <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
+    <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Teachings\Models\V_IncomeBill.cs" />
     <Compile Include="Areas\Teachings\Models\V_TransferCheck.cs" />
     <Compile Include="Areas\Teachings\TeachingsAreaRegistration.cs" />
@@ -234,8 +235,12 @@
     <Content Include="css\Settings\T1RoutineDetail.css" />
     <Content Include="css\Settings\T1RoutineList.css" />
     <Content Include="css\siteschema.css" />
+    <Content Include="css\Teachings\SelectT1Case.css" />
+    <Content Include="css\Teachings\Teaching1Comm.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\arrow_tobottom.png" />
+    <Content Include="images\arrow_toright.png" />
     <Content Include="images\sort_asc.png" />
     <Content Include="images\sort_asc_disabled.png" />
     <Content Include="images\sort_both.png" />
@@ -252,12 +257,13 @@
     <Content Include="js\jquery.confirm.min.js" />
     <Content Include="js\jquery.validate.bootstrap.popover.min.js" />
     <Content Include="js\jQuery.Validation.min.js" />
-    <Content Include="js\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="js\moment-with-langs.min.js" />
     <Content Include="js\Settings\DebitTransferCheck.js" />
     <Content Include="js\Settings\T1RoutineDetail.js" />
     <Content Include="js\Settings\T1RoutineList.js" />
     <Content Include="js\SiteShared.js" />
+    <Content Include="js\Teachings\SelectT1Case.js" />
+    <Content Include="js\Teachings\Teaching1Comm.js" />
     <Content Include="js\underscore-min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -271,29 +277,17 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Settings\Models\" />
-    <Folder Include="css\Teachings\" />
-    <Folder Include="js\Teachings\" />
+    <Folder Include="Areas\Settings\Views\CommonNode\" />
+    <Folder Include="Areas\Settings\Views\Shared\" />
+    <Folder Include="Areas\Settings\Views\Teaching2Setting\" />
     <Folder Include="Views\ProcessGuide\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Settings\Views\CommonNode\CustomerLedger_Init.cshtml" />
-    <Content Include="Areas\Settings\Views\CommonNode\DetailedLedger_Init.cshtml" />
-    <Content Include="Areas\Settings\Views\CommonNode\GeneralLedger_Init.cshtml" />
-    <Content Include="Areas\Settings\Views\DebitTransferCheck\InitT1RoutineData.cshtml" />
-    <Content Include="Areas\Settings\Views\DebitTransferCheck\InitT2RoutineData.cshtml" />
-    <Content Include="Areas\Settings\Views\DebitTransferCheck\Step1_Init.cshtml" />
-    <Content Include="Areas\Settings\Views\Shared\EditAuditingCase.cshtml" />
-    <Content Include="Areas\Settings\Views\Shared\EditSubjectItem.cshtml" />
-    <Content Include="Areas\Settings\Views\Shared\EditSubjectItem1.cshtml" />
-    <Content Include="Areas\Settings\Views\Shared\R_TransferCheck.cshtml" />
-    <Content Include="Areas\Settings\Views\Teaching1Setting\CaseDetail.cshtml" />
     <Content Include="Areas\Settings\Views\Teaching1Setting\T1RoutineDetail.cshtml" />
     <Content Include="Areas\Settings\Views\Teaching1Setting\T1RoutineList.cshtml" />
-    <Content Include="Areas\Settings\Views\Teaching2Setting\T2RoutineDetail.cshtml" />
-    <Content Include="Areas\Settings\Views\Teaching2Setting\T2RoutineList.cshtml" />
     <Content Include="Areas\Settings\Views\UserMng\UserImport.cshtml" />
     <Content Include="Areas\Settings\Views\Web.config">
       <SubType>Designer</SubType>
@@ -321,9 +315,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Login1.cshtml" />
     <Content Include="Views\Shared\SysMenu.cshtml" />
-    <Content Include="Views\Shared\Teaching1Navigator.cshtml" />
     <Content Include="Views\Shared\Teaching1Responsor.cshtml" />
-    <Content Include="Views\Shared\T_TransferCheck.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\UICommon\CapitalDate.cshtml" />
@@ -362,6 +354,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Settings\Views\DebitTransferCheck\TransferCheck.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SysRoutineCollection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Teachings\Views\SpecialNode\DebitTransferCheck.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -6,40 +6,42 @@
 @model  IEnumerable<FATS.Models.TemplateRoutine>
 
 @section Styles {
-    <link href="@Url.Content("~/Content/Settings/SelectT1Case.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/SelectT1Case.css")" rel="Stylesheet" type="text/css" />
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/SelectT1Case.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/SelectT1Case.js")" ></script>
 }
 
-<div class='pagetitle'>@ViewBag.Title</div>
+@Html.Partial("SysRoutineCollection")
 
-<fieldset class="step">
-    <legend>开始学习新案例</legend>
-    请选择要进入的学习流程:
-    <select id="selTmpRoutines" class="commsel">        
-        <option selected="selected" value="-1">(请选择)</option>
-        @foreach (FATS.Models.TemplateRoutine routine in Model)
-        {
-            <option value="@routine.Row_ID">@routine.RoutineName</option>
-        }
-    </select>
-    <br />
-    <br />
-    <div class="step">
-        <div id="casebox">
-            <table id="caselist"></table>
+<div id="casearea">
+    <h3 class="currname"></h3>
+
+    <div class="tablecont">
+        <table id="caselist" class="datatable table table-bordered table-striped"></table>
+    </div>
+
+    <h3>继续今天学习过的案例</h3>
+    <div class="tablecont">
+        <table id="studiedlist" class="datatable table table-bordered table-striped"></table>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+
+<div class="modal fade" id="pop_LoadingCase" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="loadingPopLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">               
+                <h4 class="modal-title" id="loadingPopLabel">请稍候</h4>
+            </div>
+            <div class="modal-body">
+                系统正在为你准备案例数据...
+            </div>
         </div>
     </div>
-</fieldset>
-
-<fieldset class="step">
-    <legend>继续今天做过的案例</legend>
-    <div id="studiedbox">
-        <table id="studiedlist"></table>
-    </div>
-</fieldset>
-
+</div>
 
 

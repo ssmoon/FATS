@@ -22,7 +22,7 @@ namespace FATS.Areas.Teachings.Controllers
 
         #region routine step progress
 
-        public ActionResult Intro()
+        public ActionResult Guide()
         {
             using (FATContainer dataContainer = new FATContainer())
             {

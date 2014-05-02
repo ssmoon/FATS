@@ -1,0 +1,45 @@
+﻿body { 
+    padding-bottom: 70px; 
+}
+
+#navbar { 
+    width: 1130px; margin: 0px auto;
+}
+
+#navbar .leftarea { 
+    float: left; width: 200px;
+    padding-left: 20px;
+}
+
+#navbar .rightarea { 
+    float: right; width: 200px;
+    text-align:right; padding-right: 20px;
+}
+
+#navbar .centerarea { 
+    width: 300px; margin-left: auto; margin-right: auto;
+    text-align: center;
+}
+
+#navbar .centerarea button:first-child { 
+    margin-right: 30px;
+}
+
+#navbar .glyphicon { margin-right: 4px; }
+
+.navbar-default { 
+    background-color: #eeeeee; border: 1px solid #cccccc; border-bottom: 0px none;
+}
+
+#routineoverview .mainprocess { float: left; width: 300px; margin-left: 20px; }
+#routineoverview .arrowcontainer { float: left; width: 220px; min-height: 600px; background: url(../../Images/arrow_toright.png) no-repeat 5px -50px; } 
+#routineoverview .currphase { float: left; width: 400px; height: 500px; position: relative; }
+#routineoverview .currphase .nodelist { height: 300px;  line-height: 30px; font-size: 18px; height: 35px;  color: #666666; }
+#routineoverview .currphase .panel-body { position: absolute; top: 370px; left: 0px; width: 400px;  }
+#routineoverview .currphase .table span { margin-left: 20px; }
+
+#routineoverview .mainprocess .group { height: 100px; padding-top: 20px; text-align: center; border: 2px solid #DDDDDD; color: #666666; border-radius: 6px; }
+#routineoverview .mainprocess .currgroup { background-color: #DFF0D8; border-color: #D6E9C6; color: #3C763D; }
+#routineoverview .mainprocess .groupidx { font-size: 16px; }
+#routineoverview .mainprocess .grouptitle { font-size: 18px; }
+#routineoverview .mainprocess .downconnector { background: url(../../Images/arrow_tobottom.png) no-repeat 105px 2px; height: 90px; } 

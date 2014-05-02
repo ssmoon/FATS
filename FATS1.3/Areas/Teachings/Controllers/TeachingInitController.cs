@@ -15,7 +15,7 @@ namespace FATS.Areas.Teachings.Controllers
         //
         // GET: /Teaching1/Teaching1Init/
         #region T1
-        public ActionResult Index()
+        public ActionResult T1Init()
         {
             
             using (FATContainer dataContainer = new FATContainer())
