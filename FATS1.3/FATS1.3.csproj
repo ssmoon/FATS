@@ -235,7 +235,10 @@
     <Content Include="css\Settings\T1RoutineDetail.css" />
     <Content Include="css\Settings\T1RoutineList.css" />
     <Content Include="css\siteschema.css" />
+    <Content Include="css\Teachings\CommonNode.css" />
     <Content Include="css\Teachings\SelectT1Case.css" />
+    <Content Include="css\Teachings\SpecialNode.css" />
+    <Content Include="css\Teachings\SubjectFiller.css" />
     <Content Include="css\Teachings\Teaching1Comm.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

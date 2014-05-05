@@ -5,27 +5,27 @@
 
 @model  FATS.Models.TransferCheck
 @section Styles {
-    <link href="@Url.Content("~/Content/Teachings/Teaching1Common.css")" rel="Stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Teachings/TransferCheck/TC_Input.css")" rel="Stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Teachings/SubjectFiller.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/TransferCheck/TC_Input.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/SubjectFiller.css")" rel="Stylesheet" type="text/css" />
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/Teaching1Common.js")" ></script>    
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/SubjectFiller.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/Teaching1Common.js")" ></script>    
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/SubjectFiller.js")" ></script>
 }
+<div id="maincontainer">
+    <div class='pagetitle'>@ViewBag.Title</div>
+    @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
 
-<div class='pagetitle'>@ViewBag.Title</div>
-@{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
 
-<div id="editcontainer">
-    @Html.Hidden("NextController", ViewContext.Controller.ValueProvider.GetValue("controller").RawValue)        
+    @Html.Hidden("NextController", ViewContext.Controller.ValueProvider.GetValue("controller").RawValue)
     @Html.HiddenFor(info => info.TchRoutineID)
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
-     
+
     @{ Html.RenderPartial("TransferCheck", FATS.BusinessObject.Converters.DebitTransferCheckConverter.S1_ToView_TransferCheck(Model)); }
-    @{ Html.RenderPartial("IncomeBill", FATS.BusinessObject.Converters.DebitTransferCheckConverter.S1_ToView_IncomeBill(Model)); }    
+    @{ Html.RenderPartial("IncomeBill", FATS.BusinessObject.Converters.DebitTransferCheckConverter.S1_ToView_IncomeBill(Model)); }
     @{ Html.RenderAction("SubjectFiller", "CommonNode", new { rid = Model.TchRoutineID, nid = ViewBag.TchNodeID }); }
 </div>
 
-@{  Html.RenderPartial("Teaching1Navigator"); }
+@{  Html.RenderPartial("Teaching1Navigator");}

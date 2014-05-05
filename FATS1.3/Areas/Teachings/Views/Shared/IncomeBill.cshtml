@@ -1,9 +1,9 @@
 ﻿@model FATS.Areas.Teachings.Models.V_IncomeBill
  
-<table class="viewarea" cellspacing="8" style="margin: 20px 0px;">
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
     <tr>
         <td colspan="6">
-            <div class="billtitle">模拟银行进账单</div>            
+            <div class="billtitle">模拟银行进账单</div>
         </td>
     </tr>
     <tr>
@@ -32,11 +32,12 @@
         <td>@Model.RemitterBank</td>
     </tr>
     <tr>
-        <td colspan="3" class="titlecol">金额<br />人民币(大写):        
-          @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
-        </td>       
-        <td colspan ="3">
-          @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        <td colspan="3" class="titlecol">
+            金额<br />人民币(大写):
+            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        </td>
+        <td colspan="3">
+            @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
         </td>
     </tr>
     <tr>

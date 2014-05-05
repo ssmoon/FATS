@@ -1,10 +1,15 @@
 ﻿$(document).ready(function () {
     $("#routineoverview .group[data-groupidx=" + $("#CurrGroup").val() + "]").addClass("currgroup");
     $("#routineoverview .arrowcontainer").css("height", $("#routineoverview .mainprocess").css("height"));
-    $("#routineoverview .arrowcontainer").css("background-position", "5px " + ((Number($("#CurrGroup").val()) - 1) * 190 + 20) + "px");
+    $("#routineoverview .arrowcontainer").css("background-position", "8px " + ((Number($("#CurrGroup").val()) - 1) * 190 + 13) + "px");
     navigationT1Mng.initEvent();
     if ($("#CurrGroup").length > 0)
         navigationT1Mng.checkStatus = 1;
+    $("#routineoverview").on("click", "button[data-act=go]", function () {
+        $("#navbar button[data-step=next]").click();
+    })
+    $("#fillerstepper").css("left", $(".maincont").offset().left);
+    $("#fillerstepper").show();
 });
 
 

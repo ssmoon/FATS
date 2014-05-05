@@ -3,8 +3,8 @@
 @using FATS.DataDefine;
 @using FATS.Models;
 
-<div id="subjectfiller" data_curr="1">
-    <div class="step" data_idx="1">
+<div id="subjectfiller" data-curr="1">
+    <div class="step" data-idx="1">
         <div class="steptitle">科目填写向导第一步：请填写一级科目名称</div>
         <div class="sublist step1">
             <table>
@@ -16,7 +16,7 @@
                
                 @i.ToString() 
                 <span>.</span>
-                <input type="text" data_correct="@subject.SubjectName" /> <br /><br />
+                <input type="text" data-correct="@subject.SubjectName" /> <br /><br />
                
             }
                           </td>
@@ -24,7 +24,7 @@
                 </table>
         </div>
     </div>
-    <div class="step" data_idx="2">
+    <div class="step" data-idx="2">
         <div class="steptitle">科目填写向导第二步：请选择科目所属的类型</div>
         <div class="sublist">
             <table>
@@ -33,7 +33,7 @@
             {
                 <td>
                     @subject.SubjectName: <br />
-                    <select data_correct="@subject.SubjectType">
+                    <select data-correct="@subject.SubjectType">
                        <option value="-1" selected="selected">(请选择)</option>
                         <option value="资产">资产</option>
                         <option value="负债">负债</option>
@@ -48,7 +48,7 @@
                 </table>
         </div>
     </div>
-    <div class="step" data_idx="3">
+    <div class="step" data-idx="3">
         <div class="steptitle">科目填写向导第三步：请确定科目余额增减变化的情况</div>
         <div class="sublist">
             <table>
@@ -57,7 +57,7 @@
             {
                 <td>
                     @subject.SubjectName: <br />
-                    <select data_correct="@subject.ChangeOrient">
+                    <select data-correct="@subject.ChangeOrient">
                    <option value="-1" selected="selected">(请选择)</option>
                           <option value="增加" selected="selected">增加</option>
                     <option value="减少">减少</option>
@@ -68,7 +68,7 @@
                 </table>
         </div>
     </div>
-    <div class="step" data_idx="4">
+    <div class="step" data-idx="4">
         <div class="steptitle">科目填写向导第四步：请确定科目的借贷关系</div>
         <div class="sublist">
             <table>
@@ -77,7 +77,7 @@
             {
                 <td>
                     @subject.SubjectName: <br />
-                    <select data_correct="@subject.SubjectOrient">
+                    <select data-correct="@subject.SubjectOrient">
                       <option value="-1" selected="selected">(请选择)</option>
                   
                     <option value="借" selected="selected">借方</option>
@@ -89,7 +89,7 @@
                 </table>
         </div>
     </div>
-    <div class="step" data_idx="5">
+    <div class="step" data-idx="5">
         <div class="steptitle">科目填写向导第五步：请确定该一级科目下的子级科目(例： abc-xyz)</div>
         <div class="sublist">
             <table>
@@ -97,14 +97,14 @@
             @foreach (SubjectItem subject in Model)
             {
                 <td>
-                    @subject.SubjectName - <input type="text" data_correct="@subject.SubSubject" />
+                    @subject.SubjectName - <input type="text" data-correct="@subject.SubSubject" />
                 </td>
             }
                     </tr>
                 </table>
         </div>
     </div>
-    <div class="step" data_idx="6">
+    <div class="step" data-idx="6">
         <div class="steptitle">科目填写向导第六步：请填写科目的发生额</div>
         <div class="sublist">
             <table>
@@ -113,14 +113,14 @@
             {
                 <td>
                     @subject.SubjectName: <br />
-                    <input type="text" data_correct="@subject.Amount" />
+                    <input type="text" data-correct="@subject.Amount" />
                 </td>
             }
                     </tr>
                 </table>
         </div>
     </div>
-    <div class="step" data_idx="7">
+    <div class="step" data-idx="7">
         <div class="steptitle">科目填写向导第七步：请选择下一步要为此科目登记的账簿类型</div>
         <div class="sublist">
             <div class="finalanswer">
@@ -147,7 +147,7 @@
             {
                 <td>
                     @subject.SubjectName: <br />
-                 <select name="NextLedger" id="NextLedger" data_correct="@subject.NextLedger">
+                 <select name="NextLedger" id="NextLedger" data-correct="@subject.NextLedger">
                      <option value="-1" selected="selected">(请选择)</option>
                     <option value="客户分户账">客户分户账</option>
                     <option value="明细账">明细账</option>
@@ -162,21 +162,39 @@
     </div>
     <fieldset class="helparea">
         <legend>学习指导</legend>
-        <div data_idx="1">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "一级科目填写提示")</div>
-        <div data_idx="2">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目类型填写提示")</div>
-        <div data_idx="3">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "增减变化填写提示")</div>
-        <div data_idx="4">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "借贷方向填写提示")</div>
-        <div data_idx="5">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "子级科目填写提示")</div>
-        <div data_idx="6">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目金额填写提示")</div>
-        <div data_idx="7">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "下步账簿填写提示")</div>
+        <div data-idx="1">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "一级科目填写提示")</div>
+        <div data-idx="2">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目类型填写提示")</div>
+        <div data-idx="3">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "增减变化填写提示")</div>
+        <div data-idx="4">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "借贷方向填写提示")</div>
+        <div data-idx="5">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "子级科目填写提示")</div>
+        <div data-idx="6">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目金额填写提示")</div>
+        <div data-idx="7">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "下步账簿填写提示")</div>
     </fieldset>
     <div class="errorarea">
         你填写的答案不正确，请重新思考，并在修改后重新点击“下一步”。如果你不知道如何填写，请点击“提示”。
     </div>
     <div class="actarea">
         <a class="easyui-linkbutton l-btn" iconCls="icon-help" href="javascript:ShowSubjectHint()">提示</a> 
-        <a class="easyui-linkbutton l-btn" iconcls="icon-help" href="javascript:AutoFillSubject()" data_step="auto">自动</a> 
+        <a class="easyui-linkbutton l-btn" iconcls="icon-help" href="javascript:AutoFillSubject()" data-step="auto">自动</a> 
         <a class="easyui-linkbutton l-btn" iconCls="icon-next" href="javascript:GoNextSubjectQust()">下一步</a>
     </div>
 
+</div>
+
+<div id="fillerstepper">
+   
+    <div class="panel panel-info">
+        <div class="panel-heading">科目操作向导</div>
+        <div class="list-group">
+            <a href="#" class="list-group-item active">
+                第一步: 填写一级科目名称
+            </a>
+            <a href="#" class="list-group-item">第二步：选择科目所属的类型</a>
+            <a href="#" class="list-group-item">第三步：确定余额增减的情况</a>
+            <a href="#" class="list-group-item">第四步：确定科目的借贷关系</a>
+            <a href="#" class="list-group-item">第五步：确定子级科目</a>
+            <a href="#" class="list-group-item">第六步：填写科目的发生额</a>
+            <a href="#" class="list-group-item">第七步：确定下一步的账簿类型</a>
+        </div>
+    </div>
 </div>
