@@ -15,7 +15,9 @@
     <script type="text/javascript" src="@Url.Content("~/js/Teachings/SubjectFiller.js")" ></script>
 }
 <div id="maincontainer">
-    <div class='pagetitle'>@ViewBag.Title</div>
+    <div class="page-header page-header-fix">
+        <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
+    </div>
     @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
 
 

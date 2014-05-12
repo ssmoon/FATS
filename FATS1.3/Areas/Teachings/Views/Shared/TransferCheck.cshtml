@@ -3,42 +3,42 @@
 <table class="table table-bordered table-condensed" cellspacing="8">
     <tr>
         <td colspan="4">
-            <span class="right">(京)F0014378号</span>
+            <span class="pull-right">(京)F0014378号</span>
             <div class="billtitle"><span class="bankname">@Model.PayeeBank</span>转账支票</div>
         </td>
     </tr>
     <tr>
         <td class="titlecol">出票日期(大写)</td>
-        <td class="datacol"  data_compare="TimeMark" style="width: 250px;">
+        <td class="datacol"  data-compare="TimeMark" style="width: 250px;">
             @{ Html.RenderAction("CapitalDate", "UICommon", new { area = string.Empty, date = Model.ChequeDate }); }
         </td>
         <td class="titlecol">付款行名称</td>
-        <td class="datacol"  data_compare="PayeeBank" style="width: 250px;">
+        <td class="datacol"  data-compare="PayeeBank" style="width: 250px;">
             @Model.PayeeBank
         </td>
     </tr>
     <tr>
         <td class="titlecol">收款人</td>
-        <td class="datacol" data_compare="RemitterName">
+        <td class="datacol" data-compare="RemitterName">
             @Model.RemitterName
         </td>
         <td class="titlecol">出票人账号</td>
-        <td class="datacol" data_compare="PayeeAcc">
+        <td class="datacol" data-compare="PayeeAcc">
             @Model.PayeeAcc
         </td>
     </tr>
     <tr>
         <td class="titlecol">人民币<br />(大写)</td>
-        <td class="datacol"  data_compare="MoneyAmount">
+        <td class="datacol"  data-compare="MoneyAmount">
           @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
         </td>       
-        <td colspan ="2" data_compare="MoneyAmount">
+        <td colspan ="2" data-compare="MoneyAmount">
           @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
         </td>
     </tr>
     <tr>
         <td class="titlecol">用途</td>
-        <td colspan="3" data_compare="Purpose">
+        <td colspan="3" data-compare="Purpose">
             @Model.Purpose
         </td>
     </tr>

@@ -33,6 +33,8 @@ namespace FATS.Areas.Teachings.Controllers
                 TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
                 TransferCheck tcInfo = dataContainer.TransferCheck.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
                 ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).CaseText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
                 ViewBag.ResourceFile = node.RelTmpNode.Row_ID;
                 return View(tcInfo);
