@@ -3,165 +3,231 @@
 @using FATS.DataDefine;
 @using FATS.Models;
 
-<div id="subjectfiller" data-curr="1">
-    <div class="step" data-idx="1">
-        <div class="steptitle">科目填写向导第一步：请填写一级科目名称</div>
-        <div class="sublist step1">
+<div class="page-header page-header-fix">
+    <h3>科目填写指导</h3>
+</div>
+
+<div class="panel-group" id="subjectfiller" data-curr="1">
+    <div class="panel panel-info" data-idx="1">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf1">
+                    第一步：请填写一级科目名称
+                </a>
+            </h4>
+        </div>
+        <div id="sf1" class="list-group panel-collapse collapse in">
             <table>
                 <tr>
-                     <td colspan="@Model.Count">
-            @for (int i = 1; i <= Model.Count; i ++)
-            {
-                SubjectItem subject = Model[i - 1];
-               
-                @i.ToString() 
-                <span>.</span>
-                <input type="text" data-correct="@subject.SubjectName" /> <br /><br />
-               
-            }
-                          </td>
-                    </tr>
-                </table>
+
+                    @for (int i = 1; i <= Model.Count; i++)
+                    {
+                        SubjectItem subject = Model[i - 1];
+                        <td>
+                            <div class="form-group">
+                                <label>科目 @i.ToString()</label>
+                                <input type="text" class="form-control" data-correct="@subject.SubjectName" placeholder="输入科目名称">
+                            </div>
+                        </td>
+                    }
+
+                </tr>
+            </table>
         </div>
     </div>
-    <div class="step" data-idx="2">
-        <div class="steptitle">科目填写向导第二步：请选择科目所属的类型</div>
-        <div class="sublist">
+    <div class="panel panel-info" data-idx="2">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf2">
+                    第二步：请选择科目所属的类型
+                </a>
+            </h4>
+        </div>
+        <div id="sf2" class="list-group panel-collapse collapse in">
             <table>
                 <tr>
-            @foreach (SubjectItem subject in Model)
-            {
-                <td>
-                    @subject.SubjectName: <br />
-                    <select data-correct="@subject.SubjectType">
-                       <option value="-1" selected="selected">(请选择)</option>
-                        <option value="资产">资产</option>
-                        <option value="负债">负债</option>
-                        <option value="所有者权益">所有者权益</option>
-                        <option value="收入">收入</option>
-                        <option value="成本或费用">成本或费用</option>
-                        <option value="资产负债共同类">资产负债共同类</option>
-                    </select>
-                </td>
-            }
-                    </tr>
-                </table>
-        </div>
-    </div>
-    <div class="step" data-idx="3">
-        <div class="steptitle">科目填写向导第三步：请确定科目余额增减变化的情况</div>
-        <div class="sublist">
-            <table>
-                <tr>
-            @foreach (SubjectItem subject in Model)
-            {
-                <td>
-                    @subject.SubjectName: <br />
-                    <select data-correct="@subject.ChangeOrient">
-                   <option value="-1" selected="selected">(请选择)</option>
-                          <option value="增加" selected="selected">增加</option>
-                    <option value="减少">减少</option>
-                    </select>
-                </td>
-            }
-                    </tr>
-                </table>
-        </div>
-    </div>
-    <div class="step" data-idx="4">
-        <div class="steptitle">科目填写向导第四步：请确定科目的借贷关系</div>
-        <div class="sublist">
-            <table>
-                <tr>
-            @foreach (SubjectItem subject in Model)
-            {
-                <td>
-                    @subject.SubjectName: <br />
-                    <select data-correct="@subject.SubjectOrient">
-                      <option value="-1" selected="selected">(请选择)</option>
-                  
-                    <option value="借" selected="selected">借方</option>
-                    <option value="贷">贷方</option>
-                    </select>
-                </td>
-            }
-                    </tr>
-                </table>
-        </div>
-    </div>
-    <div class="step" data-idx="5">
-        <div class="steptitle">科目填写向导第五步：请确定该一级科目下的子级科目(例： abc-xyz)</div>
-        <div class="sublist">
-            <table>
-                <tr>
-            @foreach (SubjectItem subject in Model)
-            {
-                <td>
-                    @subject.SubjectName - <input type="text" data-correct="@subject.SubSubject" />
-                </td>
-            }
-                    </tr>
-                </table>
-        </div>
-    </div>
-    <div class="step" data-idx="6">
-        <div class="steptitle">科目填写向导第六步：请填写科目的发生额</div>
-        <div class="sublist">
-            <table>
-                <tr>
-            @foreach (SubjectItem subject in Model)
-            {
-                <td>
-                    @subject.SubjectName: <br />
-                    <input type="text" data-correct="@subject.Amount" />
-                </td>
-            }
-                    </tr>
-                </table>
-        </div>
-    </div>
-    <div class="step" data-idx="7">
-        <div class="steptitle">科目填写向导第七步：请选择下一步要为此科目登记的账簿类型</div>
-        <div class="sublist">
-            <div class="finalanswer">
-                <div class="steptitle">
-                    你已完成科目填写向导，当前科目借贷关系如下
-                </div>
-                <ul>
                     @foreach (SubjectItem subject in Model)
                     {
-                        <li>
-                            <span class="orient">@subject.SubjectOrient</span>:
-                            <span class="name">@subject.SubjectName -@subject.SubSubject</span>
-                            <span class="money">金额: @subject.Amount</span>
-                            <span class="extra">
-                                @subject.SubjectType 类科目 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;余额 @subject.ChangeOrient
-                            </span>
-                        </li>
+                        <td>
+                            <label>@subject.SubjectName :</label>
+                            <select class="form-control" data-correct="@subject.SubjectType">
+                                <option value="-1" selected="selected">(请选择)</option>
+                                <option value="资产">资产</option>
+                                <option value="负债">负债</option>
+                                <option value="所有者权益">所有者权益</option>
+                                <option value="收入">收入</option>
+                                <option value="成本或费用">成本或费用</option>
+                                <option value="资产负债共同类">资产负债共同类</option>
+                            </select>
+                        </td>
                     }
-                </ul>
-            </div>
-            <table>
-                <tr>
-            @foreach (SubjectItem subject in Model)
-            {
-                <td>
-                    @subject.SubjectName: <br />
-                 <select name="NextLedger" id="NextLedger" data-correct="@subject.NextLedger">
-                     <option value="-1" selected="selected">(请选择)</option>
-                    <option value="客户分户账">客户分户账</option>
-                    <option value="明细账">明细账</option>
-                    <option value="现金收入日记账">现金收入日记账</option>
-                    <option value="现金支出日记账">现金支出日记账</option>
-                </select>
-                </td>
-            }
-                    </tr>
-                </table>
+                </tr>
+            </table>
         </div>
     </div>
-    <fieldset class="helparea">
-        <legend>学习指导</legend>
+    <div class="panel panel-info" data-idx="3">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf3">
+                    第三步：请确定科目余额增减变化的情况
+                </a>
+            </h4>
+        </div>
+        <div id="sf3" class="list-group panel-collapse collapse in">
+            <table>
+                <tr>
+                    @foreach (SubjectItem subject in Model)
+                    {
+                        <td>
+                            <label>@subject.SubjectName :</label>
+                            <select class="form-control" data-correct="@subject.ChangeOrient">
+                                <option value="-1" selected="selected">(请选择)</option>
+                                <option value="增加" selected="selected">增加</option>
+                                <option value="减少">减少</option>
+                            </select>
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-info" data-idx="4">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf4">
+                    第四步：请确定科目的借贷关系
+                </a>
+            </h4>
+        </div>
+        <div id="sf4" class="list-group panel-collapse collapse in">
+            <table>
+                <tr>
+                    @foreach (SubjectItem subject in Model)
+                    {
+                        <td>
+                            <label>@subject.SubjectName :</label>
+                            <select class="form-control" data-correct="@subject.SubjectOrient">
+                                <option value="-1" selected="selected">(请选择)</option>
+
+                                <option value="借" selected="selected">借方</option>
+                                <option value="贷">贷方</option>
+                            </select>
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>    
+    <div class="panel panel-info" data-idx="5">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf5">
+                    第五步：请确定该一级科目下的子级科目
+                </a>
+            </h4>
+        </div>
+        <div id="sf5" class="list-group panel-collapse collapse in">
+            <table>
+                <tr>
+                    <td colspan="@Model.Count">
+                        <div class="alert alert-info fade in">
+                            下级科目之间请用-连接，比如 abc-xyz
+                        </div>
+                            
+                  </td>
+                </tr>
+                <tr>
+                    @foreach (SubjectItem subject in Model)
+                    {
+                        <td>
+                            <label>@subject.SubjectName :</label>
+                            <input type="text" class="form-control" data-correct="@subject.SubSubject" />
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>    
+    <div class="panel panel-info" data-idx="6">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf6">
+                    第六步：请填写科目的发生额
+                </a>
+            </h4>
+        </div>
+        <div id="sf6" class="list-group panel-collapse collapse in">
+            <table>
+                <tr>
+                    @foreach (SubjectItem subject in Model)
+                    {
+                        <td>
+                            <label>@subject.SubjectName :</label>
+                            <input type="text" class="form-control" data-correct="@subject.Amount" />
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>    
+    <div class="panel panel-info" data-idx="7">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf7">
+                    第七步：请选择下一步要为此科目登记的账簿类型
+                </a>
+            </h4>
+        </div>
+        <div id="sf7" class="list-group panel-collapse collapse in">
+            <table>
+                <tr>
+                    @foreach (SubjectItem subject in Model)
+                    {
+                        <td>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@subject.SubjectOrient 方: </label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">@subject.SubjectName -@subject.SubSubject</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">金 额:</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">@subject.Amount</p>
+                                </div>
+                            </div>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (SubjectItem subject in Model)
+                    {
+                        <td>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">下一步:</label>
+                                <div class="col-sm-10">
+                                    <select name="NextLedger" class="form-control" data-correct="@subject.NextLedger">
+                                        <option value="-1" selected="selected">(请选择)</option>
+                                        <option value="客户分户账">客户分户账</option>
+                                        <option value="明细账">明细账</option>
+                                        <option value="现金收入日记账">现金收入日记账</option>
+                                        <option value="现金支出日记账">现金支出日记账</option>
+                                    </select>
+                                </div>
+            </div>
+            </td>
+                    }
+                    </tr>
+
+                    </table>
+                </div>
+    </div>    
+        
+    
+    <div class="alert alert-warning fade in helparea">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        <h4>学习指导</h4>
         <div data-idx="1">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "一级科目填写提示")</div>
         <div data-idx="2">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目类型填写提示")</div>
         <div data-idx="3">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "增减变化填写提示")</div>
@@ -169,20 +235,36 @@
         <div data-idx="5">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "子级科目填写提示")</div>
         <div data-idx="6">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目金额填写提示")</div>
         <div data-idx="7">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "下步账簿填写提示")</div>
-    </fieldset>
-    <div class="errorarea">
-        你填写的答案不正确，请重新思考，并在修改后重新点击“下一步”。如果你不知道如何填写，请点击“提示”。
     </div>
-    <div class="actarea">
-        <a class="easyui-linkbutton l-btn" iconCls="icon-help" href="javascript:ShowSubjectHint()">提示</a> 
-        <a class="easyui-linkbutton l-btn" iconcls="icon-help" href="javascript:AutoFillSubject()" data-step="auto">自动</a> 
-        <a class="easyui-linkbutton l-btn" iconCls="icon-next" href="javascript:GoNextSubjectQust()">下一步</a>
+    <div class="alert alert-danger fade in errorarea">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        你填写的答案不正确，请重新思考，并在修改后重新点击“下一步”。<br />如果你不知道如何填写，请点击“提示”。
     </div>
+    <nav id="subjectnav" role="navigation" class="navbar navbar-default">
+        <div class="collapse navbar-collapse leftarea">
+            <button class="btn btn-default navbar-btn btn-info" type="button" data-step="help">
+                <span class="glyphicon glyphicon-header"></span>提示
+            </button>
+        </div>
+        <div class="collapse navbar-collapse rightarea">
+            <button class="btn btn-default navbar-btn btn-info" type="button" data-step="next">
+                <span class="glyphicon glyphicon-arrow-right"></span>下一步
+            </button>
+        </div>
+        <div class="collapse navbar-collapse centerarea">   
+            <button class="btn btn-default navbar-btn btn-info" type="button" data-step="auto">
+                <span class="glyphicon glyphicon-th-list"></span>答案
+            </button>
+        </div>
 
+        <div class="clearfix"></div>
+    </nav>       
 </div>
 
+
+
 <div id="fillerstepper">
-   
+
     <div class="panel panel-info">
         <div class="panel-heading">科目操作向导</div>
         <div class="list-group">

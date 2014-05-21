@@ -133,6 +133,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\T1_DebitTransferCheck_S12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T1_DebitTransferCheck_S12.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\T1_DebitTransferCheck_S22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T1_DebitTransferCheck_S22.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\T1_DebitTransferCheck_S32.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T1_DebitTransferCheck_S32.resx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Settings\Controllers\CommonNodeController.cs" />
     <Compile Include="Areas\Settings\Controllers\DebitTransferCheckController.cs" />
     <Compile Include="Areas\Settings\Controllers\Teaching1SettingController.cs" />
@@ -266,6 +281,7 @@
     <Content Include="js\Settings\T1RoutineList.js" />
     <Content Include="js\SiteShared.js" />
     <Content Include="js\Teachings\SelectT1Case.js" />
+    <Content Include="js\Teachings\SubjectFiller.js" />
     <Content Include="js\Teachings\Teaching1Comm.js" />
     <Content Include="js\underscore-min.js" />
     <Content Include="Web.config" />
@@ -363,6 +379,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Teachings\Views\SpecialNode\DebitTransferCheck.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\T1_DebitTransferCheck_S12.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>T1_DebitTransferCheck_S12.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\T1_DebitTransferCheck_S22.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>T1_DebitTransferCheck_S22.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\T1_DebitTransferCheck_S32.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>T1_DebitTransferCheck_S32.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
