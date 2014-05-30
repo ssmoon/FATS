@@ -24,5 +24,10 @@ namespace FATS.Models
         }
         [NotMapped]
         public SortedList<int, TeachingNode> NodeList { get; set; }
+
+        public TeachingNode FindNode(int tchNodeID)
+        {
+            return NodeList.Values.FirstOrDefault(n => n.Row_ID == tchNodeID);
+        }
     }
 }

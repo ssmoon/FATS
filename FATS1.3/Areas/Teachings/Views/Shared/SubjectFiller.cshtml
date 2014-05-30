@@ -19,7 +19,6 @@
         <div id="sf1" class="list-group panel-collapse collapse in">
             <table>
                 <tr>
-
                     @for (int i = 1; i <= Model.Count; i++)
                     {
                         SubjectItem subject = Model[i - 1];
@@ -30,7 +29,6 @@
                             </div>
                         </td>
                     }
-
                 </tr>
             </table>
         </div>
@@ -43,7 +41,7 @@
                 </a>
             </h4>
         </div>
-        <div id="sf2" class="list-group panel-collapse collapse in">
+        <div id="sf2" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -73,7 +71,7 @@
                 </a>
             </h4>
         </div>
-        <div id="sf3" class="list-group panel-collapse collapse in">
+        <div id="sf3" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -99,7 +97,7 @@
                 </a>
             </h4>
         </div>
-        <div id="sf4" class="list-group panel-collapse collapse in">
+        <div id="sf4" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -126,7 +124,7 @@
                 </a>
             </h4>
         </div>
-        <div id="sf5" class="list-group panel-collapse collapse in">
+        <div id="sf5" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     <td colspan="@Model.Count">
@@ -156,7 +154,7 @@
                 </a>
             </h4>
         </div>
-        <div id="sf6" class="list-group panel-collapse collapse in">
+        <div id="sf6" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -178,7 +176,7 @@
                 </a>
             </h4>
         </div>
-        <div id="sf7" class="list-group panel-collapse collapse in">
+        <div id="sf7" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -254,6 +252,9 @@
         <div class="collapse navbar-collapse centerarea">   
             <button class="btn btn-default navbar-btn btn-info" type="button" data-step="auto">
                 <span class="glyphicon glyphicon-th-list"></span>答案
+            </button>
+            <button class="btn btn-default navbar-btn btn-info" type="button" data-step="all">
+                <span class="glyphicon glyphicon-th-list"></span>全部
             </button>
         </div>
 

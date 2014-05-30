@@ -73,43 +73,47 @@ var navigationT1Mng = {
 
         $("input[data-operror]").bind("focus", function () {
             $("#responsearea").hide();
-            if ($(this).hasClass("incorrect")) {
+            if ($(this).parent().hasClass("incorrect")) {
                 $("#responsearea .hinttext").html($(this).attr("data-operror"));
                 $("#responsearea").fadeIn();
             }
         });
 
-        $("a[data-step=check]").bind("click", function () {
+        $("button[data-step=check]").bind("click", function () {
+            var isAllCorrect = true;
             $("input[data-correct]").each(function () {
-                $(this).removeClass("correct");
-                $(this).removeClass("incorrect");
-                var isAllCorrect = true;
+                $(this).parent().removeClass("correct");
+                $(this).parent().removeClass("incorrect");
+                
                 if ($(this).attr("data-correct") != jQuery.trim($(this).val())) {
-                    $(this).addClass("incorrect");
-
+                    $(this).parent().addClass("incorrect");
                     isAllCorrect = false;
                 }
                 else {
-                    $(this).addClass("correct");
-                }
-                $("#responsearea").hide();
-                if (isAllCorrect) {
-                    navigationT1Mng.checkStatus = 1;
-                    $("#responsearea .hinttext").html("<font color='green'>所有需要填写的内容都已通过检测，结果正确，请点击【下一步】继续</font>");
-                }
-                else {
-                    navigationT1Mng.checkStatus = -1;
-                    $("#responsearea .hinttext").html("<font color='red'>本练习中有未填写正确的内容，请逐一检查。</font>");
-                }
-                $("#responsearea").fadeIn();
+                    $(this).parent().addClass("correct");
+                }               
             });
-            $(".multitab li").each(function () {
-                $(this).removeClass("correct");
-                $(this).removeClass("error");
+            $("#responsearea").hide();
+            if (isAllCorrect) {
+                navigationT1Mng.checkStatus = 1;
+                $("#responsearea .hinttext").html("<font color='green'>所有需要填写的内容都已通过检测，结果正确，请点击【下一步】继续</font>");
+            }
+            else {
+                navigationT1Mng.checkStatus = -1;
+                $("#responsearea .hinttext").html("<font color='red'>本练习中有未填写正确的内容，请逐一检查。</font>");
+            }
+            $("#responsearea").fadeIn();
+
+            $(".checkarea i").removeClass("glyphicon");
+            $(".checkarea i").removeClass("glyphicon-ok");
+            $(".checkarea i").removeClass("glyphicon-remove");
+            $(".correct i").addClass("glyphicon glyphicon-ok");
+            $(".incorrect i").addClass("glyphicon glyphicon-remove");
+            $("#fillerstepper a").each(function () {               
                 var allCorrect = true;
                 var hasWordedOn = false;
 
-                $("div[data-subject=" + $(this).attr("data-subject") + "]").find("input[data-correct]").each(function () {
+                $("div[data-subject=" + $(this).attr("data-subject") + "]").find("checkarea").each(function () {
                     if ($(this).hasClass("incorrect")) {
                         allCorrect = false;
                         hasWordedOn = true;
@@ -118,17 +122,17 @@ var navigationT1Mng = {
                         hasWordedOn = true;
                 });
                 if ((hasWordedOn) && (allCorrect)) {
-                    $(this).removeClass("undo");
-                    $(this).addClass("correct");
+                    $(this).find(".glyphicon").removeClass("glyphicon-question-sign");
+                    $(this).find(".glyphicon").addClass("glyphicon-ok");
                 }
-                else if (hasWordedOn) {
-                    $(this).removeClass("undo");
-                    $(this).addClass("error");
+                else {
+                    $(this).find(".glyphicon").addClass("glyphicon-question-sign");
+                    $(this).find(".glyphicon").removeClass("glyphicon-ok");
                 }
             });
         });
 
-        $("a[data-step=auto]").bind("click", function () {
+        $("button[data-step=auto]").bind("click", function () {
             $("input[data-correct]").each(function () {
                 $(this).val($(this).attr("data-correct"));
             });

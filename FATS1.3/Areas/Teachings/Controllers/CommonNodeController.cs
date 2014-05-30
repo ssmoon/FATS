@@ -40,13 +40,16 @@ namespace FATS.Areas.Teachings.Controllers
         #region general ledger
 
         [HttpGet]
-        public ActionResult GeneralLedger_Init()
+        public ActionResult GeneralLedger()
         {
             using (FATContainer dataContainer = new FATContainer())
             {
                 TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
                 List<GeneralLedger> glList = dataContainer.GeneralLedger.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();
                 ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).CaseText;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID);
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = routine.FindNode(node.Row_ID).NodeName;
                 return View(glList);
             }            
         }
@@ -56,13 +59,17 @@ namespace FATS.Areas.Teachings.Controllers
         #region detailed ledger
 
         [HttpGet]
-        public ActionResult DetailedLedger_Init()
+        public ActionResult DetailedLedger()
         {
             using (FATContainer dataContainer = new FATContainer())
             {
                 TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
+                
                 List<DetailedLedger> dlList = dataContainer.DetailedLedger.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();
                 ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).CaseText;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID);
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = routine.FindNode(node.Row_ID).NodeName;                
                 return View(dlList);
             }
         }
@@ -72,13 +79,16 @@ namespace FATS.Areas.Teachings.Controllers
         #region Client ledger
 
         [HttpGet]
-        public ActionResult CustomerLedger_Init()
+        public ActionResult CustomerLedger()
         {
             using (FATContainer dataContainer = new FATContainer())
             {
                 TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
                 ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).CaseText;
                 List<CustomerLedger> clList = dataContainer.CustomerLedger.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID);
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = routine.FindNode(node.Row_ID).NodeName;
                 return View(clList);
             }
         }

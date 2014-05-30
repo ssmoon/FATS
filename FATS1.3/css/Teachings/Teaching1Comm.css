@@ -44,3 +44,23 @@
 #routineoverview .mainprocess .grouptitle { font-size: 18px; }
 #routineoverview .mainprocess .downconnector { background: url(../../Images/arrow_tobottom.png) no-repeat 105px 2px; height: 90px; } 
 
+#maincontainer { margin-left: 300px;  min-height: 600px; }
+#maincontainer .titlecol { text-align: center; vertical-align: middle; }
+#maincontainer .checkarea i { position: absolute; }
+#maincontainer .incorrect input { border-color: red; background-image: url(../../) }
+#maincontainer .incorrect i { display: block; color: red; top: 9px; right: 5px; }
+#maincontainer .correct i { display: block; color: green; top: 9px; right: 5px; }
+#maincontainer .checkarea { position: relative; }
+#fillerstepper { position: fixed; top: 100px; left: 0px; display: none; width: 260px; height: 400px; }
+#fillerstepper .glyphicon { float: right; font-weight: 600; } 
+#fillerstepper .glyphicon-question-sign { color: red; }
+#fillerstepper .glyphicon glyphicon-ok { color: green; }
+
+.subjectinput { line-height: 25px; float: right; width: 350px; margin: 20px 0px; margin-right: 40px; }
+.subjectinput .title { font-size: 13px; float: left; margin-bottom: 12px; }
+.subjectinput .subject { float: left; margin-left: 10px; margin-bottom: 12px; border: 1px solid #b6b6b6; }
+.subjectinput input { height: 25px; padding: 2px; font-size: 14px; width: 200px; }
+.subjectinput .error { background-color: red; color: black; }
+.billtitle { text-align: center; font-size: 18px; font-weight: bold; font-family: 'Microsoft YaHei'; }
+
+#responsearea { display: none; }

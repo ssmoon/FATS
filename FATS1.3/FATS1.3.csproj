@@ -133,6 +133,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Comm_GL.designer.cs">
+      <DependentUpon>Comm_GL.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Comm_DL.designer.cs">
+      <DependentUpon>Comm_DL.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Comm_CL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Comm_CL.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\T1_DebitTransferCheck_S12.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -280,6 +295,9 @@
     <Content Include="js\Settings\T1RoutineDetail.js" />
     <Content Include="js\Settings\T1RoutineList.js" />
     <Content Include="js\SiteShared.js" />
+    <Content Include="js\Teachings\Comm_CL.js" />
+    <Content Include="js\Teachings\Comm_DL.js" />
+    <Content Include="js\Teachings\Comm_GL.js" />
     <Content Include="js\Teachings\SelectT1Case.js" />
     <Content Include="js\Teachings\SubjectFiller.js" />
     <Content Include="js\Teachings\Teaching1Comm.js" />
@@ -314,9 +332,9 @@
     <Content Include="Areas\Teachings\Views\CommonNode\Comm_CL.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\Comm_DL.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\Comm_GL.cshtml" />
-    <Content Include="Areas\Teachings\Views\CommonNode\CustomerLedger_Init.cshtml" />
-    <Content Include="Areas\Teachings\Views\CommonNode\DetailedLedger_Init.cshtml" />
-    <Content Include="Areas\Teachings\Views\CommonNode\GeneralLedger_Init.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\CustomerLedger.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\DetailedLedger.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\GeneralLedger.cshtml" />
     <Content Include="Areas\Teachings\Views\DebitTransferCheck\Step_Init1.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\IncomeBill.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\RoutineStepProgress.cshtml" />
@@ -396,6 +414,24 @@
     <Content Include="App_GlobalResources\T1_DebitTransferCheck_S32.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>T1_DebitTransferCheck_S32.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Comm_CL.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Comm_CL.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Comm_DL.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Comm_DL.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Comm_GL.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Comm_GL.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

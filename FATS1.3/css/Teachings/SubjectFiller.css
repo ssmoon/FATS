@@ -1,11 +1,9 @@
-﻿#maincontainer { margin-left: 300px;  }
-
-#fillerstepper { position: fixed; top: 100px; left: 0px; display: none; width: 260px; height: 400px; }
-#subjectfiller .list-group { padding: 20px 30px; }
+﻿#subjectfiller .list-group { padding: 20px 30px; }
 #subjectfiller table { width: 100%; }
 #subjectfiller td { padding-right: 30px; }
 #subjectfiller .helparea { margin: 20px 0px; display: none; }
 #subjectfiller .errorarea  { display: none; margin: 20px 0px; }
+#subjectfiller .panel { display: none; }
 #subjectfiller .col-sm-2 { padding: 0px; }
 #subjectnav { border-bottom: 1px solid #cccccc; margin-top: 30px;  }
 

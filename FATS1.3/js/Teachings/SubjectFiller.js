@@ -6,7 +6,7 @@
 var subjectFillerMng = {
     initCtrls: function() {
         $("#navbar").hide();
-        $("#subjectfiller .step[data-idx=1]").show();
+        $("#subjectfiller .panel[data-idx=1]").show();
         $("#subjectfiller :input[data-correct]").bind("focus", function () {
             $(this).removeClass("incorrect");
             $("#subjectfiller .errorarea").hide();
@@ -19,17 +19,37 @@ var subjectFillerMng = {
             $("#subjectfiller .helparea").show();
             $("#subjectfiller .helparea div[data-idx=" + $("#subjectfiller").attr("data-curr") + "]").slideDown();
         })
-        $("#subjectnav").on("click", "button[data-step=auto]", function () {
-            $("#subjectfiller .step").show();
+        $("#subjectnav").on("click", "button[data-step=auto]", function () {          
+            $("#subjectfiller .panel[data-idx=" + $("#subjectfiller").attr("data-curr") + "] :input[data-correct]").each(function () {
+                $(this).val($(this).attr("data-correct"));
+            });
+            $("#subjectfiller .errorarea").hide();
+            $("#subjectfiller .helparea").hide();
+            $("#subjectnav").hide();
+
+            if (newSectionIdx == 8) {
+                $("#subjectnav").hide();
+                $("#navbar button[data-step=check]").hide();
+                $("#navbar button[data-step=auto]").hide();
+                $("#navbar").show();
+                navigationT1Mng.checkStatus = 1;
+            }
+        })
+        $("#subjectnav").on("click", "button[data-step=all]", function () {
+            $("#subjectfiller .panel").show();
             $("#subjectfiller :input[data-correct]").each(function () {
                 $(this).val($(this).attr("data-correct"));
             });
-            $("#subjectfiller .actarea").hide();
-            $("#navbar a[data-step=check]").hide();
-            $("#navbar a[data-step=auto]").hide();
-            $("#subjectfiller .finalanswer").show();
-            $("#navbar").show();
-            navigationT1Mng.checkStatus = 1;
+            $("#subjectfiller .errorarea").hide();
+            $("#subjectfiller .helparea").hide();
+            $("#subjectnav").hide();
+                      
+                $("#subjectnav").hide();
+                $("#navbar button[data-step=check]").hide();
+                $("#navbar button[data-step=auto]").hide();
+                $("#navbar").show();
+                navigationT1Mng.checkStatus = 1;
+           
         })
         $("#subjectnav").on("click", "button[data-step=next]", function () {
             if ($("#subjectfiller").attr("data-curr") == "1") {
@@ -68,13 +88,14 @@ var subjectFillerMng = {
                 $("#subjectfiller .finalanswer").show();
             }
             if (newSectionIdx == 8) {
-                $("#subjectfiller .actarea").hide();
-                $("#navbar a[data-step=check]").hide();
-                $("#navbar a[data-step=auto]").hide();
+                $("#subjectnav").hide();
+                $("#navbar button[data-step=check]").hide();
+                $("#navbar button[data-step=auto]").hide();
                 $("#navbar").show();
                 navigationT1Mng.checkStatus = 1;
             }
-            $("#subjectfiller .step[data-idx=" + newSectionIdx + "]").slideDown();
+            $("#subjectfiller .panel[data-idx=" + newSectionIdx + "]").show();
+            $("#subjectfiller .panel[data-idx=" + newSectionIdx + "] a").click();
         })       
     }
 }
