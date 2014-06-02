@@ -39,7 +39,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper.Net4">
@@ -298,6 +299,7 @@
     <Content Include="js\Teachings\Comm_CL.js" />
     <Content Include="js\Teachings\Comm_DL.js" />
     <Content Include="js\Teachings\Comm_GL.js" />
+    <Content Include="js\Teachings\LedgerShared.js" />
     <Content Include="js\Teachings\SelectT1Case.js" />
     <Content Include="js\Teachings\SubjectFiller.js" />
     <Content Include="js\Teachings\Teaching1Comm.js" />
@@ -352,7 +354,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Login1.cshtml" />
     <Content Include="Views\Shared\SysMenu.cshtml" />
-    <Content Include="Views\Shared\Teaching1Responsor.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\Teaching1Responsor.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\UICommon\CapitalDate.cshtml" />

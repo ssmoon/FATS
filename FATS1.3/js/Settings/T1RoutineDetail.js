@@ -276,7 +276,7 @@ var routineDataMng = {
                     siteUtils.showSaveSuccess($("#frmDetailedLedger button[data-act=save]"));
                     setTimeout(function () {
                         $("#pop_DetailedLedger").modal('hide');
-                        routineDataMng.subjectTable.fnReloadAjax();
+                        routineDataMng.detailedLedgerTable.fnReloadAjax();
                     }, 1000);
                 },
                 error: function (ex) {
@@ -287,7 +287,7 @@ var routineDataMng = {
     },
 
     initDetailedLedgerData: function () {
-        routineDataMng.subjectTable = $('#detailedledgerlist').dataTable({
+        routineDataMng.detailedLedgerTable = $('#detailedledgerlist').dataTable({
             "bSort": false,
             "bInfo": false,
             "bFilter": false,
@@ -314,6 +314,7 @@ var routineDataMng = {
                         else return data;
                     }
                 },
+                { "sTitle": "银行名称", "mData": "BankName" },
                 { "sTitle": "借方发生", "mData": "DebitSum" },
                 { "sTitle": "贷方发生", "mData": "CreditSum" },
                 {
@@ -324,8 +325,8 @@ var routineDataMng = {
             ],
             "fnDrawCallback": function (oSettings) {
                 $("#detailedledgerlist a[data-act=edit]").off().on("click", function () {
-                    var aPos = routineDataMng.subjectTable.fnGetPosition($(this).closest('tr').get(0));
-                    routineDataMng.currentRowData = routineDataMng.subjectTable.fnGetData(aPos);
+                    var aPos = routineDataMng.detailedLedgerTable.fnGetPosition($(this).closest('tr').get(0));
+                    routineDataMng.currentRowData = routineDataMng.detailedLedgerTable.fnGetData(aPos);
                     $('#pop_DetailedLedger').modal('show');
                     siteUtils.TryAutoFillControl(routineDataMng.currentRowData, "pop_DetailedLedger");
                 })
@@ -466,6 +467,7 @@ var routineDataMng = {
                     else return data;
                 }
             },
+            { "sTitle": "银行名称", "mData": "BankName" },
             { "sTitle": "借方发生", "mData": "DebitSum" },
             { "sTitle": "贷方发生", "mData": "CreditSum" },
             {
@@ -620,6 +622,7 @@ var routineDataMng = {
                     }
                 },
                 { "sTitle": "客户名称", "mData": "CustomerName" },
+                { "sTitle": "银行名称", "mData": "BankName" },
                 { "sTitle": "借方发生", "mData": "DebitSum" },
                 { "sTitle": "贷方发生", "mData": "CreditSum" },
                 {

@@ -96,13 +96,13 @@ var navigationT1Mng = {
             $("#responsearea").hide();
             if (isAllCorrect) {
                 navigationT1Mng.checkStatus = 1;
-                $("#responsearea .hinttext").html("<font color='green'>所有需要填写的内容都已通过检测，结果正确，请点击【下一步】继续</font>");
+                $("#generalhint .text").html("<font color='green'>所有需要填写的内容都已通过检测，结果正确，请点击【下一步】继续</font>");
             }
             else {
                 navigationT1Mng.checkStatus = -1;
                 $("#responsearea .hinttext").html("<font color='red'>本练习中有未填写正确的内容，请逐一检查。</font>");
-            }
-            $("#responsearea").fadeIn();
+                $("#responsearea").fadeIn();
+            }            
 
             $(".checkarea i").removeClass("glyphicon");
             $(".checkarea i").removeClass("glyphicon-ok");
@@ -113,7 +113,7 @@ var navigationT1Mng = {
                 var allCorrect = true;
                 var hasWordedOn = false;
 
-                $("div[data-subject=" + $(this).attr("data-subject") + "]").find("checkarea").each(function () {
+                $("div[data-subject=" + $(this).attr("data-subject") + "]").find(".checkarea").each(function () {
                     if ($(this).hasClass("incorrect")) {
                         allCorrect = false;
                         hasWordedOn = true;
@@ -141,3 +141,4 @@ var navigationT1Mng = {
     }
 
 }
+

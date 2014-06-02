@@ -6,106 +6,143 @@
 @model  List<FATS.Models.CustomerLedger>
 @using FATS.DataDefine;
 
+
 @section Styles {
-    <link href="@Url.Content("~/Content/Teachings/Teaching1Common.css")" rel="Stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Teachings/Comm_CL.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />    
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/CommonNode/Comm_CL.js")" ></script>    
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/Teaching1Common.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/LedgerShared.js")" ></script>   
 }   
 
-<div class='pagetitle'>@ViewBag.Title</div>
 @Html.Hidden("NextController", ViewContext.Controller.ValueProvider.GetValue("controller").RawValue)
 <input type="hidden" value="@Model[0].TchNodeID" id="TchNodeID" />
 <input type="hidden" value="@Model[0].TchRoutineID" id="TchRoutineID" />
-@{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
 
-<div id="tabcontainer">
-    <ul class="multitab">
+<div id="fillerstepper">
+    <div class="panel panel-info">
+        <div class="panel-heading">待完成的科目</div>
+        <div class="list-group">
+            @foreach (FATS.Models.CustomerLedger glInfo in Model)
+            {
+                <a href="#" data-status="0" class="list-group-item" data-subject="@(glInfo.SubjectName)">
+                    <span class="glyphicon glyphicon-question-sign"></span>
+                    @glInfo.SubjectName
+                </a>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div id="maincontainer">
+    <div class="page-header page-header-fix">
+        <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
+    </div>
+    @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
+    <div id="subjectcontainer" class="tabcontent">
         @foreach (FATS.Models.CustomerLedger clInfo in Model)
         {
-            <li data_status="0" data_subject="@(clInfo.SubjectName)">
-                @clInfo.SubjectName <span>&nbsp;</span>
-            </li>
-        }
-        <div class="clean"></div>
-    </ul>
-</div>
-
-<div id="subjectcontainer" class="tabcontent">
-    @foreach (FATS.Models.CustomerLedger clInfo in Model)
-    {
-        <div data_subject="@(clInfo.SubjectName)">
-            <div class="summary">
-                <div class="accounttitle">XX银行分户账</div>
-                <div class="accountmeta">
-                    <span class="metatitle">户名:</span><span class="metadata">@clInfo.CustomerName</span>
-                    <span class="metatitle">账号:</span><span class="metadata">@clInfo.CustomerAccNo</span>
+            <div data-subject="@(clInfo.SubjectName)">
+                <div class="summary">
+                  当前科目: <span class="curr">@clInfo.SubjectName</span>  <span class="hint">(点击左边的科目列表以完成其它的待记账科目)</span>
                 </div>
+                <table cellspacing="8" class="viewarea">
+                    <thead>
+                         <tr class="titlecol">
+                            <td colspan="9"><div class="billtitle"><span class="bankname">@clInfo.BankName</span>分户账</div></td>
+                        </tr>
+                        <tr>
+                            <td colspan="9"><span class="metatitle">户名:</span><span class="metadata">@clInfo.CustomerName</span>
+                            <span class="metatitle">账号:</span><span class="metadata">@clInfo.CustomerAccNo</span></td>
+                        </tr>
+                        <tr class="titlecol">
+                            <td class="date" colspan="2" style="width: 125px;">年&nbsp;@clInfo.BalanceTime.Year</td>
+                            <td class="digest" rowspan="2" style="width: 90px;">摘要</td>
+                            <td class="digest" rowspan="2" style="width: 100px;">凭证号码</td>
+                            <td class="digest" rowspan="2" style="width: 130px;">对方科目</td>
+                            <td class="digest" rowspan="2" style="width: 90px;">借方</td>
+                            <td class="digest" rowspan="2" style="width: 90px;">贷方</td>
+                            <td class="digest" rowspan="2" style="width: 80px;">借或贷</td>
+                            <td class="digest" rowspan="2" style="width: 90px;">余额</td>
+                        </tr>
+                        <tr class="titlecol">
+                            <td class="debit" style="width: 60px;">月</td>
+                            <td class="credit" style="width: 60px;">日</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@clInfo.BalanceTime.Month</td>
+                            <td>
+                                @clInfo.BalanceTime.Day
+                            </td>
+                            <td>@clInfo.BalanceAbstract</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>借</td>
+                            <td>@( CommFunctions.FormatMoneyToString(clInfo.BalanceSum)) </td>
+                        </tr>
+                        <tr>
+                            <td>@clInfo.TimeMark.Month</td>
+                            <td>@clInfo.TimeMark.Day</td>
+                            <td>
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="摘要" data-correct="@clInfo.Abstract" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要错误")" class="form-control" />
+                                    <i class="form-control-feedback"  />
+                                </div>
+                            </td>
+                            <td>
+                                 <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="凭证号" data-correct="@clInfo.VoucherNo" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "对方科目提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "对方科目错误")" class="form-control" />
+                                    <i class="form-control-feedback"  />
+                                </div>                                
+                            </td>
+                            <td>
+                                 <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="对方科目" data-correct="@clInfo.TargetSubject" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要错误")"  class="form-control" />
+                                    <i class="form-control-feedback"  />
+                                </div>                                
+                            </td>
+                            <td>
+                                 <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="借方" data-correct="@CommFunctions.FormatMoneyToString(clInfo.DebitSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借方发生科目数值提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借方发生科目数值错误")" class="form-control" />
+                                    <i class="form-control-feedback"  />
+                                </div>                                
+                            </td>
+                            <td>
+                                 <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="贷方" data-correct="@CommFunctions.FormatMoneyToString(clInfo.CreditSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "贷方发生科目数值提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "贷方发生科目数值错误")"  class="form-control" />
+                                    <i class="form-control-feedback"  />
+                                </div>
+                            </td>
+                            <td>
+                                 <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="借或贷" data-correct="@clInfo.DCChoice" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借或贷提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借或贷错误")" class="form-control" />
+                                    <i class="form-control-feedback"  />
+                                </div>                                
+                            </td>
+                            <td>
+                                 <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="余额" data-correct="@CommFunctions.FormatMoneyToString(clInfo.FinalSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "最终余额提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "最终余额错误")"  class="form-control" />
+                                    <i class="form-control-feedback"  />
+                                </div>                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table cellspacing="8" class="viewarea">
-                <thead>                    
-                    <tr class="titlecol">
-                        <td class="date" colspan="2" style="width: 125px;">年&nbsp;@clInfo.BalanceTime.Year</td>
-                        <td class="digest" rowspan="2" style="width: 90px;">摘要</td>
-                        <td class="digest" rowspan="2" style="width: 100px;">凭证号码</td>
-                        <td class="digest" rowspan="2" style="width: 130px;">对方科目</td>
-                        <td class="digest" rowspan="2" style="width: 90px;">借方</td>
-                        <td class="digest" rowspan="2" style="width: 90px;">贷方</td>
-                        <td class="digest" rowspan="2" style="width: 80px;">借或贷</td>
-                        <td class="digest" rowspan="2" style="width: 90px;">余额</td>
-                    </tr>
-                    <tr class="titlecol">
-                        <td class="debit" style="width: 60px;">月</td>
-                        <td class="credit" style="width: 60px;">日</td>                      
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@clInfo.BalanceTime.Month</td>
-                        <td>     
-                            @clInfo.BalanceTime.Day
-                        </td>
-                        <td>@clInfo.BalanceAbstract</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>借</td>
-                        <td>@( CommFunctions.FormatMoneyToString(clInfo.BalanceSum) ) </td>
-                    </tr>
-                    <tr>
-                        <td>@clInfo.TimeMark.Month</td>
-                        <td>@clInfo.TimeMark.Day</td>
-                        <td>
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@clInfo.Abstract" data_operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "发生项摘要提示")" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "发生项摘要错误")" /> 
-                        </td>
-                        <td>
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@clInfo.VoucherNo" data_operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "对方科目提示")" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "对方科目错误")" /> 
-                        </td>
-                        <td>
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@clInfo.TargetSubject" data_operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "发生项摘要提示")" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "发生项摘要错误")" /> 
-                        </td>
-                        <td>
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@CommFunctions.FormatMoneyToString(clInfo.DebitSum)" data_operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "借方发生科目数值提示")" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "借方发生科目数值错误")" /> 
-                        </td>
-                        <td>
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@CommFunctions.FormatMoneyToString(clInfo.CreditSum)" data_operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "贷方发生科目数值提示")" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "贷方发生科目数值错误")" /> 
-                        </td>
-                        <td>
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@clInfo.DCChoice" data_operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "借或贷提示")" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "借或贷错误")" /> 
-                        </td>
-                        <td>
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@CommFunctions.FormatMoneyToString(clInfo.FinalSum)" data_operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "最终余额提示")" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile__CustomerLedger, "最终余额错误")" /> 
-                        </td>                    
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    } 
-    @{  Html.RenderPartial("Teaching1Responsor"); }
+        }
+        @{  Html.RenderPartial("Teaching1Responsor"); }
+    </div>
 </div>
-
 @{  Html.RenderPartial("Teaching1Navigator"); }

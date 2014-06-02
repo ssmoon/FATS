@@ -27,5 +27,6 @@ namespace FATS.Models
         public string BalanceAbstract { get; set; }
         public decimal FinalSum { get; set; }
         public string RoutineDesc { get; set; }
+        public string BankName { get; set; }
     }
 }

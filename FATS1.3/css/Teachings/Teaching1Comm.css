@@ -54,13 +54,18 @@
 #fillerstepper { position: fixed; top: 100px; left: 0px; display: none; width: 260px; height: 400px; }
 #fillerstepper .glyphicon { float: right; font-weight: 600; } 
 #fillerstepper .glyphicon-question-sign { color: red; }
-#fillerstepper .glyphicon glyphicon-ok { color: green; }
+#fillerstepper .glyphicon-ok { color: green; }
 
 .subjectinput { line-height: 25px; float: right; width: 350px; margin: 20px 0px; margin-right: 40px; }
 .subjectinput .title { font-size: 13px; float: left; margin-bottom: 12px; }
 .subjectinput .subject { float: left; margin-left: 10px; margin-bottom: 12px; border: 1px solid #b6b6b6; }
 .subjectinput input { height: 25px; padding: 2px; font-size: 14px; width: 200px; }
 .subjectinput .error { background-color: red; color: black; }
-.billtitle { text-align: center; font-size: 18px; font-weight: bold; font-family: 'Microsoft YaHei'; }
+
 
 #responsearea { display: none; }
+
+#subjectcontainer .summary { height: 30px; line-height: 30px; color: #414141; font-size: 14px; margin-bottom: 20px; }
+#subjectcontainer .summary .curr { font-weight: bold; margin-left: 10px; font-size: 16px; }
+#subjectcontainer .summary .hint { margin-left: 20px; color: #666666; }
+#subjectcontainer .alert { margin-top: 20px; }

@@ -32,5 +32,6 @@ namespace FATS.Models
         public string CustomerName { get; set; }
         public string CustomerAccNo { get; set; }
         public string RoutineDesc { get; set; }
+        public string BankName { get; set; }
     }
 }

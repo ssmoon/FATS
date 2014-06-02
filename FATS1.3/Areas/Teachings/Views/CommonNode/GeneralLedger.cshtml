@@ -7,89 +7,120 @@
 @using FATS.DataDefine;
 
 @section Styles {
-    <link href="@Url.Content("~/Content/Teachings/Teaching1Common.css")" rel="Stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Teachings/Comm_GL.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/CommonNode/Comm_GL.js")" ></script>    
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Teachings/Teaching1Common.js")" ></script>
-}   
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/LedgerShared.js")" ></script>
+}
 
-<div class='pagetitle'>@ViewBag.Title</div>
-@{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
-
+@Html.Hidden("NextController", ViewContext.Controller.ValueProvider.GetValue("controller").RawValue)
 <input type="hidden" value="@Model[0].TchNodeID" id="TchNodeID" />
 <input type="hidden" value="@Model[0].TchRoutineID" id="TchRoutineID" />
-<div id="tabcontainer">
-    <ul class="multitab">
+<div id="fillerstepper">
+    <div class="panel panel-info">
+        <div class="panel-heading">待完成的科目</div>
+        <div class="list-group">
+            @foreach (FATS.Models.GeneralLedger glInfo in Model)
+            {
+                <a href="#" data-status="0" class="list-group-item" data-subject="@(glInfo.SubjectName)">
+                    <span class="glyphicon glyphicon-question-sign"></span>
+                    @glInfo.SubjectName
+                </a>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div id="maincontainer">
+    <div class="page-header page-header-fix">
+        <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
+    </div>
+    @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
+    <div id="subjectcontainer" class="tabcontent">
         @foreach (FATS.Models.GeneralLedger glInfo in Model)
         {
-            <li data_status="0" data_subject="@(glInfo.SubjectName)">
-                @glInfo.SubjectName <span>&nbsp;</span>
-            </li>
-        }
-        <div class="clean"></div>
-    </ul>
-</div>
-
-<div id="subjectcontainer" class="tabcontent">
-    @foreach (FATS.Models.GeneralLedger glInfo in Model)
-    {
-        <div data_subject="@(glInfo.SubjectName)">
-            <div class="summary">
-                
+            <div data-subject="@(glInfo.SubjectName)">
+                <div class="summary">
+                    当前科目: <span class="curr">@glInfo.SubjectName</span>  <span class="hint">(点击左边的科目列表以完成其它的待记账科目)</span>
+                </div>
+                <table class="table table-bordered table-condensed" cellspacing="8">
+                    <thead>
+                        <tr class="titlecol">
+                            <td colspan="8">
+                                <div class="billtitle"><span class="bankname">@glInfo.BankName</span>总账</div>
+                            </td>
+                        </tr>
+                        <tr class="titlecol">
+                            <td class="date" rowspan="2" style="width: 100px;">日期</td>
+                            <td class="digest" rowspan="2" style="width: 150px;">摘要</td>
+                            <td class="amount" colspan="2">发生额</td>
+                            <td class="balance" colspan="2">余额</td>
+                        </tr>
+                        <tr class="titlecol">
+                            <td class="debit" style="width: 80px;">借方</td>
+                            <td class="credit" style="width: 80px;">贷方</td>
+                            <td class="balance" style="width: 80px;">方向</td>
+                            <td class="value" style="width: 120px;">金额</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="date">@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(glInfo.TimeMark)</td>
+                            <td class="digest">
+                                @glInfo.BalanceAbstract
+                            </td>
+                            <td class="debit">&nbsp;</td>
+                            <td class="credit">&nbsp;</td>
+                            <td class="balance">@((glInfo.BanalceOrient == 1) ? "借" : "贷")</td>
+                            <td class="value">@( FATS.DataDefine.CommFunctions.FormatMoneyToString(glInfo.BalanceSum))</td>
+                        </tr>
+                        <tr>
+                            <td class="date">
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="发生日期" data-correct="@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(glInfo.TimeMark)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_DetailedLedger, "日期错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                            <td class="digest">
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="摘要" data-correct="@glInfo.Abstract" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_DetailedLedger, "发生项摘要错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                            <td class="debit">
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="借方发生" data-correct="@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(glInfo.TimeMark)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_DetailedLedger, "日期错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                            <td class="credit">
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="贷方发生" data-correct="@CommFunctions.FormatMoneyToString(glInfo.CreditSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_DetailedLedger, "贷方发生科目数值错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                            <td class="balance">@((glInfo.BanalceOrient == 1) ? "借" : "贷")</td>
+                            <td class="value">
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="余额" data-correct="@CommFunctions.FormatMoneyToString(glInfo.FinalSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_DetailedLedger, "最终余额错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table cellspacing="8" class="viewarea">
-                <thead>
-                    <tr class="titlecol">
-                        <td colspan="8"><span class="accounttitle">XX银行总账</span></td>
-                    </tr>
-                    <tr class="titlecol">
-                        <td class="date" rowspan="2" style="width: 100px;">日期</td>
-                        <td class="digest" rowspan="2" style="width: 150px;">摘要</td>
-                        <td class="amount" colspan="2">发生额</td>
-                        <td class="balance" colspan="2">余额</td>
-                    </tr>
-                    <tr class="titlecol">
-                        <td class="debit" style="width: 80px;">借方</td>
-                        <td class="credit" style="width: 80px;">贷方</td>
-                        <td class="balance" style="width: 80px;">方向</td>
-                        <td class="value" style="width: 120px;">金额</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="date">@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(glInfo.TimeMark)</td>
-                        <td class="digest">     
-                            @glInfo.BalanceAbstract
-                        </td>
-                        <td class="debit">&nbsp;</td>
-                        <td class="credit">&nbsp;</td>
-                        <td class="balance">@((glInfo.BanalceOrient == 1) ? "借": "贷")</td>
-                        <td class="value">@( FATS.DataDefine.CommFunctions.FormatMoneyToString(glInfo.BalanceSum) )</td>
-                    </tr>
-                    <tr>
-                        <td class="date">@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(glInfo.TimeMark)</td>
-                        <td class="digest">
-                            <input class="widetext" type="text" maxlength="20" data_correct="@glInfo.Abstract" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_GeneralLedger, "发生项摘要提示")" /> 
-                        </td>
-                        <td class="debit">
-                             <input class="narrowtext" type="text" maxlength="20" data_correct="@CommFunctions.FormatMoneyToString(glInfo.DebitSum)" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_GeneralLedger, "借方发生科目数值提示")" /> 
-                        </td>
-                        <td class="credit">
-                             <input class="narrowtext" type="text" maxlength="20" data_correct="@CommFunctions.FormatMoneyToString(glInfo.CreditSum)" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_GeneralLedger, "贷方发生科目数值提示")" /> 
-                        </td>
-                        <td class="balance">@((glInfo.BanalceOrient == 1) ? "借": "贷")</td>
-                        <td class="value">
-                            <input class="narrowtext" type="text" maxlength="20" data_correct="@CommFunctions.FormatMoneyToString(glInfo.FinalSum)" data_ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_GeneralLedger, "最终余额提示")" /> 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    } 
-    @{  Html.RenderPartial("Teaching1Responsor"); }
-</div>
+        }
+        @{  Html.RenderPartial("Teaching1Responsor"); }
 
+       
+    </div>
+</div>
 @{  Html.RenderPartial("Teaching1Navigator"); }

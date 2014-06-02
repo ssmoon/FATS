@@ -59,7 +59,7 @@
         @{  Html.RenderAction("InitT1RoutineData", Model.RelTmpRoutine.RoutineTag, new { tchRoutineID = Model.Row_ID }); }
 
     </div>
-    <div class="subdata" data-target="subject" >
+    <div class="subdata" data-target="subject">
         <dl>
             <dt>科目设置操作指导</dt>
             <dd>下面是整个教学流程在各个步骤中涉及的科目，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
@@ -70,7 +70,7 @@
 
     </div>
     <div class="subdata" data-target="dl">
-         <dl>
+        <dl>
             <dt>明细账设置操作指导</dt>
             <dd>下面是整个教学流程在各个步骤中涉及的明细账分录，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
         </dl>
@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="subdata" data-target="cl">
-         <dl>
+        <dl>
             <dt>分户账设置操作指导</dt>
             <dd>下面是整个教学流程在各个步骤中涉及的分户账分录，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
         </dl>
@@ -88,7 +88,7 @@
         </div>
     </div>
     <div class="subdata" data-target="gl">
-          <dl>
+        <dl>
             <dt>总账设置操作指导</dt>
             <dd>下面是整个教学流程在各个步骤中涉及的总账分录，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
         </dl>
@@ -197,10 +197,24 @@
                                 </span>
                             </div>
                         </div>
+                        <label for="dl_BankName" class="col-xs-2 control-label">银行名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="dl_BankName" name="BankName" value="" />
+                            <span class="help-block" id="h_dl_BankName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="dl_SubjectName" class="col-xs-2 control-label">科目名称</label>
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="dl_SubjectName" name="SubjectName" value="" />
                             <span class="help-block" id="h_dl_SubjectName"></span>
+                        </div>
+                        <label for="dl_BalanceOrient" class="col-xs-2 control-label">科目方向</label>
+                        <div class="col-xs-3">
+                            <select id="dl_BalanceOrient" class="form-control" name="BalanceOrient">
+                                <option value="1" selected="selected">借方</option>
+                                <option value="-1">贷方</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -209,15 +223,6 @@
                             <input type="text" class="form-control" id="dl_BalanceAbstract" name="BalanceAbstract" value="" />
                             <span class="help-block" id="h_dl_BalanceAbstract"></span>
                         </div>
-                        <label for="dl_BalanceOrient" class="col-xs-2 control-label">科目方向</label>
-                        <div class="col-xs-3">
-                            <select id="dl_BalanceOrient" class="form-control"  name="BalanceOrient">
-                                <option value="1" selected="selected">借方</option>
-                                <option value="-1">贷方</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="dl_BalanceSum" class="col-xs-2 control-label">余额数额</label>
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="dl_BalanceSum" name="BalanceSum" value="" />
@@ -273,33 +278,40 @@
                         <label for="gl_TimeMark" class="col-xs-2 control-label">日期</label>
                         <div class="col-xs-3">
                             <div class="input-group date" id="dogl_TimeMark" data-date-format="YYYY-MM-DD">
-                                <input type="text"   data-valuetype="date"  class="form-control" name="TimeMark" id="gl_TimeMark" value="" />
+                                <input type="text" data-valuetype="date" class="form-control" name="TimeMark" id="gl_TimeMark" value="" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon-calendar glyphicon"></span>
                                 </span>
                             </div>
                         </div>
+                        <label for="gl_BankName" class="col-xs-2 control-label">银行名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_BankName" name="BankName" value="" />
+                            <span class="help-block" id="h_gl_BankName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
                         <label for="gl_SubjectName" class="col-xs-2 control-label">科目名称</label>
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="gl_SubjectName" name="SubjectName" value="" />
                             <span class="help-block" id="h_gl_SubjectName"></span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="BalanceAbstract" class="col-xs-2 control-label">余额摘要</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="gl_BalanceAbstract" name="BalanceAbstract" value="" />
-                            <span class="help-block" id="h_gl_BalanceAbstract"></span>
-                        </div>
                         <label for="gl_BalanceOrient" class="col-xs-2 control-label">科目方向</label>
                         <div class="col-xs-3">
-                            <select id="gl_BalanceOrient" name="BalanceOrient" class="form-control" >
+                            <select id="gl_BalanceOrient" name="BalanceOrient" class="form-control">
                                 <option value="1" selected="selected">借方</option>
                                 <option value="-1">贷方</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
+
+                        <label for="BalanceAbstract" class="col-xs-2 control-label">余额摘要</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="gl_BalanceAbstract" name="BalanceAbstract" value="" />
+                            <span class="help-block" id="h_gl_BalanceAbstract"></span>
+                        </div>
                         <label for="gl_BalanceSum" class="col-xs-2 control-label">余额数额</label>
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="gl_BalanceSum" name="BalanceSum" value="" />
@@ -348,10 +360,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="clModalLabel">编辑总账</h4>
+                    <h4 class="modal-title" id="clModalLabel">编辑分户账</h4>
                 </div>
                 <div class="modal-body">
-                      <div class="form-group">
+                    <div class="form-group">
+                        <label for="cl_BankName" class="col-xs-2 control-label">银行名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cl_BankName" name="BankName" value="" />
+                            <span class="help-block" id="h_cl_BankName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="cl_CustomerName" class="col-xs-2 control-label">客户名称</label>
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="cl_CustomerName" name="CustomerName" value="" />
@@ -366,8 +385,8 @@
                     <div class="form-group">
                         <label for="cl_BalanceTime" class="col-xs-2 control-label">余额日期</label>
                         <div class="col-xs-3">
-                            <div class="input-group date"  data-valuetype="date"  id="docl_BalanceTime" data-date-format="YYYY-MM-DD">
-                                <input type="text" class="form-control"  name="BalanceTime" id="cl_BalanceTime" value="" />
+                            <div class="input-group date" data-valuetype="date" id="docl_BalanceTime" data-date-format="YYYY-MM-DD">
+                                <input type="text" class="form-control" name="BalanceTime" id="cl_BalanceTime" value="" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon-calendar glyphicon"></span>
                                 </span>
@@ -387,7 +406,7 @@
                         </div>
                         <label for="cl_BalanceSum" class="col-xs-2 control-label">余额金额</label>
                         <div class="col-xs-3">
-                             <input type="text" class="form-control" id="cl_BalanceSum" name="BalanceSum" value="" />
+                            <input type="text" class="form-control" id="cl_BalanceSum" name="BalanceSum" value="" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -396,7 +415,7 @@
                             <input type="text" class="form-control" id="cl_TargetSubject" name="TargetSubject" value="" />
                             <span class="help-block" id="h_cl_TargetSubject"></span>
                         </div>
-                        <label for="cl_TimeMark"  data-valuetype="date"  class="col-xs-2 control-label">发生日期</label>
+                        <label for="cl_TimeMark" data-valuetype="date" class="col-xs-2 control-label">发生日期</label>
                         <div class="col-xs-3">
                             <div class="input-group date" id="docl_TimeMark" data-date-format="YYYY-MM-DD">
                                 <input type="text" class="form-control" name="TimeMark" id="cl_TimeMark" value="" />
@@ -406,7 +425,7 @@
                             </div>
                         </div>
                     </div>
-                              <div class="form-group">
+                    <div class="form-group">
                         <label for="cl_VoucherNo" class="col-xs-2 control-label">发生项摘要</label>
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="cl_VoucherNo" name="VoucherNo" value="" />

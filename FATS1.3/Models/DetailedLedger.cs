@@ -27,5 +27,6 @@ namespace FATS.Models
         public int TchRoutineID { get; set; }
         public int TchNodeID { get; set; }
         public string RoutineDesc { get; set; }
+        public string BankName { get; set; }
     }
 }

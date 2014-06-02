@@ -7,12 +7,11 @@
 @using FATS.DataDefine;
 
 @section Styles {
-    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
-    <link href="@Url.Content("~/css/Teachings/Comm_DL.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />    
 }
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/js/Teachings/Comm_DL.js")" ></script>   
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/LedgerShared.js")" ></script>   
 }   
 
 @Html.Hidden("NextController", ViewContext.Controller.ValueProvider.GetValue("controller").RawValue)
@@ -44,12 +43,12 @@
         {
             <div data-subject="@(glInfo.SubjectName)">
                 <div class="summary">
-
+                     当前科目: <span class="curr">@glInfo.SubjectName</span>  <span class="hint">(点击左边的科目列表以完成其它的待记账科目)</span>
                 </div>
                 <table class="table table-bordered table-condensed" cellspacing="8">                  
                     <thead>
                         <tr class="titlecol">
-                            <td colspan="8"><div class="billtitle"></div></td>
+                            <td colspan="8"><div class="billtitle"><span class="bankname">@glInfo.BankName</span>明细账</div></td>
                         </tr>
                         <tr class="titlecol">
                             <td class="date" rowspan="2" style="width: 100px;">日期</td>
