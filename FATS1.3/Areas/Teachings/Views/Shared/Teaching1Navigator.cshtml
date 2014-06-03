@@ -5,7 +5,7 @@
         </button>
     </div>
         <div class="collapse navbar-collapse rightarea">
-        <button class="btn btn-default navbar-btn btn-info" type="button" data-step="next">
+        <button class="btn btn-default navbar-btn btn-info" type="button" data-step="next" >
            <span class="glyphicon glyphicon-arrow-right"></span>下一步
         </button>
     </div>
@@ -22,3 +22,16 @@
 </nav>
 
 <script type="text/javascript" src="@Url.Content("~/js/Teachings/Teaching1Comm.js")" ></script>
+
+<div class="modal fade" id="pop_WaitingDiag" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="waitingPopLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="waitingPopLabel">请稍候</h4>
+            </div>
+            <div class="modal-body">
+                系统正在转到下一训练环节...
+            </div>
+        </div>
+    </div>
+</div>

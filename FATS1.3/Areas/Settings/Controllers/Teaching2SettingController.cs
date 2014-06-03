@@ -52,8 +52,7 @@ namespace FATS.Areas.Settings.Controllers
             using (FATContainer dataContainer = new FATContainer())
             {
                 TeachingRoutine cachedRoutine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
-                cachedRoutine.CaseName = caseName;
-                cachedRoutine.CaseText = caseText;
+                cachedRoutine.CaseName = caseName;              
 
                 TeachingRoutine dbRoutine = dataContainer.TeachingRoutine.Find(tchRoutineID);
                 dataContainer.Entry<TeachingRoutine>(dbRoutine).CurrentValues.SetValues(cachedRoutine);

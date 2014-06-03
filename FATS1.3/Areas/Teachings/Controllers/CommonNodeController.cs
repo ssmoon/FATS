@@ -45,11 +45,12 @@ namespace FATS.Areas.Teachings.Controllers
             using (FATContainer dataContainer = new FATContainer())
             {
                 TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
-                List<GeneralLedger> glList = dataContainer.GeneralLedger.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();
-                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).CaseText;
+                List<GeneralLedger> glList = dataContainer.GeneralLedger.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();                
                 TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID);
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
-                ViewBag.NodeName = routine.FindNode(node.Row_ID).NodeName;
+                node = routine.FindNode(node.Row_ID);
+                ViewBag.NodeName = node.NodeName;
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
                 return View(glList);
             }            
         }
@@ -66,10 +67,11 @@ namespace FATS.Areas.Teachings.Controllers
                 TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
                 
                 List<DetailedLedger> dlList = dataContainer.DetailedLedger.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();
-                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).CaseText;
                 TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID);
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
-                ViewBag.NodeName = routine.FindNode(node.Row_ID).NodeName;                
+                node = routine.FindNode(node.Row_ID);
+                ViewBag.NodeName = node.NodeName;
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;    
                 return View(dlList);
             }
         }
@@ -84,11 +86,13 @@ namespace FATS.Areas.Teachings.Controllers
             using (FATContainer dataContainer = new FATContainer())
             {
                 TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
-                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).CaseText;
+               
                 List<CustomerLedger> clList = dataContainer.CustomerLedger.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();
                 TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID);
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
-                ViewBag.NodeName = routine.FindNode(node.Row_ID).NodeName;
+                node = routine.FindNode(node.Row_ID);
+                ViewBag.NodeName = node.NodeName;
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
                 return View(clList);
             }
         }

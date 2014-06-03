@@ -37,5 +37,6 @@ namespace FATS.Models
         public DbSet<TemplateNode> TemplateNode { get; set; }
         public DbSet<TemplateRoutine> TemplateRoutine { get; set; }
         public DbSet<TransferCheck> TransferCheck { get; set; }
+        public DbSet<RoutineGroup> RoutineGroup { get; set; }
     }
 }

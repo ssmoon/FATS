@@ -58,19 +58,19 @@ namespace FATS.Areas.Settings.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateCase(int tchRoutineID, string caseName, string caseText)
+        public ActionResult UpdateCase(int tchRoutineID, string caseName)
         {
             using (FATContainer dataContainer = new FATContainer())
             {
                 TeachingRoutine cachedRoutine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
-                cachedRoutine.CaseName = caseName;
-                cachedRoutine.CaseText = caseText;
+                cachedRoutine.CaseName = caseName;                
 
                 TeachingRoutine dbRoutine = dataContainer.TeachingRoutine.Find(tchRoutineID);
                 dataContainer.Entry<TeachingRoutine>(dbRoutine).CurrentValues.SetValues(cachedRoutine);
 
                 dataContainer.SaveChanges();
             }
+            SharedCasePool.GetCasePool().ReloadRoutine(tchRoutineID);
             JsonResult result = new JsonResult();
             result.Data = string.Empty;
             return result;
@@ -142,6 +142,12 @@ namespace FATS.Areas.Settings.Controllers
                         case "Guide":
                             {
                                 currPhaseName = tchNode.NodeName;
+                                RoutineGroup group = dataContainer.RoutineGroup.Create();
+                                group.GroupText = string.Empty;
+                                group.GroupIdx = tchNode.GroupIdx;
+                                group.TchRoutineID = routine.Row_ID;
+                                group.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                dataContainer.RoutineGroup.Add(group);
                                 break;
                             }
                         #region common node
@@ -205,6 +211,8 @@ namespace FATS.Areas.Settings.Controllers
                     }                    
                 }
                 dataContainer.SaveChanges();
+
+
             }
             JsonResult result = new JsonResult();
             result.Data = routine;
@@ -296,6 +304,29 @@ namespace FATS.Areas.Settings.Controllers
                 return result;
             }
         }
+        #endregion
+
+        #region routine group text
+
+        public ActionResult UpdateGroupText(int tchRoutineID, List<string> textList)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                foreach (string strVar in textList)
+                {
+                    string[] arr = strVar.Split('~');
+                    RoutineGroup groupObj = dataContainer.RoutineGroup.Find(Convert.ToInt32(arr[0]));
+                    groupObj.GroupText = arr[1];
+                }
+
+                dataContainer.SaveChanges();
+            }
+            SharedCasePool.GetCasePool().ReloadRoutine(tchRoutineID);
+            JsonResult result = new JsonResult();
+            result.Data = string.Empty;
+            return result;
+        }
+
         #endregion
     }
 }

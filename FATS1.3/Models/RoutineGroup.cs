@@ -12,11 +12,12 @@ namespace FATS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TeachingRoutine
+    public partial class RoutineGroup
     {
         public int Row_ID { get; set; }
-        public string TmpRoutineID { get; set; }
-        public string CaseName { get; set; }
-        public short CurrStatus { get; set; }
+        public int GroupIdx { get; set; }
+        public int TchRoutineID { get; set; }
+        public string GroupText { get; set; }
+        public string RoutineDesc { get; set; }
     }
 }

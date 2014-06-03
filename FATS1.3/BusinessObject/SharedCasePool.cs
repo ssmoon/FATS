@@ -41,18 +41,37 @@ namespace FATS.BusinessObject
                 {
                     resultRoutine.NodeList = new SortedList<int, TeachingNode>();
                     Console.WriteLine("Load sub teaching node from db");
-                    var nodeList = from node in dbContainer.TeachingNode
+                    var nodeList = from node in dbContainer.TeachingNode                                   
+                                   orderby node.Row_ID
                                    where node.RoutineID == resultRoutine.Row_ID 
                                    select node;
                     foreach (TeachingNode node in nodeList)
                     {
                         resultRoutine.NodeList.Add(node.Row_ID, node);
                         node.RelTmpNode = resultRoutine.RelTmpRoutine.NodeDict[node.TmpNodeID]; 
+                    }                    
+                }    
+                if (resultRoutine.GroupList == null)
+                {
+                    resultRoutine.GroupList = new SortedList<int, RoutineGroup>();
+                    var groupList = from groupVar in dbContainer.RoutineGroup
+                                    orderby groupVar.GroupIdx
+                                    where groupVar.TchRoutineID == resultRoutine.Row_ID
+                                    select groupVar;
+                    foreach (RoutineGroup group in groupList)
+                    {
+                        resultRoutine.GroupList.Add(group.GroupIdx, group);
                     }
-                    
-                }                
+                }
                 return resultRoutine;                
             }            
+        }
+
+        public void ReloadRoutine(int routineID)
+        {
+            if (TeachingRoutinePool.ContainsKey(routineID))
+                TeachingRoutinePool.Remove(routineID);
+            GetRoutine(routineID);
         }
 
         public static SharedCasePool GetCasePool()

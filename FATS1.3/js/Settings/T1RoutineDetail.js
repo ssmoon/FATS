@@ -47,6 +47,32 @@
             }
         });
     });
+    $(".tabcontainer div[data-target=text]").on("click", "button[data-act=save]", function () {       
+        siteUtils.prepareSave($(".tabcontainer div[data-target=text] button[data-act=savecase]"));
+
+        var dataCarrier = new Object();
+        dataCarrier.textList = new Array();
+
+        $(".tabcontainer div[data-target=text] textarea").each(function () {
+            dataCarrier.textList.push($(this).attr("data-key") + "~" + $(this).val());
+        })
+
+        dataCarrier.tchRoutineID = $("#hidTchRoutineID").val();
+        
+        $.ajax({
+            type: "POST",
+            url: "/Settings/Teaching1Setting/UpdateGroupText",
+            data: JSON.stringify(dataCarrier),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function () {
+                siteUtils.showSaveSuccess($(".tabcontainer div[data-target=text] button[data-act=save]"));
+            },
+            error: function (ex) {
+
+            }
+        });
+    });
     $("#subdatanav").on("click", "a", function () {
         if ($(this).hasClass("active"))
             return;
@@ -429,7 +455,7 @@ var routineDataMng = {
                 siteUtils.showSaveSuccess($("#frmGeneralLedger button[data-act=save]"));
                 setTimeout(function () {
                     $("#pop_GeneralLedger").modal('hide');
-                    routineDataMng.subjectTable.fnReloadAjax();
+                    routineDataMng.generalLedgerTable.fnReloadAjax();
                 }, 1000);
             },
             error: function (ex) {
@@ -583,7 +609,7 @@ var routineDataMng = {
                     siteUtils.showSaveSuccess($("#frmCustomerLedger button[data-act=save]"));
                     setTimeout(function () {
                         $("#pop_CustomerLedger").modal('hide');
-                        routineDataMng.subjectTable.fnReloadAjax();
+                        routineDataMng.customerLedgerTable.fnReloadAjax();
                     }, 1000);
                 },
                 error: function (ex) {

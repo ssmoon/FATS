@@ -4,36 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FATSystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="FATSystemModelStoreContainer">
-          <EntitySet Name="CustomerLedger" EntityType="FATSystemModel.Store.CustomerLedger" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DetailedLedger" EntityType="FATSystemModel.Store.DetailedLedger" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="FATUser" EntityType="FATSystemModel.Store.FATUser" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="FATUserGroup" EntityType="FATSystemModel.Store.FATUserGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GeneralLedger" EntityType="FATSystemModel.Store.GeneralLedger" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="StudentActivity" EntityType="FATSystemModel.Store.StudentActivity" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SubjectItem" EntityType="FATSystemModel.Store.SubjectItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TeachingNode" EntityType="FATSystemModel.Store.TeachingNode" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TeachingRoutine" EntityType="FATSystemModel.Store.TeachingRoutine" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TemplateNode" EntityType="FATSystemModel.Store.TemplateNode" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TemplateRoutine" EntityType="FATSystemModel.Store.TemplateRoutine" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TransferCheck" EntityType="FATSystemModel.Store.TransferCheck" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="FATSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="CustomerLedger">
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TimeMark" Type="datetime" Nullable="false" />
-          <Property Name="BalanceSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="BalanceSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="BalanceAbstract" Type="nvarchar" MaxLength="20" />
           <Property Name="BalanceTime" Type="datetime" Nullable="false" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
           <Property Name="TargetSubject" Type="nvarchar" MaxLength="50" />
-          <Property Name="DebitSum" Type="decimal" Nullable="false" Scale="2" />
-          <Property Name="CreditSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="DebitSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreditSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Abstract" Type="nvarchar" MaxLength="20" />
-          <Property Name="FinalSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="FinalSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="30" />
           <Property Name="DCChoice" Type="nvarchar" MaxLength="20" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
@@ -47,16 +33,16 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="BalanceSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BalanceSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="BanalceOrient" Type="smallint" Nullable="false" />
           <Property Name="BalanceAbstract" Type="nvarchar" MaxLength="30" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DebitSum" Type="decimal" Nullable="false" Scale="2" />
-          <Property Name="CreditSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="DebitSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreditSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Abstract" Type="nvarchar" MaxLength="30" />
           <Property Name="TimeMark" Type="datetime" Nullable="false" />
-          <Property Name="FinalSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="FinalSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchNodeID" Type="int" Nullable="false" />
           <Property Name="RoutineDesc" Type="nvarchar" MaxLength="30" />
@@ -66,7 +52,7 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="30" />
           <Property Name="IsStudent" Type="smallint" Nullable="false" />
           <Property Name="IsTeacher" Type="smallint" Nullable="false" />
@@ -79,33 +65,43 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GroupName" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="GeneralLedger">
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="BalanceSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BalanceSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="BanalceOrient" Type="smallint" Nullable="false" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DebitSum" Type="decimal" Nullable="false" Scale="2" />
-          <Property Name="CreditSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="DebitSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreditSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Abstract" Type="nvarchar" MaxLength="20" />
           <Property Name="TimeMark" Type="datetime" Nullable="false" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchNodeID" Type="int" Nullable="false" />
           <Property Name="BalanceAbstract" Type="nvarchar" MaxLength="30" />
-          <Property Name="FinalSum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="FinalSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="RoutineDesc" Type="nvarchar" MaxLength="30" />
           <Property Name="BankName" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="RoutineGroup">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupIdx" Type="int" Nullable="false" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="GroupText" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="RoutineDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentActivity">
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="TimeMark" Type="datetime" Nullable="false" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
@@ -116,13 +112,13 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="40" />
           <Property Name="SubjectType" Type="nvarchar" MaxLength="20" />
           <Property Name="ChangeOrient" Type="nvarchar" MaxLength="10" />
           <Property Name="SubjectOrient" Type="nvarchar" MaxLength="10" />
           <Property Name="SubSubject" Type="nvarchar" MaxLength="30" />
-          <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NextLedger" Type="nvarchar" MaxLength="20" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchNodeID" Type="int" Nullable="false" />
@@ -132,7 +128,7 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TmpNodeID" Type="nvarchar" MaxLength="50" />
           <Property Name="RoutineID" Type="int" Nullable="false" />
           <Property Name="CurrStatus" Type="smallint" Nullable="false" />
@@ -141,8 +137,7 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CaseText" Type="nvarchar" MaxLength="300" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TmpRoutineID" Type="nvarchar" MaxLength="30" />
           <Property Name="CaseName" Type="nvarchar" MaxLength="50" />
           <Property Name="CurrStatus" Type="smallint" Nullable="false" />
@@ -151,7 +146,7 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Row_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NodeName" Type="nvarchar" MaxLength="30" />
           <Property Name="Tag" Type="nvarchar" MaxLength="30" />
           <Property Name="NodeIndex" Type="int" Nullable="false" />
@@ -164,7 +159,7 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Row_ID" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="RoutineName" Type="nvarchar" MaxLength="40" />
           <Property Name="RoutineDesc" Type="nvarchar" MaxLength="1000" />
           <Property Name="RoutineType" Type="int" Nullable="false" />
@@ -174,14 +169,14 @@
           <Key>
             <PropertyRef Name="Row_ID" />
           </Key>
-          <Property Name="Row_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
           <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
           <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
           <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
           <Property Name="PayeeAcc" Type="nvarchar" MaxLength="50" />
           <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
-          <Property Name="MoneyAmount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CheckNo" Type="nvarchar" MaxLength="20" />
           <Property Name="ChequeDate" Type="datetime" Nullable="false" />
           <Property Name="IncomeBillDate" Type="datetime" Nullable="false" />
@@ -189,6 +184,21 @@
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityContainer Name="FATSystemModelStoreContainer">
+          <EntitySet Name="CustomerLedger" EntityType="Self.CustomerLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailedLedger" EntityType="Self.DetailedLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FATUser" EntityType="Self.FATUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FATUserGroup" EntityType="Self.FATUserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralLedger" EntityType="Self.GeneralLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoutineGroup" EntityType="Self.RoutineGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentActivity" EntityType="Self.StudentActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectItem" EntityType="Self.SubjectItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeachingNode" EntityType="Self.TeachingNode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeachingRoutine" EntityType="Self.TeachingRoutine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplateNode" EntityType="Self.TemplateNode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplateRoutine" EntityType="Self.TemplateRoutine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransferCheck" EntityType="Self.TransferCheck" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -206,6 +216,7 @@
           <EntitySet Name="TemplateNode" EntityType="FATSystemModel.TemplateNode" />
           <EntitySet Name="TemplateRoutine" EntityType="FATSystemModel.TemplateRoutine" />
           <EntitySet Name="TransferCheck" EntityType="FATSystemModel.TransferCheck" />
+          <EntitySet Name="RoutineGroup" EntityType="FATSystemModel.RoutineGroup" />
         </EntityContainer>
         <EntityType Name="CustomerLedger">
           <Key>
@@ -330,7 +341,6 @@
             <PropertyRef Name="Row_ID" />
           </Key>
           <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CaseText" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="TmpRoutineID" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
           <Property Name="CaseName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CurrStatus" Type="Int16" Nullable="false" />
@@ -376,6 +386,16 @@
           <Property Name="Purpose" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="TchRoutineTag" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="RoutineGroup">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupIdx" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="GroupText" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="RoutineDesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -513,7 +533,6 @@
             <EntityTypeMapping TypeName="FATSystemModel.TeachingRoutine">
               <MappingFragment StoreEntitySet="TeachingRoutine">
                 <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
-                <ScalarProperty Name="CaseText" ColumnName="CaseText" />
                 <ScalarProperty Name="TmpRoutineID" ColumnName="TmpRoutineID" />
                 <ScalarProperty Name="CaseName" ColumnName="CaseName" />
                 <ScalarProperty Name="CurrStatus" ColumnName="CurrStatus" />
@@ -565,6 +584,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="RoutineGroup">
+            <EntityTypeMapping TypeName="FATSystemModel.RoutineGroup">
+              <MappingFragment StoreEntitySet="RoutineGroup">
+                <ScalarProperty Name="RoutineDesc" ColumnName="RoutineDesc" />
+                <ScalarProperty Name="GroupText" ColumnName="GroupText" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="GroupIdx" ColumnName="GroupIdx" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -580,7 +610,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
         <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>

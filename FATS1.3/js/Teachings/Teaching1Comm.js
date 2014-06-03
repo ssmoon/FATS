@@ -36,29 +36,48 @@ var navigationT1Mng = {
 
                 $("#navbar button[data-step=next]").bind("click", function () {
                     if (navigationT1Mng.checkStatus == 0)
-                        $.messager.alert('提示', '请先点击检查按钮', 'info');
-                    else if (navigationT1Mng.checkStatus == -1)
-                        $.messager.alert('提示', '尚有填写不正确的内容，请修正后再继续', 'info');
+                    {
+                        $(this).popover({ title: '提示', content: '请先点击检查按钮', placement: 'top', container: 'body' });
+                        $(this).popover('show');
+                        $(".popover").css("zIndex", 10001);
+                        setTimeout(function () {
+                            $("#navbar button[data-step=next]").popover('destroy')
+                        }, 1500);
+                    }                        
+                    else if (navigationT1Mng.checkStatus == -1) {
+                        $(this).popover({ title: '提示', content: '尚有填写不正确的内容，请修正后再继续', placement: 'top', container: 'body' });
+                        $(this).popover('show');
+                        $(".popover").css("zIndex", 10001);
+                        setTimeout(function () {
+                            $("#navbar button[data-step=next]").popover('destroy')
+                        }, 1500);
+                    }
                     else {
                         if (navigationT1Mng.navigationContext.NextTchNodeID == -1) {
-                            $.messager.alert('提示', '本案例已结束，点击OK返回首页。', 'info');
-                            window.location = "/Teachings/TeachingInit/Index";
+                            $('#pop_WaitingDiag .modal-body').html("本案例已结束，即将返回首页..");
+                            $('#pop_WaitingDiag').modal('show');
+                            setTimeout(function () {
+                                window.location = "/Home/Index";
+                            }, 1000);
                         }
                         else
-                            window.location = "/Teachings/" + navigationT1Mng.navigationContext.NextTchNodeType + "/" + navigationT1Mng.navigationContext.NextTchNodeTag + "/" + navigationT1Mng.navigationContext.NextTchNodeID;
+                        {
+                            $('#pop_WaitingDiag .modal-body').html("正在转到下一训练环节..");
+                            $('#pop_WaitingDiag').modal('show');
+                            setTimeout(function () {
+                                window.location = "/Teachings/" + navigationT1Mng.navigationContext.NextTchNodeType + "/" + navigationT1Mng.navigationContext.NextTchNodeTag + "/" + navigationT1Mng.navigationContext.NextTchNodeID;
+                            }, 500);
+                        }
+                            
                     }
                 });
                 $("#navbar button[data-step=prev]").bind("click", function () {
                     if (navigationT1Mng.navigationContext.PrevTchNodeID == -1) {
-                        $.messager.alert('提示', '这已经是本案例的第一步了。', 'info');
-                    }
-                    if (navigationT1Mng.navigationContext.IsFinish == 0) {
-                        $.messager.confirm('提示', '现在回退到前一个单据会导致当前页面填写的数据丢失，继续吗？', function (r) {
-                            if (r) {
-                                window.location = "/Teachings/" + navigationT1Mng.navigationContext.PrevTchNodeType + "/" + navigationT1Mng.navigationContext.PrevTchNodeTag + "/" + navigationT1Mng.navigationContext.PrevTchNodeID;
-                            }
-                        });
-                    }
+                        $(this).popover('show', { title: '提示', content: '这已经是本案例的第一步了', placement: 'top' });
+                        setTimeout(function () {
+                            $("#navbar button[data-step=prev]").popover('destroy')
+                        }, 1000);
+                    }                   
                 });
                 if (navigationT1Mng.navigationContext.IsTeacher == 0) {
                     $("a[data-step=auto]").remove();

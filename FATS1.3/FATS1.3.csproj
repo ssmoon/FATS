@@ -171,7 +171,6 @@
     <Compile Include="Areas\Settings\Controllers\UserMngController.cs" />
     <Compile Include="Areas\Settings\SettingsAreaRegistration.cs" />
     <Compile Include="Areas\Teachings\Controllers\CommonNodeController.cs" />
-    <Compile Include="Areas\Teachings\Controllers\DebitTransferCheckController.cs" />
     <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
     <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Teachings\Models\V_IncomeBill.cs" />
@@ -227,6 +226,9 @@
     <Compile Include="Models\PartialObjs\TeachingNode.cs" />
     <Compile Include="Models\PartialObjs\TeachingRoutine.cs" />
     <Compile Include="Models\PartialObjs\TemplateRoutine.cs" />
+    <Compile Include="Models\RoutineGroup.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\StudentActivity.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
@@ -331,13 +333,9 @@
     <Content Include="Areas\Settings\Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Teachings\Views\CommonNode\Comm_CL.cshtml" />
-    <Content Include="Areas\Teachings\Views\CommonNode\Comm_DL.cshtml" />
-    <Content Include="Areas\Teachings\Views\CommonNode\Comm_GL.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\CustomerLedger.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\DetailedLedger.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\GeneralLedger.cshtml" />
-    <Content Include="Areas\Teachings\Views\DebitTransferCheck\Step_Init1.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\IncomeBill.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\RoutineStepProgress.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\SubjectFiller.cshtml" />
@@ -435,6 +433,9 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Comm_GL.designer.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\FATS.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

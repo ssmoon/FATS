@@ -47,14 +47,16 @@
                 <div class="summary">
                   当前科目: <span class="curr">@clInfo.SubjectName</span>  <span class="hint">(点击左边的科目列表以完成其它的待记账科目)</span>
                 </div>
-                <table cellspacing="8" class="viewarea">
+                <table cellspacing="8" class="table table-bordered table-condensed">
                     <thead>
-                         <tr class="titlecol">
+                        <tr class="titlecol">
                             <td colspan="9"><div class="billtitle"><span class="bankname">@clInfo.BankName</span>分户账</div></td>
                         </tr>
                         <tr>
-                            <td colspan="9"><span class="metatitle">户名:</span><span class="metadata">@clInfo.CustomerName</span>
-                            <span class="metatitle">账号:</span><span class="metadata">@clInfo.CustomerAccNo</span></td>
+                            <td colspan="9">
+                                <span class="metatitle">户名:</span><span class="metadata">@clInfo.CustomerName</span>
+                                <span class="metatitle">账号:</span><span class="metadata">@clInfo.CustomerAccNo</span>
+                            </td>
                         </tr>
                         <tr class="titlecol">
                             <td class="date" colspan="2" style="width: 125px;">年&nbsp;@clInfo.BalanceTime.Year</td>
@@ -92,50 +94,50 @@
                                 <div class="form-group checkarea">
                                     <label class="sr-only"></label>
                                     <input type="text" maxlength="20" placeholder="摘要" data-correct="@clInfo.Abstract" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要错误")" class="form-control" />
-                                    <i class="form-control-feedback"  />
+                                    <i class="form-control-feedback" />
                                 </div>
                             </td>
                             <td>
-                                 <div class="form-group checkarea">
+                                <div class="form-group checkarea">
                                     <label class="sr-only"></label>
                                     <input type="text" maxlength="20" placeholder="凭证号" data-correct="@clInfo.VoucherNo" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "对方科目提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "对方科目错误")" class="form-control" />
-                                    <i class="form-control-feedback"  />
-                                </div>                                
-                            </td>
-                            <td>
-                                 <div class="form-group checkarea">
-                                    <label class="sr-only"></label>
-                                    <input type="text" maxlength="20" placeholder="对方科目" data-correct="@clInfo.TargetSubject" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要错误")"  class="form-control" />
-                                    <i class="form-control-feedback"  />
-                                </div>                                
-                            </td>
-                            <td>
-                                 <div class="form-group checkarea">
-                                    <label class="sr-only"></label>
-                                    <input type="text" maxlength="20" placeholder="借方" data-correct="@CommFunctions.FormatMoneyToString(clInfo.DebitSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借方发生科目数值提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借方发生科目数值错误")" class="form-control" />
-                                    <i class="form-control-feedback"  />
-                                </div>                                
-                            </td>
-                            <td>
-                                 <div class="form-group checkarea">
-                                    <label class="sr-only"></label>
-                                    <input type="text" maxlength="20" placeholder="贷方" data-correct="@CommFunctions.FormatMoneyToString(clInfo.CreditSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "贷方发生科目数值提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "贷方发生科目数值错误")"  class="form-control" />
-                                    <i class="form-control-feedback"  />
+                                    <i class="form-control-feedback" />
                                 </div>
                             </td>
                             <td>
-                                 <div class="form-group checkarea">
+                                <div class="form-group checkarea">
                                     <label class="sr-only"></label>
-                                    <input type="text" maxlength="20" placeholder="借或贷" data-correct="@clInfo.DCChoice" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借或贷提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借或贷错误")" class="form-control" />
-                                    <i class="form-control-feedback"  />
-                                </div>                                
+                                    <input type="text" maxlength="20" placeholder="对方科目" data-correct="@clInfo.TargetSubject" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
                             </td>
                             <td>
-                                 <div class="form-group checkarea">
+                                <div class="form-group checkarea">
                                     <label class="sr-only"></label>
-                                    <input type="text" maxlength="20" placeholder="余额" data-correct="@CommFunctions.FormatMoneyToString(clInfo.FinalSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "最终余额提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "最终余额错误")"  class="form-control" />
-                                    <i class="form-control-feedback"  />
-                                </div>                                
+                                    <input type="text" maxlength="20" placeholder="借方" data-correct="@CommFunctions.FormatMoneyToString(clInfo.DebitSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借方发生科目数值提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借方发生科目数值错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="贷方" data-correct="@CommFunctions.FormatMoneyToString(clInfo.CreditSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "贷方发生科目数值提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "贷方发生科目数值错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="借或贷" data-correct="@clInfo.DCChoice" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借或贷提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "借或贷错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group checkarea">
+                                    <label class="sr-only"></label>
+                                    <input type="text" maxlength="20" placeholder="余额" data-correct="@CommFunctions.FormatMoneyToString(clInfo.FinalSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "最终余额提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "最终余额错误")" class="form-control" />
+                                    <i class="form-control-feedback" />
+                                </div>
                             </td>
                         </tr>
                     </tbody>
