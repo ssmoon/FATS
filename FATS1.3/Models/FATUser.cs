@@ -11,7 +11,8 @@ namespace FATS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
+     [Serializable]
     public partial class FATUser
     {
         public int Row_ID { get; set; }
