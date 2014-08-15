@@ -36,12 +36,42 @@
     <div class="panel panel-info" data-idx="2">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf2">
-                    第二步：请选择科目所属的类型
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf5">
+                    第二步：请确定该一级科目下的子级科目
                 </a>
             </h4>
         </div>
         <div id="sf2" class="list-group panel-collapse collapse">
+            <table>
+                <tr>
+                    <td colspan="@Model.Count">
+                        <div class="alert alert-info fade in">
+                            下级科目之间请用-连接，比如 abc-xyz
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    @foreach (SubjectItem subject in Model)
+                    {
+                        <td>
+                            <label>@subject.SubjectName :</label>
+                            <input type="text" class="form-control" data-correct="@subject.SubSubject" />
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>    
+    <div class="panel panel-info" data-idx="3">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf2">
+                    第三步：请选择科目所属的类型
+                </a>
+            </h4>
+        </div>
+        <div id="sf3" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -63,15 +93,15 @@
             </table>
         </div>
     </div>
-    <div class="panel panel-info" data-idx="3">
+    <div class="panel panel-info" data-idx="4">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf3">
-                    第三步：请确定科目余额增减变化的情况
+                    第四步：请确定科目余额增减变化的情况
                 </a>
             </h4>
         </div>
-        <div id="sf3" class="list-group panel-collapse collapse">
+        <div id="sf4" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -89,15 +119,15 @@
             </table>
         </div>
     </div>
-    <div class="panel panel-info" data-idx="4">
+    <div class="panel panel-info" data-idx="5">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf4">
-                    第四步：请确定科目的借贷关系
+                    第五步：请确定科目的借贷关系
                 </a>
             </h4>
         </div>
-        <div id="sf4" class="list-group panel-collapse collapse">
+        <div id="sf5" class="list-group panel-collapse collapse">
             <table>
                 <tr>
                     @foreach (SubjectItem subject in Model)
@@ -116,36 +146,7 @@
             </table>
         </div>
     </div>    
-    <div class="panel panel-info" data-idx="5">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf5">
-                    第五步：请确定该一级科目下的子级科目
-                </a>
-            </h4>
-        </div>
-        <div id="sf5" class="list-group panel-collapse collapse">
-            <table>
-                <tr>
-                    <td colspan="@Model.Count">
-                        <div class="alert alert-info fade in">
-                            下级科目之间请用-连接，比如 abc-xyz
-                        </div>
-                            
-                  </td>
-                </tr>
-                <tr>
-                    @foreach (SubjectItem subject in Model)
-                    {
-                        <td>
-                            <label>@subject.SubjectName :</label>
-                            <input type="text" class="form-control" data-correct="@subject.SubSubject" />
-                        </td>
-                    }
-                </tr>
-            </table>
-        </div>
-    </div>    
+   
     <div class="panel panel-info" data-idx="6">
         <div class="panel-heading">
             <h4 class="panel-title">

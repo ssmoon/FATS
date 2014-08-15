@@ -105,7 +105,7 @@
         resultData.info = siteUtils.SerializeFormObjs($("#frmCaseBasic :input").serializeArray());
         $.ajax({
             type: "POST",
-            url: "/Settings/DebitTransferCheck/SaveT1RoutineData",
+            url: "/Settings/SpecialNode/Save" + $(".tabcontainer div[data-target=basic]").attr("data-rtag") + "Data",
             data: JSON.stringify(resultData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",

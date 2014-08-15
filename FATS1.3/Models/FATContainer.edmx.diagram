@@ -16,9 +16,15 @@
         <EntityTypeShape EntityType="FATSystemModel.TeachingRoutine" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FATSystemModel.TemplateNode" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FATSystemModel.TemplateRoutine" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FATSystemModel.TransferCheck" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FATSystemModel.TransferCheck" Width="1.5" PointX="3.625" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FATSystemModel.RoutineGroup" Width="1.5" PointX="0.75" PointY="10.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="FATSystemModel.BankAcceptBill" Width="1.5" PointX="6.375" PointY="10.75" />
+        <EntityTypeShape EntityType="FATSystemModel.BankDraft" Width="1.5" PointX="8.375" PointY="10.75" />
+        <EntityTypeShape EntityType="FATSystemModel.CollectAccept" Width="1.5" PointX="10.375" PointY="10.75" />
+        <EntityTypeShape EntityType="FATSystemModel.EntrustBankPayment" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FATSystemModel.EntrustCorpPayment" Width="1.5" PointX="11.375" PointY="5.75" />
+        <EntityTypeShape EntityType="FATSystemModel.MoneyRemittance" Width="1.5" PointX="12.375" PointY="10.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

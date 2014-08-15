@@ -12,13 +12,20 @@ namespace FATS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RoutineGroup
+    public partial class EntrustCorpPayment
     {
         public int Row_ID { get; set; }
-        public int GroupIdx { get; set; }
+        public string RemitterName { get; set; }
+        public string RemitterAcc { get; set; }
+        public string RemitterBank { get; set; }
+        public string PayeeName { get; set; }
+        public string PayeeBank { get; set; }
+        public decimal MoneyAmount { get; set; }
+        public string tlementNo { get; set; }
+        public System.DateTime EntrustDate { get; set; }
+        public System.DateTime PaymentDate { get; set; }
+        public string Purpose { get; set; }
         public int TchRoutineID { get; set; }
-        public string GroupText { get; set; }
-        public string RoutineDesc { get; set; }
-        public string RoutineIntro { get; set; }
+        public string TchRoutineTag { get; set; }
     }
 }

@@ -164,6 +164,7 @@
       <DependentUpon>T1_DebitTransferCheck_S32.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Settings\Controllers\CommonNodeController.cs" />
+    <Compile Include="Areas\Settings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Settings\Controllers\DebitTransferCheckController.cs" />
     <Compile Include="Areas\Settings\Controllers\Teaching1SettingController.cs" />
     <Compile Include="Areas\Settings\Controllers\Teaching2SettingController.cs" />
@@ -180,6 +181,15 @@
     <Compile Include="BusinessObject\SharedCasePool.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UICommonController.cs" />
+    <Compile Include="Models\BankAcceptBill.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankDraft.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CollectAccept.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomerLedger.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -194,6 +204,12 @@
     </Compile>
     <Compile Include="Exceptions\BusinessRuleCheckExcpetions.cs" />
     <Compile Include="Exceptions\UserSessionExpiredException.cs" />
+    <Compile Include="Models\EntrustBankPayment.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntrustCorpPayment.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FATContainer.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,6 +237,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MoneyRemittance.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartialObjs\FATUser.cs" />
     <Compile Include="Models\PartialObjs\StudentActivity.cs" />
     <Compile Include="Models\PartialObjs\TeachingNode.cs" />
     <Compile Include="Models\PartialObjs\TeachingRoutine.cs" />
@@ -318,6 +338,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Settings\Models\" />
     <Folder Include="Areas\Settings\Views\CommonNode\" />
+    <Folder Include="Areas\Settings\Views\DebitTransferCheck\" />
     <Folder Include="Areas\Settings\Views\Shared\" />
     <Folder Include="Areas\Settings\Views\Teaching2Setting\" />
     <Folder Include="Views\ProcessGuide\" />
@@ -389,7 +410,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Settings\Views\DebitTransferCheck\TransferCheck.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\TransferCheck.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\SysRoutineCollection.cshtml" />

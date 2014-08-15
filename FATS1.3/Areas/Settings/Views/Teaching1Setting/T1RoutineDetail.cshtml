@@ -50,8 +50,8 @@
 </ul>
 
 <div class="tabcontainer">
-    <div class="subdata" data-target="basic" style="display: block">
-        @{  Html.RenderAction("InitT1RoutineData", Model.RelTmpRoutine.RoutineTag, new { tchRoutineID = Model.Row_ID }); }
+    <div class="subdata" data-target="basic" style="display: block" data-rtag="@Model.RelTmpRoutine.RoutineTag">
+        @{  Html.RenderAction("Init" + Model.RelTmpRoutine.RoutineTag + "Data", "SpecialNode", new { tchRoutineID = Model.Row_ID }); }
 
     </div>
     <div class="subdata" data-target="text">

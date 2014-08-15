@@ -5,6 +5,64 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FATSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="BankAcceptBill">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BillNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DrawBillDate" Type="datetime" Nullable="false" />
+          <Property Name="IncomeBillDate" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="BankDraft">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DraftBillNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DraftDate" Type="datetime" Nullable="false" />
+          <Property Name="IncomeBillDate" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+          <Property Name="CloseAmount" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollectAccept">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tlementNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CollectDate" Type="datetime" Nullable="false" />
+          <Property Name="AcceptDate" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="CustomerLedger">
           <Key>
             <PropertyRef Name="Row_ID" />
@@ -48,6 +106,43 @@
           <Property Name="RoutineDesc" Type="nvarchar" MaxLength="30" />
           <Property Name="BankName" Type="nvarchar" MaxLength="30" />
         </EntityType>
+        <EntityType Name="EntrustBankPayment">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tlementNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="EntrustDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="EntrustCorpPayment">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tlementNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="EntrustDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="FATUser">
           <Key>
             <PropertyRef Name="Row_ID" />
@@ -87,6 +182,25 @@
           <Property Name="RoutineDesc" Type="nvarchar" MaxLength="30" />
           <Property Name="BankName" Type="nvarchar" MaxLength="30" />
         </EntityType>
+        <EntityType Name="MoneyRemittance">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemitterName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="RemitterBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="PayeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeAcc" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayeeBank" Type="nvarchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="tlementNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="RemitDate" Type="datetime" Nullable="false" />
+          <Property Name="AffluxDate" Type="datetime" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="RoutineGroup">
           <Key>
             <PropertyRef Name="Row_ID" />
@@ -96,6 +210,7 @@
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="GroupText" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="RoutineDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoutineIntro" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentActivity">
           <Key>
@@ -185,11 +300,17 @@
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityContainer Name="FATSystemModelStoreContainer">
+          <EntitySet Name="BankAcceptBill" EntityType="Self.BankAcceptBill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankDraft" EntityType="Self.BankDraft" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollectAccept" EntityType="Self.CollectAccept" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerLedger" EntityType="Self.CustomerLedger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailedLedger" EntityType="Self.DetailedLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntrustBankPayment" EntityType="Self.EntrustBankPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntrustCorpPayment" EntityType="Self.EntrustCorpPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FATUser" EntityType="Self.FATUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FATUserGroup" EntityType="Self.FATUserGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralLedger" EntityType="Self.GeneralLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoneyRemittance" EntityType="Self.MoneyRemittance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoutineGroup" EntityType="Self.RoutineGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentActivity" EntityType="Self.StudentActivity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubjectItem" EntityType="Self.SubjectItem" Schema="dbo" store:Type="Tables" />
@@ -217,7 +338,13 @@
           <EntitySet Name="TemplateRoutine" EntityType="FATSystemModel.TemplateRoutine" />
           <EntitySet Name="TransferCheck" EntityType="FATSystemModel.TransferCheck" />
           <EntitySet Name="RoutineGroup" EntityType="FATSystemModel.RoutineGroup" />
-        </EntityContainer>
+          <EntitySet Name="BankAcceptBill" EntityType="FATSystemModel.BankAcceptBill" />
+          <EntitySet Name="BankDraft" EntityType="FATSystemModel.BankDraft" />
+          <EntitySet Name="CollectAccept" EntityType="FATSystemModel.CollectAccept" />
+          <EntitySet Name="EntrustBankPayment" EntityType="FATSystemModel.EntrustBankPayment" />
+          <EntitySet Name="EntrustCorpPayment" EntityType="FATSystemModel.EntrustCorpPayment" />
+          <EntitySet Name="MoneyRemittance" EntityType="FATSystemModel.MoneyRemittance" />
+          </EntityContainer>
         <EntityType Name="CustomerLedger">
           <Key>
             <PropertyRef Name="Row_ID" />
@@ -396,8 +523,123 @@
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="GroupText" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="RoutineDesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoutineIntro" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-      </Schema>
+        <EntityType Name="BankAcceptBill">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BillNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DrawBillDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IncomeBillDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BankDraft">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="DraftBillNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DraftDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IncomeBillDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CloseAmount" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CollectAccept">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="tlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CollectDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EntrustBankPayment">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="tlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EntrustDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EntrustCorpPayment">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="tlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EntrustDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MoneyRemittance">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemitterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RemitterBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayeeBank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="tlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RemitDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AffluxDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -587,6 +829,7 @@
           <EntitySetMapping Name="RoutineGroup">
             <EntityTypeMapping TypeName="FATSystemModel.RoutineGroup">
               <MappingFragment StoreEntitySet="RoutineGroup">
+                <ScalarProperty Name="RoutineIntro" ColumnName="RoutineIntro" />
                 <ScalarProperty Name="RoutineDesc" ColumnName="RoutineDesc" />
                 <ScalarProperty Name="GroupText" ColumnName="GroupText" />
                 <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
@@ -595,7 +838,127 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="BankAcceptBill">
+            <EntityTypeMapping TypeName="FATSystemModel.BankAcceptBill">
+              <MappingFragment StoreEntitySet="BankAcceptBill">
+                <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="IncomeBillDate" ColumnName="IncomeBillDate" />
+                <ScalarProperty Name="DrawBillDate" ColumnName="DrawBillDate" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="PayeeBank" ColumnName="PayeeBank" />
+                <ScalarProperty Name="PayeeAcc" ColumnName="PayeeAcc" />
+                <ScalarProperty Name="PayeeName" ColumnName="PayeeName" />
+                <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
+                <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
+                <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankDraft">
+            <EntityTypeMapping TypeName="FATSystemModel.BankDraft">
+              <MappingFragment StoreEntitySet="BankDraft">
+                <ScalarProperty Name="CloseAmount" ColumnName="CloseAmount" />
+                <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="IncomeBillDate" ColumnName="IncomeBillDate" />
+                <ScalarProperty Name="DraftDate" ColumnName="DraftDate" />
+                <ScalarProperty Name="DraftBillNo" ColumnName="DraftBillNo" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="PayeeBank" ColumnName="PayeeBank" />
+                <ScalarProperty Name="PayeeAcc" ColumnName="PayeeAcc" />
+                <ScalarProperty Name="PayeeName" ColumnName="PayeeName" />
+                <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
+                <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
+                <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollectAccept">
+            <EntityTypeMapping TypeName="FATSystemModel.CollectAccept">
+              <MappingFragment StoreEntitySet="CollectAccept">
+                <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+                <ScalarProperty Name="CollectDate" ColumnName="CollectDate" />
+                <ScalarProperty Name="tlementNo" ColumnName="tlementNo" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="PayeeBank" ColumnName="PayeeBank" />
+                <ScalarProperty Name="PayeeAcc" ColumnName="PayeeAcc" />
+                <ScalarProperty Name="PayeeName" ColumnName="PayeeName" />
+                <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
+                <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
+                <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntrustBankPayment">
+            <EntityTypeMapping TypeName="FATSystemModel.EntrustBankPayment">
+              <MappingFragment StoreEntitySet="EntrustBankPayment">
+                <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="EntrustDate" ColumnName="EntrustDate" />
+                <ScalarProperty Name="tlementNo" ColumnName="tlementNo" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="PayeeBank" ColumnName="PayeeBank" />
+                <ScalarProperty Name="PayeeAcc" ColumnName="PayeeAcc" />
+                <ScalarProperty Name="PayeeName" ColumnName="PayeeName" />
+                <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
+                <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
+                <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntrustCorpPayment">
+            <EntityTypeMapping TypeName="FATSystemModel.EntrustCorpPayment">
+              <MappingFragment StoreEntitySet="EntrustCorpPayment">
+                <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="EntrustDate" ColumnName="EntrustDate" />
+                <ScalarProperty Name="tlementNo" ColumnName="tlementNo" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="PayeeBank" ColumnName="PayeeBank" />
+                <ScalarProperty Name="PayeeName" ColumnName="PayeeName" />
+                <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
+                <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
+                <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoneyRemittance">
+            <EntityTypeMapping TypeName="FATSystemModel.MoneyRemittance">
+              <MappingFragment StoreEntitySet="MoneyRemittance">
+                <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="AffluxDate" ColumnName="AffluxDate" />
+                <ScalarProperty Name="RemitDate" ColumnName="RemitDate" />
+                <ScalarProperty Name="tlementNo" ColumnName="tlementNo" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="PayeeBank" ColumnName="PayeeBank" />
+                <ScalarProperty Name="PayeeAcc" ColumnName="PayeeAcc" />
+                <ScalarProperty Name="PayeeName" ColumnName="PayeeName" />
+                <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
+                <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
+                <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

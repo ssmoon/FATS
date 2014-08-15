@@ -38,5 +38,11 @@ namespace FATS.Models
         public DbSet<TemplateRoutine> TemplateRoutine { get; set; }
         public DbSet<TransferCheck> TransferCheck { get; set; }
         public DbSet<RoutineGroup> RoutineGroup { get; set; }
+        public DbSet<BankAcceptBill> BankAcceptBill { get; set; }
+        public DbSet<BankDraft> BankDraft { get; set; }
+        public DbSet<CollectAccept> CollectAccept { get; set; }
+        public DbSet<EntrustBankPayment> EntrustBankPayment { get; set; }
+        public DbSet<EntrustCorpPayment> EntrustCorpPayment { get; set; }
+        public DbSet<MoneyRemittance> MoneyRemittance { get; set; }
     }
 }
