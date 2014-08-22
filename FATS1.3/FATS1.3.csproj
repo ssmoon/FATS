@@ -173,6 +173,7 @@
     <Compile Include="Areas\Teachings\Controllers\CommonNodeController.cs" />
     <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
     <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
+    <Compile Include="Areas\Teachings\Models\V_BankDraft.cs" />
     <Compile Include="Areas\Teachings\Models\V_IncomeBill.cs" />
     <Compile Include="Areas\Teachings\Models\V_TransferCheck.cs" />
     <Compile Include="Areas\Teachings\TeachingsAreaRegistration.cs" />
@@ -455,6 +456,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Teachings\Views\Shared\BankDraft.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
   </ItemGroup>
   <PropertyGroup>

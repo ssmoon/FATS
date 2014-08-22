@@ -1,0 +1,60 @@
+﻿@model FATS.Areas.Teachings.Models.V_Draft
+ 
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+    <tr>
+        <td colspan="6">
+            <div class="billtitle"><span class="bankname">@Model.PayeeBank</span>进账单</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6">
+            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.IncomeBillDate); }
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="3" class="titlecol">出票人</td>
+        <td class="titlecol">全称</td>
+        <td>@Model.PayeeName</td>
+        <td rowspan="3" class="titlecol">收款人</td>
+        <td class="titlecol">全称</td>
+        <td>@Model.RemitterName</td>
+    </tr>
+    <tr>
+        <td class="titlecol">账号</td>
+        <td>@Model.PayeeAcc</td>
+        <td class="titlecol">账号</td>
+        <td>@Model.RemitterAcc</td>
+    </tr>
+    <tr>
+        <td class="titlecol">开户银行</td>
+        <td>@Model.PayeeBank</td>
+        <td class="titlecol">开户银行</td>
+        <td>@Model.RemitterBank</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="titlecol">
+            出票金额<br />人民币(大写):
+            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        </td>
+        <td colspan="3">
+            ￥ @{ FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount) }
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" class="titlecol">
+            实际结算金额<br />人民币(大写):
+            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        </td>
+        <td colspan="3">
+            @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 80px;" class="titlecol">票据种类</td>
+        <td style="width: 100px;">转账支票</td>
+        <td style="width: 135px;" class="titlecol">票据张数</td>
+        <td style="width: 80px;">1</td>
+        <td style="width: 100px;" class="titlecol">票据</td>
+        <td style="width: 135px;">0376</td>
+    </tr>
+</table>
