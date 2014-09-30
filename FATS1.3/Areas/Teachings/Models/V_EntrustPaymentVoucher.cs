@@ -5,8 +5,8 @@ using System.Web;
 
 namespace FATS.Areas.Teachings.Models
 {
-    //进账单
-    public class V_IncomeBill
+    //业务委托书
+    public class V_EntrustPaymentVoucher
     {
         public string RemitterName { get; set; }
         public string RemitterAcc { get; set; }
@@ -15,6 +15,8 @@ namespace FATS.Areas.Teachings.Models
         public string PayeeAcc { get; set; }
         public string PayeeBank { get; set; }
         public decimal MoneyAmount { get; set; }
-        public DateTime IncomeBillDate { get; set; }
+        public DateTime ProxyDate { get; set; }
+        public string Purpose { get; set; }
+        public string VoucherName { get; set; }
     }
 }

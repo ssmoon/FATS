@@ -5,6 +5,7 @@ using System.Web;
 
 namespace FATS.Areas.Teachings.Models
 {
+    //银行汇票
     public class V_BankDraft
     {
         public string RemitterName { get; set; }
@@ -15,5 +16,7 @@ namespace FATS.Areas.Teachings.Models
         public string PayeeBank { get; set; }
         public decimal MoneyAmount { get; set; }
         public DateTime DraftDate { get; set; }
+        public string Purpose { get; set; }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿@model FATS.Areas.Teachings.Models.V_Draft
+﻿@model FATS.Areas.Teachings.Models.V_BankDraft
  
 <table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
     <tr>
@@ -8,29 +8,15 @@
     </tr>
     <tr>
         <td colspan="6">
-            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.IncomeBillDate); }
+            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.DraftDate); }
         </td>
     </tr>
     <tr>
-        <td rowspan="3" class="titlecol">出票人</td>
-        <td class="titlecol">全称</td>
-        <td>@Model.PayeeName</td>
-        <td rowspan="3" class="titlecol">收款人</td>
-        <td class="titlecol">全称</td>
-        <td>@Model.RemitterName</td>
-    </tr>
-    <tr>
-        <td class="titlecol">账号</td>
-        <td>@Model.PayeeAcc</td>
-        <td class="titlecol">账号</td>
+        <td class="titlecol">收款人</td>
+        <td colspan="2">@Model.RemitterName</td>        
+        <td class="titlecol">账号</td>        
         <td>@Model.RemitterAcc</td>
-    </tr>
-    <tr>
-        <td class="titlecol">开户银行</td>
-        <td>@Model.PayeeBank</td>
-        <td class="titlecol">开户银行</td>
-        <td>@Model.RemitterBank</td>
-    </tr>
+    </tr>    
     <tr>
         <td colspan="3" class="titlecol">
             出票金额<br />人民币(大写):
@@ -50,11 +36,21 @@
         </td>
     </tr>
     <tr>
-        <td style="width: 80px;" class="titlecol">票据种类</td>
-        <td style="width: 100px;">转账支票</td>
-        <td style="width: 135px;" class="titlecol">票据张数</td>
-        <td style="width: 80px;">1</td>
-        <td style="width: 100px;" class="titlecol">票据</td>
-        <td style="width: 135px;">0376</td>
+        <td class="titlecol">申请人</td>
+        <td colspan="2">@Model.PayeeName</td>
+        <td class="titlecol">账号</td>
+        <td colspan="2">@Model.PayeeAcc</td>
+    </tr>    
+    <tr>
+        <td class="titlecol">出票行</td>
+        <td>@Model.PayeeBank</td>
+        <td class="titlecol">行号</td>
+        <td>0001</td>
+        <td colspan="2">&nbsp;</td>
+    </tr>    
+    <tr>    
+        <td class="titlecol">备注</td>
+        <td colspan="2">@Model.Purpose</td>
+        <td colspan="3">&nbsp;</td>
     </tr>
 </table>

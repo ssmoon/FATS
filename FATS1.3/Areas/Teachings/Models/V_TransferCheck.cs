@@ -5,6 +5,7 @@ using System.Web;
 
 namespace FATS.Areas.Teachings.Models
 {
+    //转账支票
     public class V_TransferCheck
     {
         public DateTime ChequeDate { get; set; }
