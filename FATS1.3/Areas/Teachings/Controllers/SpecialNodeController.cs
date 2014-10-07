@@ -36,7 +36,7 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                ViewBag.ResourceFile = node.RelTmpNode.Row_ID;
+                
                 return View(tcInfo);
             }
         }
@@ -57,7 +57,6 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                ViewBag.ResourceFile = "T1_DebitTransferCheck_S12";
                 return View("BankDraft_" + node.Index, tcInfo);
             }
         }
@@ -78,7 +77,7 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                ViewBag.ResourceFile = node.RelTmpNode.Row_ID;
+                
                 return View(tcInfo);
             }
         }
@@ -99,7 +98,7 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                ViewBag.ResourceFile = node.RelTmpNode.Row_ID;
+                
                 return View(tcInfo);
             }
         }
@@ -120,7 +119,7 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                ViewBag.ResourceFile = node.RelTmpNode.Row_ID;
+                
                 return View(tcInfo);
             }
         }
@@ -141,7 +140,7 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                ViewBag.ResourceFile = node.RelTmpNode.Row_ID;
+                
                 return View(tcInfo);
             }
         }
@@ -162,7 +161,7 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                ViewBag.ResourceFile = node.RelTmpNode.Row_ID;
+                
                 return View(tcInfo);
             }
         }

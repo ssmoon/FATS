@@ -150,10 +150,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Comm_CL.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources.2-2.designer.cs">
-      <DependentUpon>Resources.2-2.resx</DependentUpon>
+    <Compile Include="App_GlobalResources\R2-2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>R2-2.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\T1_DebitTransferCheck_S12.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -490,9 +490,9 @@
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Resources.2-2.resx">
+    <Content Include="App_GlobalResources\R2-2.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Resources.2-2.designer.cs</LastGenOutput>
+      <LastGenOutput>R2-2.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

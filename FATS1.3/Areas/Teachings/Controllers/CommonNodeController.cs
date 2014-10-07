@@ -109,7 +109,7 @@ namespace FATS.Areas.Teachings.Controllers
             using (FATContainer dataContainer = new FATContainer())
             {
                 List<SubjectItem> subjectList = dataContainer.SubjectItem.Where(s => s.TchNodeID == tchNodeID && s.TchRoutineID == tchRoutineID).OrderBy(s => s.SubjectOrient).ToList();
-                ViewBag.ResourceFile = routine.NodeList[tchNodeID].RelTmpNode.Row_ID;
+                ViewBag.ResourceFile = "T1_DebitTransferCheck_S12";
                 return View(subjectList);
             }            
         }
