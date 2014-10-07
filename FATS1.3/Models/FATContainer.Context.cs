@@ -44,5 +44,6 @@ namespace FATS.Models
         public DbSet<EntrustBankPayment> EntrustBankPayment { get; set; }
         public DbSet<EntrustCorpPayment> EntrustCorpPayment { get; set; }
         public DbSet<MoneyRemittance> MoneyRemittance { get; set; }
+        public DbSet<UserErrorHint> UserErrorHint { get; set; }
     }
 }

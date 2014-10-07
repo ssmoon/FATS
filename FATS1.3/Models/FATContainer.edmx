@@ -299,6 +299,16 @@
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="UserErrorHint">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TmpRoutineID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TmpNodeID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemValue" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityContainer Name="FATSystemModelStoreContainer">
           <EntitySet Name="BankAcceptBill" EntityType="Self.BankAcceptBill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BankDraft" EntityType="Self.BankDraft" Schema="dbo" store:Type="Tables" />
@@ -319,6 +329,7 @@
           <EntitySet Name="TemplateNode" EntityType="Self.TemplateNode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TemplateRoutine" EntityType="Self.TemplateRoutine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransferCheck" EntityType="Self.TransferCheck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserErrorHint" EntityType="Self.UserErrorHint" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -344,6 +355,7 @@
           <EntitySet Name="EntrustBankPayment" EntityType="FATSystemModel.EntrustBankPayment" />
           <EntitySet Name="EntrustCorpPayment" EntityType="FATSystemModel.EntrustCorpPayment" />
           <EntitySet Name="MoneyRemittance" EntityType="FATSystemModel.MoneyRemittance" />
+          <EntitySet Name="UserErrorHint" EntityType="FATSystemModel.UserErrorHint" />
           </EntityContainer>
         <EntityType Name="CustomerLedger">
           <Key>
@@ -638,6 +650,16 @@
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SettlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserErrorHint">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TmpRoutineID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TmpNodeID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemValue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -954,6 +976,17 @@
                 <ScalarProperty Name="RemitterBank" ColumnName="RemitterBank" />
                 <ScalarProperty Name="RemitterAcc" ColumnName="RemitterAcc" />
                 <ScalarProperty Name="RemitterName" ColumnName="RemitterName" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserErrorHint">
+            <EntityTypeMapping TypeName="FATSystemModel.UserErrorHint">
+              <MappingFragment StoreEntitySet="UserErrorHint">
+                <ScalarProperty Name="ItemValue" ColumnName="ItemValue" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="TmpNodeID" ColumnName="TmpNodeID" />
+                <ScalarProperty Name="TmpRoutineID" ColumnName="TmpRoutineID" />
                 <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
               </MappingFragment>
             </EntityTypeMapping>

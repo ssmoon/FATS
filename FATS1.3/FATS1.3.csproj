@@ -261,6 +261,9 @@
     <Compile Include="Models\RoutineGroup.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserErrorHint.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\StudentActivity.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
