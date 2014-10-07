@@ -22,11 +22,11 @@ namespace FATS.Models
         public string PayeeAcc { get; set; }
         public string PayeeBank { get; set; }
         public decimal MoneyAmount { get; set; }
-        public string tlementNo { get; set; }
         public System.DateTime EntrustDate { get; set; }
         public System.DateTime PaymentDate { get; set; }
         public string Purpose { get; set; }
         public int TchRoutineID { get; set; }
         public string TchRoutineTag { get; set; }
+        public string SettlementNo { get; set; }
     }
 }

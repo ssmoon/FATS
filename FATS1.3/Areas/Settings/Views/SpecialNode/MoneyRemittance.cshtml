@@ -1,0 +1,89 @@
+﻿@model  FATS.Models.MoneyRemittance
+
+
+<form id="frmCaseBasic" class="form-horizontal">
+    @Html.HiddenFor(item => item.TchRoutineID)
+    @Html.HiddenFor(item => item.Row_ID)
+    <div class="form-group">
+        <label for="RemitterName" class="col-xs-2 control-label">出票人全称</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="RemitterName" name="RemitterName" value="@Model.RemitterName" />
+            <span class="help-block" id="h_RemitterName"></span>
+        </div>
+        <label for="RemitterAcc" class="col-xs-2 control-label">出票人账号</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="RemitterAcc" name="RemitterAcc" value="@Model.RemitterAcc" />
+            <span class="help-block" id="h_RemitterAcc"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="RemitterBank" class="col-xs-2 control-label">出票人银行</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="RemitterBank" name="RemitterBank" value="@Model.RemitterBank" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PayeeName" class="col-xs-2 control-label">收款人全称</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="PayeeName" name="PayeeName" value="@Model.PayeeName" />
+            <span class="help-block" id="h_PayeeName"></span>
+        </div>
+        <label for="PayeeAcc" class="col-xs-2 control-label">收款人账号</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="PayeeAcc" name="PayeeAcc" value="@Model.PayeeAcc" />
+            <span class="help-block" id="h_PayeeAcc"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PayeeBank" class="col-xs-2 control-label">收款人银行</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="PayeeBank" name="PayeeBank" value="@Model.PayeeBank" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="MoneyAmount" class="col-xs-2 control-label">金额</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="MoneyAmount" name="MoneyAmount" value="@Model.MoneyAmount" />
+            <span class="help-block" id="h_MoneyAmount"></span>
+        </div>
+        <label for="SettlementNo" class="col-xs-2 control-label">结算号</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="SettlementNo" name="SettlementNo" value="@Model.SettlementNo" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="RemitDate" class="col-xs-2 control-label">汇出日期</label>
+        <div class="col-xs-3">
+            <div class="input-group date" id="doRemitDate" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="RemitDate" id="RemitDate" value="@Model.RemitDate.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+
+        <label for="AffluxDate" class="col-xs-2 control-label">汇入日期</label>
+        <div class="col-xs-3">
+            <div class="input-group date" id="doAffluxDate" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="AffluxDate" id="AffluxDate" value="@Model.AffluxDate.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Purpose" class="col-xs-2 control-label">用途</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="Purpose" name="Purpose" value="@Model.Purpose" />
+        </div>
+    </div>
+    <p class="actionbar">
+        <button type="button" class="btn btn-primary" data-act="save">保 存</button>
+    </p>
+</form>
+
+<script type="text/javascript" src="@Url.Content("~/js/Settings/MoneyRemittance.js")"></script>

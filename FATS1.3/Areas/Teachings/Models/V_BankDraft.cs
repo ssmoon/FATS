@@ -17,6 +17,6 @@ namespace FATS.Areas.Teachings.Models
         public decimal MoneyAmount { get; set; }
         public DateTime DraftDate { get; set; }
         public string Purpose { get; set; }
-
+        public decimal CloseAmount { get; set; }
     }
 }

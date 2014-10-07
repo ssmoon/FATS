@@ -43,27 +43,11 @@
 
 
     <div class="currphase panel panel-success">
-        <div class="panel-heading">当前步骤下的流程</div>
+        <div class="panel-heading">步骤介绍</div>
 
-        <table class="table nodelist">
-             <tr>
-                <td>&nbsp;</td>
-            </tr>
-            @{ int i = 0; }
-            @foreach (TeachingNode tchNode in Model.NodeList.Values)
-            {
-                if (currGroup == tchNode.GroupIdx)
-                {
-                    i++;
-                <tr class="step" data-stepidx="@tchNode.RelTmpNode.NodeIndex" data-groupidx="@tchNode.RelTmpNode.GroupIdx">
-                    <td><span>@i.</span>  @tchNode.RelTmpNode.NodeName</td>
-                </tr>  
-                }
-            }
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
+        <p>
+            @ViewBag.RoutineIntro
+        </p>
         <div class="panel-body">
 
             <div class="actionbar">

@@ -33,10 +33,9 @@
 
 #routineoverview .mainprocess { float: left; width: 300px; margin-left: 20px; }
 #routineoverview .arrowcontainer { float: left; width: 220px; min-height: 600px; background: url(../../Images/arrow_toright.png) no-repeat 12px -45px; } 
-#routineoverview .currphase { float: left; width: 400px; height: 500px; position: relative; }
-#routineoverview .currphase .nodelist { height: 300px;  line-height: 30px; font-size: 18px; height: 35px;  color: #666666; }
-#routineoverview .currphase .panel-body { position: absolute; top: 370px; left: 0px; width: 400px;  }
-#routineoverview .currphase .table span { margin-left: 20px; }
+#routineoverview .currphase { float: left; width: 400px; min-height: 200px; position: relative; }
+#routineoverview .currphase p { font-size: 18px; color: #666666; margin: 20px 30px; }
+
 
 #routineoverview .mainprocess .group { height: 100px; padding-top: 20px; text-align: center; border: 2px solid #DDDDDD; color: #666666; border-radius: 6px; }
 #routineoverview .mainprocess .currgroup { background-color: #DFF0D8; border-color: #D6E9C6; color: #3C763D; }

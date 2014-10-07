@@ -31,6 +31,7 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.CurrGroup = tchRoutine.NodeList[node.Row_ID].GroupIdx;
                 ViewBag.TchNodeID = node.Row_ID;
                 ViewBag.CaseName = tchRoutine.CaseName;
+                ViewBag.RoutineIntro = tchRoutine.GroupList[tchRoutine.NodeList[node.Row_ID].GroupIdx].RoutineIntro;
                 return View("RoutineStepProgress", tchRoutine);
             }    
         }

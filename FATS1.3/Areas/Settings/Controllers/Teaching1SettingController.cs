@@ -106,6 +106,39 @@ namespace FATS.Areas.Settings.Controllers
                 {
                     dataContainer.TeachingNode.Remove(node);
                 }
+
+                IEnumerable<SubjectItem> subjectItemList = from node in dataContainer.SubjectItem
+                                                     where node.TchRoutineID == teachingRoutineID
+                                                     select node;
+                foreach (SubjectItem item in subjectItemList)
+                {
+                    dataContainer.SubjectItem.Remove(item);
+                }
+
+                IEnumerable<DetailedLedger> detailedLedgerList = from node in dataContainer.DetailedLedger
+                                                           where node.TchRoutineID == teachingRoutineID
+                                                           select node;
+                foreach (DetailedLedger item in detailedLedgerList)
+                {
+                    dataContainer.DetailedLedger.Remove(item);
+                }
+
+                IEnumerable<CustomerLedger> customerLedgerList = from node in dataContainer.CustomerLedger
+                                                           where node.TchRoutineID == teachingRoutineID
+                                                           select node;
+                foreach (CustomerLedger item in customerLedgerList)
+                {
+                    dataContainer.CustomerLedger.Remove(item);
+                }
+
+                IEnumerable<GeneralLedger> generalLedgerList = from node in dataContainer.GeneralLedger
+                                                           where node.TchRoutineID == teachingRoutineID
+                                                           select node;
+                foreach (GeneralLedger item in generalLedgerList)
+                {
+                    dataContainer.GeneralLedger.Remove(item);
+                }
+
                 dataContainer.SaveChanges();
             }
             JsonResult result = new JsonResult();
@@ -147,6 +180,7 @@ namespace FATS.Areas.Settings.Controllers
                                 group.GroupIdx = tchNode.GroupIdx;
                                 group.TchRoutineID = routine.Row_ID;
                                 group.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                group.RoutineIntro = string.Empty;
                                 dataContainer.RoutineGroup.Add(group);
                                 break;
                             }
@@ -191,15 +225,19 @@ namespace FATS.Areas.Settings.Controllers
                                 }
                                 break;
                             }
+
                         default:
                             {
-                                for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                if (tchNode.RelTmpNode.NodeType == "SpecialNode")
                                 {
-                                    SubjectItem info = dataContainer.SubjectItem.Create();
-                                    info.TchNodeID = tchNode.Row_ID;
-                                    info.TchRoutineID = routine.Row_ID;
-                                    info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;                                    
-                                    dataContainer.SubjectItem.Add(info);
+                                    for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                    {
+                                        SubjectItem info = dataContainer.SubjectItem.Create();
+                                        info.TchNodeID = tchNode.Row_ID;
+                                        info.TchRoutineID = routine.Row_ID;
+                                        info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                        dataContainer.SubjectItem.Add(info);
+                                    }
                                 }
                                 break;
                             }
@@ -210,7 +248,9 @@ namespace FATS.Areas.Settings.Controllers
                         #endregion
                     }                    
                 }
-                dataContainer.SaveChanges();
+              
+                    dataContainer.SaveChanges();
+          
 
 
             }
@@ -308,6 +348,7 @@ namespace FATS.Areas.Settings.Controllers
 
         #region routine group text
 
+        //combine text in textList with: 1. ID   2.CaseText   3.CaseIntro    with the splitter: ~
         public ActionResult UpdateGroupText(int tchRoutineID, List<string> textList)
         {
             using (FATContainer dataContainer = new FATContainer())
@@ -317,6 +358,7 @@ namespace FATS.Areas.Settings.Controllers
                     string[] arr = strVar.Split('~');
                     RoutineGroup groupObj = dataContainer.RoutineGroup.Find(Convert.ToInt32(arr[0]));
                     groupObj.GroupText = arr[1];
+                    groupObj.RoutineIntro = arr[2];
                 }
 
                 dataContainer.SaveChanges();

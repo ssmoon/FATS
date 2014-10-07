@@ -3,7 +3,7 @@
 <table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
     <tr>
         <td colspan="6">
-            <div class="billtitle"><span class="bankname">@Model.PayeeBank</span>进账单</div>
+            <div class="billtitle"><span class="bankname">@Model.PayeeBank</span>银行汇票</div>
         </td>
     </tr>
     <tr>
@@ -23,16 +23,16 @@
             @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
         </td>
         <td colspan="3">
-            ￥ @{ FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount) }
+            ￥ @{ FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount); }
         </td>
     </tr>
     <tr>
         <td colspan="3" class="titlecol">
             实际结算金额<br />人民币(大写):
-            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.CloseAmount }); }
         </td>
         <td colspan="3">
-            @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+            @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.CloseAmount }); }
         </td>
     </tr>
     <tr>

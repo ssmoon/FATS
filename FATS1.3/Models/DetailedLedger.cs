@@ -16,7 +16,6 @@ namespace FATS.Models
     {
         public int Row_ID { get; set; }
         public decimal BalanceSum { get; set; }
-        public short BanalceOrient { get; set; }
         public string BalanceAbstract { get; set; }
         public string SubjectName { get; set; }
         public decimal DebitSum { get; set; }
@@ -28,5 +27,6 @@ namespace FATS.Models
         public int TchNodeID { get; set; }
         public string RoutineDesc { get; set; }
         public string BankName { get; set; }
+        public short BalanceOrient { get; set; }
     }
 }

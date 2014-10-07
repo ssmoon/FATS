@@ -20,20 +20,19 @@ var subjectFillerMng = {
             $("#subjectfiller .helparea div[data-idx=" + $("#subjectfiller").attr("data-curr") + "]").slideDown();
         })
         $("#subjectnav").on("click", "button[data-step=auto]", function () {          
-            $("#subjectfiller .panel[data-idx=" + $("#subjectfiller").attr("data-curr") + "] :input[data-correct]").each(function () {
+            $("#subjectfiller .panel[data-idx] :input[data-correct]").each(function () {
                 $(this).val($(this).attr("data-correct"));
             });
             $("#subjectfiller .errorarea").hide();
             $("#subjectfiller .helparea").hide();
             $("#subjectnav").hide();
 
-            if (newSectionIdx == 8) {
-                $("#subjectnav").hide();
+            $("#subjectfiller .panel[data-idx]").show();
                 $("#navbar button[data-step=check]").hide();
                 $("#navbar button[data-step=auto]").hide();
                 $("#navbar").show();
                 navigationT1Mng.checkStatus = 1;
-            }
+          
         })
         $("#subjectnav").on("click", "button[data-step=all]", function () {
             $("#subjectfiller .panel").show();

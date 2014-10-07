@@ -59,9 +59,11 @@
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil">
+      <HintPath>..\packages\Sigil.4.2.2\lib\net40\Sigil.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -148,6 +150,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Comm_CL.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Resources.2-2.designer.cs">
+      <DependentUpon>Resources.2-2.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\T1_DebitTransferCheck_S12.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,6 +178,7 @@
     <Compile Include="Areas\Settings\Controllers\UserMngController.cs" />
     <Compile Include="Areas\Settings\SettingsAreaRegistration.cs" />
     <Compile Include="Areas\Teachings\Controllers\CommonNodeController.cs" />
+    <Compile Include="Areas\Teachings\Controllers\RegisterBookController.cs" />
     <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
     <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Teachings\Models\V_BankDraft.cs" />
@@ -180,6 +188,7 @@
     <Compile Include="Areas\Teachings\Models\V_IncomeBill.cs" />
     <Compile Include="Areas\Teachings\Models\V_TransferCheck.cs" />
     <Compile Include="Areas\Teachings\TeachingsAreaRegistration.cs" />
+    <Compile Include="BusinessObject\Converters\BankDraftConverter.cs" />
     <Compile Include="BusinessObject\Converters\DebitTransferCheckConverter.cs" />
     <Compile Include="BusinessObject\CurrentUser.cs" />
     <Compile Include="BusinessObject\SharedCasePool.cs" />
@@ -317,6 +326,12 @@
     <Content Include="js\jquery.validate.bootstrap.popover.min.js" />
     <Content Include="js\jQuery.Validation.min.js" />
     <Content Include="js\moment-with-langs.min.js" />
+    <Content Include="js\Settings\BankDraft.js" />
+    <Content Include="js\Settings\BankAcceptBill.js" />
+    <Content Include="js\Settings\CollectAccept.js" />
+    <Content Include="js\Settings\EntrustBankPayment.js" />
+    <Content Include="js\Settings\MoneyRemittance.js" />
+    <Content Include="js\Settings\EntrustCorpPayment.js" />
     <Content Include="js\Settings\DebitTransferCheck.js" />
     <Content Include="js\Settings\T1RoutineDetail.js" />
     <Content Include="js\Settings\T1RoutineList.js" />
@@ -463,7 +478,22 @@
     <Content Include="Areas\Teachings\Views\Shared\BusinessProxy.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\EntrustPaymentVoucher.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\TradeAcceptance.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\BankDraft.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\BankAcceptBill.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\CollectAccept.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\MoneyRemittance.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\EntrustCorpPayment.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\EntrustBankPayment.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankDraft_2.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankDraft_12.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankDraft_7.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resources.2-2.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resources.2-2.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

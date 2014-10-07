@@ -1,0 +1,14 @@
+alter table SubjectItem add TempKey int;
+alter table DetailedLedger add TempKey int;
+alter table CustomerLedger add TempKey int;
+alter table GeneralLedger add TempKey int;
+go
+Update SubjectItem set TempKey=Row_ID;
+Update DetailedLedger set TempKey=Row_ID;
+Update CustomerLedger set TempKey=Row_ID;
+Update GeneralLedger set TempKey=Row_ID;
+
+alter table SubjectItem drop COLUMN TempKey ;
+alter table DetailedLedger drop COLUMN TempKey ;
+alter table CustomerLedger drop COLUMN TempKey ;
+alter table GeneralLedger drop COLUMN TempKey ;

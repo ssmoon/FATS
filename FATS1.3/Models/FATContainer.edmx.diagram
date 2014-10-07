@@ -23,7 +23,7 @@
         <EntityTypeShape EntityType="FATSystemModel.CollectAccept" Width="1.5" PointX="10.375" PointY="10.75" />
         <EntityTypeShape EntityType="FATSystemModel.EntrustBankPayment" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="FATSystemModel.EntrustCorpPayment" Width="1.5" PointX="11.375" PointY="5.75" />
-        <EntityTypeShape EntityType="FATSystemModel.MoneyRemittance" Width="1.5" PointX="12.375" PointY="10.75" />
+        <EntityTypeShape EntityType="FATSystemModel.MoneyRemittance" Width="1.5" PointX="12.375" PointY="10.75" IsExpanded="true" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

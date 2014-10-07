@@ -1,16 +1,16 @@
 ﻿@{
-    ViewBag.Title = "转账支票";
+    ViewBag.Title = "银行汇票";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model  FATS.Models.TransferCheck
+@model  FATS.Models.BankDraft
 @section Styles {
     <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/Teachings/SubjectFiller.css")" rel="Stylesheet" type="text/css" />
 }
 
-@section Scripts {   
-    <script type="text/javascript" src="@Url.Content("~/js/Teachings/SubjectFiller.js")" ></script>
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/SubjectFiller.js")"></script>
 }
 <div id="maincontainer">
     <div class="page-header page-header-fix">
@@ -20,8 +20,7 @@
     @Html.HiddenFor(info => info.TchRoutineID)
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
 
-    @{ Html.RenderPartial("TransferCheck", FATS.BusinessObject.Converters.DebitTransferCheckConverter.S1_ToView_TransferCheck(Model)); }
-    @{ Html.RenderPartial("IncomeBill", FATS.BusinessObject.Converters.DebitTransferCheckConverter.S1_ToView_IncomeBill(Model)); }
+    @{ Html.RenderPartial("BankDraft", FATS.BusinessObject.Converters.BankDraftConverter.N7_BankDraft(Model)); }
     @{ Html.RenderAction("SubjectFiller", "CommonNode", new { rid = Model.TchRoutineID, nid = ViewBag.TchNodeID }); }
 </div>
 

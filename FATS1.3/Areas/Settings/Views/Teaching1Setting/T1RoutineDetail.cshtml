@@ -61,9 +61,11 @@
         </dl>
         @foreach (FATS.Models.RoutineGroup group in Model.GroupList.Values)
         {
-            <div class="form-group">
-                <label>@group.RoutineDesc </label>
-                <textarea class="form-control" rows="4" data-key="@group.Row_ID">@group.GroupText</textarea>                
+            <div class="form-group" data-key="@group.Row_ID">
+                <label>@group.RoutineDesc - 流程简介 </label>
+                <textarea class="form-control" rows="3" data-type="intro">@group.RoutineIntro</textarea>
+                <label>@group.RoutineDesc - 案例文字 </label>
+                <textarea class="form-control" rows="3" data-type="text">@group.GroupText</textarea>
             </div>
         }
         <p class="actionbar">

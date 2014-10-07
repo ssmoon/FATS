@@ -73,7 +73,7 @@
                             </td>
                             <td class="debit">&nbsp;</td>
                             <td class="credit">&nbsp;</td>
-                            <td class="balance">@((glInfo.BanalceOrient == 1) ? "借" : "贷")</td>
+                            <td class="balance">@((glInfo.BalanceOrient == 1) ? "借" : "贷")</td>
                             <td class="value">@( FATS.DataDefine.CommFunctions.FormatMoneyToString(glInfo.BalanceSum))</td>
                         </tr>
                         <tr>
@@ -94,7 +94,7 @@
                             <td class="debit">
                                 <div class="form-group checkarea">
                                     <label class="sr-only"></label>
-                                    <input type="text" maxlength="20" placeholder="借方发生" data-correct="@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(glInfo.TimeMark)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_DetailedLedger, "日期错误")" class="form-control" />
+                                    <input type="text" maxlength="20" placeholder="借方发生" data-correct="@FATS.DataDefine.CommFunctions.FormatMoneyToString(glInfo.DebitSum)" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_DetailedLedger, "日期错误")" class="form-control" />
                                     <i class="form-control-feedback" />
                                 </div>
                             </td>
@@ -105,7 +105,7 @@
                                     <i class="form-control-feedback" />
                                 </div>
                             </td>
-                            <td class="balance">@((glInfo.BanalceOrient == 1) ? "借" : "贷")</td>
+                            <td class="balance">@((glInfo.BalanceOrient == 1) ? "借" : "贷")</td>
                             <td class="value">
                                 <div class="form-group checkarea">
                                     <label class="sr-only"></label>

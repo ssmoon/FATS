@@ -36,7 +36,7 @@
     <div class="panel panel-info" data-idx="2">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf5">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf2">
                     第二步：请确定该一级科目下的子级科目
                 </a>
             </h4>
@@ -66,7 +66,7 @@
     <div class="panel panel-info" data-idx="3">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf2">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf3">
                     第三步：请选择科目所属的类型
                 </a>
             </h4>
@@ -96,7 +96,7 @@
     <div class="panel panel-info" data-idx="4">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf3">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf4">
                     第四步：请确定科目余额增减变化的情况
                 </a>
             </h4>
@@ -122,7 +122,7 @@
     <div class="panel panel-info" data-idx="5">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf4">
+                <a data-toggle="collapse" data-parent="#subjectfiller" href="#sf5">
                     第五步：请确定科目的借贷关系
                 </a>
             </h4>
@@ -208,7 +208,7 @@
                                 <div class="col-sm-10">
                                     <select name="NextLedger" class="form-control" data-correct="@subject.NextLedger">
                                         <option value="-1" selected="selected">(请选择)</option>
-                                        <option value="客户分户账">客户分户账</option>
+                                        <option value="分户账">分户账</option>
                                         <option value="明细账">明细账</option>
                                         <option value="现金收入日记账">现金收入日记账</option>
                                         <option value="现金支出日记账">现金支出日记账</option>
@@ -227,13 +227,7 @@
     <div class="alert alert-warning fade in helparea">
         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
         <h4>学习指导</h4>
-        <div data-idx="1">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "一级科目填写提示")</div>
-        <div data-idx="2">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目类型填写提示")</div>
-        <div data-idx="3">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "增减变化填写提示")</div>
-        <div data-idx="4">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "借贷方向填写提示")</div>
-        <div data-idx="5">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "子级科目填写提示")</div>
-        <div data-idx="6">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "科目金额填写提示")</div>
-        <div data-idx="7">@HttpContext.GetGlobalResourceObject(ViewBag.ResourceFile, "下步账簿填写提示")</div>
+        
     </div>
     <div class="alert alert-danger fade in errorarea">
         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>

@@ -53,8 +53,8 @@
         var dataCarrier = new Object();
         dataCarrier.textList = new Array();
 
-        $(".tabcontainer div[data-target=text] textarea").each(function () {
-            dataCarrier.textList.push($(this).attr("data-key") + "~" + $(this).val());
+        $(".tabcontainer div[data-target=text] .form-group").each(function () {
+            dataCarrier.textList.push($(this).attr("data-key") + "~" + $(this).find("[data-type=text]").val() + "~" + $(this).find("[data-type=intro]").val());
         })
 
         dataCarrier.tchRoutineID = $("#hidTchRoutineID").val();
