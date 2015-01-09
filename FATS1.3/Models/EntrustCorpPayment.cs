@@ -27,5 +27,6 @@ namespace FATS.Models
         public int TchRoutineID { get; set; }
         public string TchRoutineTag { get; set; }
         public string SettlementNo { get; set; }
+        public string OuterSubject { get; set; }
     }
 }

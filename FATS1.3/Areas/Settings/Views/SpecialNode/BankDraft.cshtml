@@ -5,37 +5,37 @@
     @Html.HiddenFor(item => item.TchRoutineID)
     @Html.HiddenFor(item => item.Row_ID)
     <div class="form-group">
-        <label for="RemitterName" class="col-xs-2 control-label">出票人全称</label>
+        <label for="RemitterName" class="col-xs-2 control-label">收款人全称</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="RemitterName" name="RemitterName" value="@Model.RemitterName" />
             <span class="help-block" id="h_RemitterName"></span>
         </div>
-        <label for="RemitterAcc" class="col-xs-2 control-label">出票人账号</label>
+        <label for="RemitterAcc" class="col-xs-2 control-label">收款人账号</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="RemitterAcc" name="RemitterAcc" value="@Model.RemitterAcc" />
             <span class="help-block" id="h_RemitterAcc"></span>
         </div>
     </div>
     <div class="form-group">
-        <label for="RemitterBank" class="col-xs-2 control-label">出票人银行</label>
+        <label for="RemitterBank" class="col-xs-2 control-label">收款人银行</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="RemitterBank" name="RemitterBank" value="@Model.RemitterBank" />
         </div>
     </div>
     <div class="form-group">
-        <label for="PayeeName" class="col-xs-2 control-label">收款人全称</label>
+        <label for="PayeeName" class="col-xs-2 control-label">付款人全称</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="PayeeName" name="PayeeName" value="@Model.PayeeName" />
             <span class="help-block" id="h_PayeeName"></span>
         </div>
-        <label for="PayeeAcc" class="col-xs-2 control-label">收款人账号</label>
+        <label for="PayeeAcc" class="col-xs-2 control-label">付款人账号</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="PayeeAcc" name="PayeeAcc" value="@Model.PayeeAcc" />
             <span class="help-block" id="h_PayeeAcc"></span>
         </div>
     </div>
     <div class="form-group">
-        <label for="PayeeBank" class="col-xs-2 control-label">收款人银行</label>
+        <label for="PayeeBank" class="col-xs-2 control-label">付款人银行</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="PayeeBank" name="PayeeBank" value="@Model.PayeeBank" />
         </div>

@@ -44,12 +44,13 @@
 #routineoverview .mainprocess .downconnector { background: url(../../Images/arrow_tobottom.png) no-repeat 105px 2px; height: 90px; } 
 
 #maincontainer { margin-left: 300px;  min-height: 600px; }
-#maincontainer .titlecol { text-align: center; vertical-align: middle; }
+#maincontainer .titlecol { text-align: center; vertical-align: middle;  }
 #maincontainer .checkarea i { position: absolute; }
 #maincontainer .incorrect input { border-color: red; background-image: url(../../) }
 #maincontainer .incorrect i { display: block; color: red; top: 9px; right: 5px; }
 #maincontainer .correct i { display: block; color: green; top: 9px; right: 5px; }
 #maincontainer .checkarea { position: relative; }
+.fullcontainer { margin-left: 0px !important; }
 #fillerstepper { position: fixed; top: 100px; left: 0px; display: none; width: 260px; height: 400px; }
 #fillerstepper .glyphicon { float: right; font-weight: 600; } 
 #fillerstepper .glyphicon-question-sign { color: red; }
@@ -68,3 +69,5 @@
 #subjectcontainer .summary .curr { font-weight: bold; margin-left: 10px; font-size: 16px; }
 #subjectcontainer .summary .hint { margin-left: 20px; color: #666666; }
 #subjectcontainer .alert { margin-top: 20px; }
+
+.noaction { padding: 15px; margin: 30px 0px; }

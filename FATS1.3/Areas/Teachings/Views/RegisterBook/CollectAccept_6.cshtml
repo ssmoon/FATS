@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "CollectAccept_3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model FATS.Models.CollectAccept
+
+@section Styles {
+    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/OuterSubject.css")" rel="Stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/OuterSubject.js")"></script>
+}
+<div id="maincontainer" class="fullcontainer">
+    <div class="page-header page-header-fix">
+        <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
+    </div>
+    @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
+    @Html.HiddenFor(info => info.TchRoutineID)
+    <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
+
+    @{ Html.RenderPartial("OuterSubject", FATS.BusinessObject.Converters.CollectAcceptConverter.N3_OuterSubject(Model)); }
+
+    <table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+        <tr>
+            <td colspan="11">
+                <div class="billtitle">@Model.PayeeBank 托收承付登记薄</div>
+            </td>
+        </tr>
+        <tr class="titlecol">
+            <td style="width: 100px;">日期</td>
+            <td>金额</td>
+            <td>托收人</td>
+            <td>托收人账号</td>
+            <td>托收方银行</td>
+            <td>承付人</td>
+            <td>承付人账号</td>
+            <td>承付方银行</td>
+            <td>结存金额</td>
+            <td style="width: 100px;">承付期满时间</td>
+            <td style="width: 80px;">办理结果</td>
+        </tr>
+        <tr>
+            <td>@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model.CollectDate)</td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@Model.RemitterName" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@Model.RemitterAcc" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@Model.RemitterBank" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@Model.PayeeName" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@Model.PayeeAcc" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@Model.PayeeBank" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group checkarea">
+                    <label class="sr-only"></label>
+                    <input type="text" maxlength="20" placeholder="" data-correct="@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)" data-operror="" class="form-control" />
+                    <i class="form-control-feedback" />
+                </div>
+            </td>
+            <td>
+                @FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model.AcceptDate)
+            </td>
+            <td>
+                待承付
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+@{  Html.RenderPartial("Teaching1Navigator");}

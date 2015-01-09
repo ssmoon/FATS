@@ -33,5 +33,6 @@ body {
 footer { width: 1110px; margin: 30px auto; }
 footer .right { float: right; } 
 
-.billtitle { font-size: 16px; font-weight: normal; text-align: center; color: #414141; }
+.billtitle { font-size: 18px; font-weight: normal; text-align: center; color: #414141; }
 .billtitle .bankname { font-size: 18px; margin-right: 20px;  font-weight: bold; }
+.billtime { text-align: center; color: #666666; }

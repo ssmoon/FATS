@@ -62,9 +62,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Sigil">
-      <HintPath>..\packages\Sigil.4.2.2\lib\net40\Sigil.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -182,12 +179,16 @@
     <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
     <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Teachings\Models\V_BankDraft.cs" />
+    <Compile Include="Areas\Teachings\Models\V_CollectVoucher.cs" />
+    <Compile Include="Areas\Teachings\Models\V_OuterSubject.cs" />
     <Compile Include="Areas\Teachings\Models\V_TradeAcceptance.cs" />
     <Compile Include="Areas\Teachings\Models\V_EntrustPaymentVoucher.cs" />
     <Compile Include="Areas\Teachings\Models\V_BusinessProxy.cs" />
     <Compile Include="Areas\Teachings\Models\V_IncomeBill.cs" />
     <Compile Include="Areas\Teachings\Models\V_TransferCheck.cs" />
     <Compile Include="Areas\Teachings\TeachingsAreaRegistration.cs" />
+    <Compile Include="BusinessObject\Converters\BankAcceptBillConverter.cs" />
+    <Compile Include="BusinessObject\Converters\CollectAcceptConverter.cs" />
     <Compile Include="BusinessObject\Converters\BankDraftConverter.cs" />
     <Compile Include="BusinessObject\Converters\DebitTransferCheckConverter.cs" />
     <Compile Include="BusinessObject\CurrentUser.cs" />
@@ -306,6 +307,7 @@
     <Content Include="css\Teachings\CommonNode.css" />
     <Content Include="css\Teachings\SelectT1Case.css" />
     <Content Include="css\Teachings\SpecialNode.css" />
+    <Content Include="css\Teachings\OuterSubject.css" />
     <Content Include="css\Teachings\SubjectFiller.css" />
     <Content Include="css\Teachings\Teaching1Comm.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -343,6 +345,7 @@
     <Content Include="js\Teachings\Comm_DL.js" />
     <Content Include="js\Teachings\Comm_GL.js" />
     <Content Include="js\Teachings\LedgerShared.js" />
+    <Content Include="js\Teachings\OuterSubject.js" />
     <Content Include="js\Teachings\SelectT1Case.js" />
     <Content Include="js\Teachings\SubjectFiller.js" />
     <Content Include="js\Teachings\Teaching1Comm.js" />
@@ -490,6 +493,18 @@
     <Content Include="Areas\Teachings\Views\SpecialNode\BankDraft_2.cshtml" />
     <Content Include="Areas\Teachings\Views\SpecialNode\BankDraft_12.cshtml" />
     <Content Include="Areas\Teachings\Views\SpecialNode\BankDraft_7.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\CollectAccept_3.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\OuterSubject.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\CollectAccept_6.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\CollectVoucher.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\NeedNoAction.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_2.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_5.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\CollectAccept_11.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\CollectAccept_17.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_8.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_14.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_8.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
   </ItemGroup>
   <ItemGroup>

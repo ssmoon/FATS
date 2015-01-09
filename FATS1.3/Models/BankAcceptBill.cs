@@ -28,5 +28,6 @@ namespace FATS.Models
         public string Purpose { get; set; }
         public int TchRoutineID { get; set; }
         public string TchRoutineTag { get; set; }
+        public string OuterSubject { get; set; }
     }
 }

@@ -63,7 +63,7 @@ namespace FATS.Areas.Teachings.Controllers
 
         #endregion
 
-        #region bank draft
+        #region BankAcceptBill
 
         public ActionResult BankAcceptBill()
         {
@@ -77,14 +77,14 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                
-                return View(tcInfo);
+
+                return View("BankAcceptBill_" + node.Index, tcInfo);
             }
         }
 
         #endregion
 
-        #region bank draft
+        #region MoneyRemittance
 
         public ActionResult MoneyRemittance()
         {
@@ -98,14 +98,14 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                
-                return View(tcInfo);
+
+                return View("MoneyRemittance_" + node.Index, tcInfo);
             }
         }
 
         #endregion
 
-        #region bank draft
+        #region CollectAccept
 
         public ActionResult CollectAccept()
         {
@@ -119,14 +119,14 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                
-                return View(tcInfo);
+
+                return View("CollectAccept_" + node.Index, tcInfo);
             }
         }
 
         #endregion
 
-        #region bank draft
+        #region EntrustCorpPayment
 
         public ActionResult EntrustCorpPayment()
         {
@@ -140,14 +140,14 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                
-                return View(tcInfo);
+
+                return View("EntrustCorpPayment_" + node.Index, tcInfo);
             }
         }
 
         #endregion
 
-        #region bank draft
+        #region EntrustBankPayment
 
         public ActionResult EntrustBankPayment()
         {
@@ -161,8 +161,8 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
                 ViewBag.TchNodeID = node.Row_ID;
-                
-                return View(tcInfo);
+
+                return View("EntrustBankPayment_" + node.Index, tcInfo);
             }
         }
 

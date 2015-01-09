@@ -23,6 +23,7 @@
           <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+          <Property Name="OuterSubject" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="BankDraft">
           <Key>
@@ -62,6 +63,7 @@
           <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+          <Property Name="OuterSubject" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="CustomerLedger">
           <Key>
@@ -124,6 +126,7 @@
           <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+          <Property Name="OuterSubject" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="EntrustCorpPayment">
           <Key>
@@ -142,6 +145,7 @@
           <Property Name="Purpose" Type="nvarchar" MaxLength="50" />
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
+          <Property Name="OuterSubject" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="FATUser">
           <Key>
@@ -555,6 +559,7 @@
           <Property Name="Purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OuterSubject" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BankDraft">
           <Key>
@@ -594,6 +599,7 @@
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SettlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OuterSubject" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="EntrustBankPayment">
           <Key>
@@ -613,6 +619,7 @@
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SettlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OuterSubject" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="EntrustCorpPayment">
           <Key>
@@ -631,6 +638,7 @@
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SettlementNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OuterSubject" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MoneyRemittance">
           <Key>
@@ -863,6 +871,7 @@
           <EntitySetMapping Name="BankAcceptBill">
             <EntityTypeMapping TypeName="FATSystemModel.BankAcceptBill">
               <MappingFragment StoreEntitySet="BankAcceptBill">
+                <ScalarProperty Name="OuterSubject" ColumnName="OuterSubject" />
                 <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
                 <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
                 <ScalarProperty Name="Purpose" ColumnName="Purpose" />
@@ -904,6 +913,7 @@
           <EntitySetMapping Name="CollectAccept">
             <EntityTypeMapping TypeName="FATSystemModel.CollectAccept">
               <MappingFragment StoreEntitySet="CollectAccept">
+                <ScalarProperty Name="OuterSubject" ColumnName="OuterSubject" />
                 <ScalarProperty Name="SettlementNo" ColumnName="SettlementNo" />
                 <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
                 <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
@@ -924,6 +934,7 @@
           <EntitySetMapping Name="EntrustBankPayment">
             <EntityTypeMapping TypeName="FATSystemModel.EntrustBankPayment">
               <MappingFragment StoreEntitySet="EntrustBankPayment">
+                <ScalarProperty Name="OuterSubject" ColumnName="OuterSubject" />
                 <ScalarProperty Name="SettlementNo" ColumnName="SettlementNo" />
                 <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
                 <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
@@ -944,6 +955,7 @@
           <EntitySetMapping Name="EntrustCorpPayment">
             <EntityTypeMapping TypeName="FATSystemModel.EntrustCorpPayment">
               <MappingFragment StoreEntitySet="EntrustCorpPayment">
+                <ScalarProperty Name="OuterSubject" ColumnName="OuterSubject" />
                 <ScalarProperty Name="SettlementNo" ColumnName="SettlementNo" />
                 <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
                 <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
