@@ -201,6 +201,9 @@
     <Compile Include="Models\BankDraft.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CashJournal.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CollectAccept.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -213,6 +216,9 @@
     <Compile Include="DataDefine\ConstDefine.cs" />
     <Compile Include="DataDefine\ResourceFileDefine.cs" />
     <Compile Include="DataDefine\RoutineConstDefine.cs" />
+    <Compile Include="Models\DepositWithdraw.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DetailedLedger.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -350,7 +356,9 @@
     <Content Include="js\Teachings\SubjectFiller.js" />
     <Content Include="js\Teachings\Teaching1Comm.js" />
     <Content Include="js\underscore-min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -506,6 +514,7 @@
     <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_14.cshtml" />
     <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_8.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
+    <Content Include="Views\Home\Import.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\R2-2.resx">
