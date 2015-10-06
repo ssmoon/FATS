@@ -82,6 +82,15 @@
         </div>
 
     </div>
+    <div class="subdata" data-target="cj">
+        <dl>
+            <dt>现金账设置操作指导</dt>
+            <dd>下面是整个教学流程在各个步骤中涉及的现金收入/支出日记账记录，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
+        </dl>
+        <div class="tablecont">
+            <table id="cashjournallist" class="datatable table table-bordered table-striped"></table>
+        </div>
+    </div>
     <div class="subdata" data-target="dl">
         <dl>
             <dt>明细账设置操作指导</dt>
@@ -476,6 +485,74 @@
                         </div>
                     </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" data-act="save">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="pop_CashJournal" tabindex="-1" role="dialog" aria-labelledby="cjModalLabel" aria-hidden="true">
+    <form id="frmCashJournal" class="form-horizontal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="cjModalLabel">编辑现金日记账</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="cj_CashOrient" class="col-xs-2 control-label">账簿类型</label>
+                        <div class="col-xs-3">
+                            <select name="CashOrient" class="form-control" id="cj_CashOrient">
+                                <option value="收入" selected="selected">现金收入日记簿</option>
+                                <option value="支出">现金支出日记簿</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cj_TimeMark" class="col-xs-2 control-label">日期</label>
+                        <div class="col-xs-3">
+                            <div class="input-group date" id="docj_TimeMark" data-date-format="YYYY-MM-DD">
+                                <input type="text" data-valuetype="date" class="form-control" name="TimeMark" id="cj_TimeMark" value="" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon-calendar glyphicon"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <label for="cj_BankName" class="col-xs-2 control-label">银行名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cj_BankName" name="BankName" value="" />
+                            <span class="help-block" id="h_cj_BankName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cj_CounterSubject" class="col-xs-2 control-label">对方科目</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cj_CounterSubject" name="CounterSubject" value="" />
+                            <span class="help-block" id="h_cj_CounterSubject"></span>
+                        </div>
+                        <label for="cj_VoucherNo" class="col-xs-2 control-label">凭证号</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cj_VoucherNo" name="VoucherNo" value="" />
+                            <span class="help-block" id="h_cj_VoucherNo"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cj_MoneyAmount" class="col-xs-2 control-label">金额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cj_MoneyAmount" name="MoneyAmount" value="" />
+                            <span class="help-block" id="h_cj_MoneyAmount"></span>
+                        </div>
+                        <label for="cj_ClientAcc" class="col-xs-2 control-label">客户账号</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="cj_ClientAcc" name="ClientAcc" value="" />
+                            <span class="help-block" id="h_cj_ClientAcc"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal">取消</button>

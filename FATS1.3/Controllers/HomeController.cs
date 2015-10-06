@@ -108,6 +108,7 @@ namespace FATS.Controllers
             var adapter7 = new OleDbDataAdapter("SELECT * FROM [DetailedLedger$]", connectionString);
             var adapter8 = new OleDbDataAdapter("SELECT * FROM [CustomerLedger$]", connectionString);
             var adapter9 = new OleDbDataAdapter("SELECT * FROM [GeneralLedger$]", connectionString);
+            var adapter10 = new OleDbDataAdapter("SELECT * FROM [OuterSubject$]", connectionString);
             var ds = new DataSet();
 
             adapter1.Fill(ds, "TeachingRoutine");
@@ -119,6 +120,7 @@ namespace FATS.Controllers
             adapter7.Fill(ds, "DetailedLedger");
             adapter8.Fill(ds, "CustomerLedger");
             adapter9.Fill(ds, "GeneralLedger");
+            adapter10.Fill(ds, "OuterSubject");
 
             DataTable TeachingRoutine = ds.Tables["TeachingRoutine"];
             DataTable RoutineGroup = ds.Tables["RoutineGroup"];
@@ -129,9 +131,10 @@ namespace FATS.Controllers
             DataTable DetailedLedger = ds.Tables["DetailedLedger"];
             DataTable CustomerLedger = ds.Tables["CustomerLedger"];
             DataTable GeneralLedger = ds.Tables["GeneralLedger"];
+            DataTable OuterSubject = ds.Tables["OuterSubject"];
             using (FATContainer dbContainer = new FATContainer())
             {
-                dbContainer.Database.ExecuteSqlCommand("exec DelTestRoutine @ids", new SqlParameter("@ids", "('10-1', '10-2', '11-1', '11-2', '12-1', '12-2', '12-3', '13-1', '13-2', '13-3')"));
+                dbContainer.Database.ExecuteSqlCommand("exec DelTestRoutine @ids", new SqlParameter("@ids", "('9-1', '9-2', '9-3', '9-4', '10-1', '10-2', '11-1', '11-2', '12-1', '12-2', '12-3', '13-1', '13-2', '13-3')"));
 
                 List<TemplateRoutine> tmpRoutineList = new List<TemplateRoutine>();
                 foreach (DataRow row in TeachingRoutine.Rows)
@@ -176,8 +179,16 @@ namespace FATS.Controllers
 
                 Dictionary<string, TeachingRoutine> templateTeachingRoutineMapper = teachingRList.ToDictionary(n => n.TmpRoutineID);
 
-                List<TeachingNode> teachingNList = tmpNodeList.Select(n => new TeachingNode() { CurrStatus = 0, TmpNodeID = n.Row_ID, RoutineID = templateTeachingRoutineMapper[n.RoutineID].Row_ID }).ToList();
-                dbContainer.TeachingRoutine.AddRange(teachingRList);
+                List<TeachingNode> teachingNList = new List<TeachingNode>();
+                foreach (TemplateNode tmpNode in tmpNodeList)
+                {
+                    TeachingNode teachingNode = dbContainer.TeachingNode.Create();
+                    teachingNode.CurrStatus = 0;
+                    teachingNode.TmpNodeID = tmpNode.Row_ID;
+                    teachingNode.RoutineID = templateTeachingRoutineMapper[tmpNode.RoutineID].Row_ID;
+                    dbContainer.TeachingNode.Add(teachingNode);
+                    teachingNList.Add(teachingNode);
+                }
                 dbContainer.SaveChanges();
 
                 Dictionary<string, TeachingNode> templateTeachingNodeMapper = teachingNList.ToDictionary(n => n.TmpNodeID);
@@ -249,15 +260,36 @@ namespace FATS.Controllers
                 }
                 dbContainer.SaveChanges();
 
+                foreach (DataRow row in OuterSubject.Rows)
+                {
+                    if (row["TchRoutineID"] is DBNull)
+                        continue;
+                    OuterSubject obj = dbContainer.OuterSubject.Create();
+                    obj.TchRoutineID = templateTeachingRoutineMapper[Convert.ToString(row["TchRoutineID"])].Row_ID;
+                    TeachingNode refTeachingNode = templateTeachingNodeMapper[Convert.ToString(row["TchNodeID"])];
+                    obj.TchNodeID = refTeachingNode.Row_ID;
+                    obj.RoutineDesc = groupMapper[obj.TchRoutineID + "-" + templateNodeDict[refTeachingNode.TmpNodeID].GroupIdx].RoutineDesc;
+                    obj.BankName = Convert.ToString(row["BankName"]);
+                    obj.Abstract = Convert.ToString(row["Abstract"]);
+                    obj.ClientAcc = Convert.ToString(row["ClientAcc"]);
+                    obj.SubjectName = Convert.ToString(row["SubjectName"]);
+                    obj.MoneyAmount = row["MoneyAmount"] is DBNull ? 0 : Convert.ToDecimal(row["MoneyAmount"]);
+                    obj.TimeMark = Convert.ToDateTime(row["TimeMark"]);
+                    
+                    dbContainer.OuterSubject.Add(obj);
+                }
+                dbContainer.SaveChanges();
+
                 foreach (DataRow row in CashJournal.Rows)
                 {
                     if (row["TchRoutineID"] is DBNull)
                         continue;
                     CashJournal obj = dbContainer.CashJournal.Create();
                     obj.TchRoutineID = templateTeachingRoutineMapper[Convert.ToString(row["TchRoutineID"])].Row_ID;
-                    TeachingNode refTeachingNode = templateTeachingNodeMapper[Convert.ToString(row["TchNodeID"])];
+                    TeachingNode refTeachingNode = templateTeachingNodeMapper[Convert.ToString(row["TchNodeID"])];                   
                     obj.TchNodeID = refTeachingNode.Row_ID;
                     obj.RoutineDesc = groupMapper[obj.TchRoutineID + "-" + templateNodeDict[refTeachingNode.TmpNodeID].GroupIdx].RoutineDesc;
+                    obj.BankName = Convert.ToString(row["BankName"]);
                     obj.CashOrient = Convert.ToString(row["CashOrient"]);
                     obj.ClientAcc = Convert.ToString(row["ClientAcc"]);
                     obj.CounterSubject = Convert.ToString(row["CounterSubject"]);

@@ -91,6 +91,8 @@
     routineDataMng.initGeneralLedgerData();
     routineDataMng.initCustomerLedgerEvent();
     routineDataMng.initCustomerLedgerData();
+    routineDataMng.initCashJournalEvent();
+    routineDataMng.initCashJournalData();
 })
 
 var routineDataMng = {
@@ -663,6 +665,120 @@ var routineDataMng = {
                     routineDataMng.currentRowData = routineDataMng.customerLedgerTable.fnGetData(aPos);
                     $('#pop_CustomerLedger').modal('show');
                     siteUtils.TryAutoFillControl(routineDataMng.currentRowData, "pop_CustomerLedger");
+                })
+            }
+        });
+    },
+
+    initCashJournalEvent: function () {
+        $('#frmCashJournal .date').datetimepicker({ language: 'zh-CN', pickTime: false }).on('dp.change dp.show', function (e) {
+            $('#frmCashJournal')
+                .data('bootstrapValidator')
+                .updateStatus($(this).find("input").prop("name"), 'NOT_VALIDATED', null)
+                .validateField($(this).find("input").prop("name"));
+        });
+        $('#frmCashJournal').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                CounterSubject: {
+                    container: "#h_cj_CounterSubject",
+                    validators: {
+                        notEmpty: {
+                            message: '请填写对方科目名称'
+                        }
+                    }
+                },
+                MoneyAmount: {
+                    validators: {
+                        container: "#h_cj_MoneyAmount",
+                        notEmpty: {
+                            message: '请填写金额'
+                        },
+                        between: {
+                            min: 0,
+                            max: 1000000000,
+                            message: '金额必须在 0 与 1,000,000,000之间'
+                        }
+                    }
+                }
+            }
+        });
+        $('#pop_CashJournal').on("click", "button[data-act=save]", function () {
+            $("#frmCashJournal").bootstrapValidator('validate');
+            if (!$("#frmCashJournal").data('bootstrapValidator').isValid())
+                return;
+            siteUtils.prepareSave($("#frmCashJournal button[data-act=save]"));
+
+            routineDataMng.currentRowData = siteUtils.SerializeFormObjsFrom($("#frmCashJournal :input").serializeArray(), routineDataMng.currentRowData);
+            var dataCarrier = new Object();
+            dataCarrier.info = routineDataMng.currentRowData;
+            $.ajax({
+                type: "POST",
+                url: "/Settings/CommonNode/CashJournal_Update",
+                data: JSON.stringify(dataCarrier),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+                    siteUtils.showSaveSuccess($("#frmCashJournal button[data-act=save]"));
+                    setTimeout(function () {
+                        $("#pop_CashJournal").modal('hide');
+                        routineDataMng.cashJournalTable.fnReloadAjax();
+                    }, 1000);
+                },
+                error: function (ex) {
+
+                }
+            });
+        });
+    },
+
+    initCashJournalData: function () {
+        routineDataMng.cashJournalTable = $('#cashjournallist').dataTable({
+            "bSort": false,
+            "bInfo": false,
+            "bFilter": false,
+            "bLengthChange": false,
+            "bPaginate": false,
+            "bProcessing": true,
+            "sAjaxSource": "/Settings/CommonNode/CashJournal_List",
+            "fnServerData": function (sSource, aoData, fnCallback) {
+                aoData = { tRoutineID: routineDataMng.tchRoutineID },
+                $.ajax({
+                    "dataType": 'json',
+                    "type": "POST",
+                    "url": sSource,
+                    "data": aoData,
+                    "success": fnCallback
+                })
+            },
+            "aoColumns": [
+                { "sTitle": "所属步骤", "mData": "RoutineDesc" },
+                { "sTitle": "账目类别", "mData": "CashOrient" },
+                {
+                    "sTitle": "科目名称", "mData": "CounterSubject", "mRender": function (data, type, row) {
+                        if ((data == "") || (data == null))
+                            return "<span class='text-danger'>(未设置)</span>";
+                        else return data;
+                    }
+                },                
+                { "sTitle": "银行名称", "mData": "BankName" },
+                { "sTitle": "金额", "mData": "MoneyAmount" },                
+                {
+                    "sTitle": "操作", "mData": "Row_ID", "mRender": function (data, type, row) {
+                        return "<a href='javascript:void(0)' data-act='edit'>编辑</a>";
+                    }
+                }
+            ],
+            "fnDrawCallback": function (oSettings) {
+                $("#cashjournallist a[data-act=edit]").off().on("click", function () {
+                    var aPos = routineDataMng.cashJournalTable.fnGetPosition($(this).closest('tr').get(0));
+                    routineDataMng.currentRowData = routineDataMng.cashJournalTable.fnGetData(aPos);
+                    $('#pop_CashJournal').modal('show');
+                    siteUtils.TryAutoFillControl(routineDataMng.currentRowData, "pop_CashJournal");
                 })
             }
         });

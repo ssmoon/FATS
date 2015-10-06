@@ -260,6 +260,9 @@
     <Compile Include="Models\MoneyRemittance.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OuterSubject.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PartialObjs\FATUser.cs" />
     <Compile Include="Models\PartialObjs\StudentActivity.cs" />
     <Compile Include="Models\PartialObjs\TeachingNode.cs" />
@@ -513,6 +516,7 @@
     <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_8.cshtml" />
     <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_14.cshtml" />
     <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_8.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\CashJournal.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
     <Content Include="Views\Home\Import.cshtml" />
   </ItemGroup>

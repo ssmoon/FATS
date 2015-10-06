@@ -285,5 +285,83 @@ namespace FATS.Areas.Settings.Controllers
 
         #endregion
 
+        #region Cash Journal 
+
+        public ActionResult CashJournal_Init()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                CashJournal cjInfo = dataContainer.CashJournal.Create();
+                cjInfo.TchNodeID = Convert.ToInt32(RouteData.Values["id"]);
+                TeachingNode tchNode = dataContainer.TeachingNode.FirstOrDefault(node => node.Row_ID == cjInfo.TchNodeID);
+                cjInfo.TchRoutineID = tchNode.RoutineID;
+                return View(cjInfo);
+            }
+        }
+
+        public ActionResult CashJournal_List(int tRoutineID)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                JsonResult result = new JsonResult();
+                result.Data = CommFunctions.WrapClientGridData(dataContainer.CashJournal.Where(item => item.TchRoutineID == tRoutineID).OrderBy(item => item.RoutineDesc).ToList());
+                return result;
+            }
+        }
+
+        public ActionResult CashJournal_Insert(CashJournal info)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                dataContainer.CashJournal.Add(info);
+                dataContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = info;
+                return result;
+            }
+        }
+
+        public ActionResult CashJournal_Delete(int glRowID)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                CashJournal cjInfo = dataContainer.CashJournal.FirstOrDefault(item => item.Row_ID == glRowID);
+                dataContainer.CashJournal.Remove(cjInfo);
+                dataContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = string.Empty;
+                return result;
+            }
+        }
+
+        public ActionResult CashJournal_Update(CashJournal info)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                CashJournal existedInfo = dataContainer.CashJournal.FirstOrDefault(item => item.Row_ID == info.Row_ID);
+                dataContainer.Entry<CashJournal>(existedInfo).CurrentValues.SetValues(info);
+                dataContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = info;
+                return result;
+            }
+        }
+
+        public ActionResult CashJournal_GetTemplate()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                JsonResult result = new JsonResult();
+                CashJournal cjInfo = dataContainer.CashJournal.Create();
+                cjInfo.TimeMark = DateTime.Now;
+                result.Data = cjInfo;
+                return result;
+            }
+        }
+        #endregion
+
     }
 }

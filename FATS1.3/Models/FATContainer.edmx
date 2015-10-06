@@ -59,6 +59,7 @@
           <Property Name="CashOrient" Type="varchar" MaxLength="5" />
           <Property Name="ClientAcc" Type="varchar" MaxLength="30" />
           <Property Name="RoutineDesc" Type="varchar" MaxLength="40" />
+          <Property Name="BankName" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CollectAccept">
           <Key>
@@ -241,6 +242,21 @@
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="OuterSubject">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TchRoutineID" Type="int" Nullable="false" />
+          <Property Name="TchNodeID" Type="int" Nullable="false" />
+          <Property Name="RoutineDesc" Type="varchar" MaxLength="100" />
+          <Property Name="TimeMark" Type="datetime" Nullable="false" />
+          <Property Name="ClientAcc" Type="varchar" MaxLength="30" />
+          <Property Name="Abstract" Type="varchar" MaxLength="30" />
+          <Property Name="MoneyAmount" Type="money" Nullable="false" />
+          <Property Name="SubjectName" Type="varchar" MaxLength="30" />
+          <Property Name="BankName" Type="varchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="RoutineGroup">
           <Key>
             <PropertyRef Name="Row_ID" />
@@ -363,6 +379,7 @@
           <EntitySet Name="FATUserGroup" EntityType="Self.FATUserGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralLedger" EntityType="Self.GeneralLedger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MoneyRemittance" EntityType="Self.MoneyRemittance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OuterSubject" EntityType="Self.OuterSubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoutineGroup" EntityType="Self.RoutineGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentActivity" EntityType="Self.StudentActivity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubjectItem" EntityType="Self.SubjectItem" Schema="dbo" store:Type="Tables" />
@@ -400,6 +417,7 @@
           <EntitySet Name="UserErrorHint" EntityType="FATSystemModel.UserErrorHint" />
           <EntitySet Name="DepositWithdraw" EntityType="FATSystemModel.DepositWithdraw" />
           <EntitySet Name="CashJournal" EntityType="FATSystemModel.CashJournal" />
+          <EntitySet Name="OuterSubject" EntityType="FATSystemModel.OuterSubject" />
           </EntityContainer>
         <EntityType Name="CustomerLedger">
           <Key>
@@ -744,6 +762,22 @@
           <Property Name="CashOrient" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="ClientAcc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="RoutineDesc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OuterSubject">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
+          <Property Name="TchNodeID" Type="Int32" Nullable="false" />
+          <Property Name="RoutineDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TimeMark" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientAcc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Abstract" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MoneyAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1104,6 +1138,7 @@
           <EntitySetMapping Name="CashJournal">
             <EntityTypeMapping TypeName="FATSystemModel.CashJournal">
               <MappingFragment StoreEntitySet="CashJournal">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="RoutineDesc" ColumnName="RoutineDesc" />
                 <ScalarProperty Name="ClientAcc" ColumnName="ClientAcc" />
                 <ScalarProperty Name="CashOrient" ColumnName="CashOrient" />
@@ -1111,6 +1146,22 @@
                 <ScalarProperty Name="TimeMark" ColumnName="TimeMark" />
                 <ScalarProperty Name="CounterSubject" ColumnName="CounterSubject" />
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="TchNodeID" ColumnName="TchNodeID" />
+                <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OuterSubject">
+            <EntityTypeMapping TypeName="FATSystemModel.OuterSubject">
+              <MappingFragment StoreEntitySet="OuterSubject">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="MoneyAmount" ColumnName="MoneyAmount" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="ClientAcc" ColumnName="ClientAcc" />
+                <ScalarProperty Name="TimeMark" ColumnName="TimeMark" />
+                <ScalarProperty Name="RoutineDesc" ColumnName="RoutineDesc" />
                 <ScalarProperty Name="TchNodeID" ColumnName="TchNodeID" />
                 <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
                 <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />

@@ -47,5 +47,6 @@ namespace FATS.Models
         public DbSet<UserErrorHint> UserErrorHint { get; set; }
         public DbSet<DepositWithdraw> DepositWithdraw { get; set; }
         public DbSet<CashJournal> CashJournal { get; set; }
+        public DbSet<OuterSubject> OuterSubject { get; set; }
     }
 }

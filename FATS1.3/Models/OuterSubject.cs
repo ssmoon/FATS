@@ -12,18 +12,17 @@ namespace FATS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CashJournal
+    public partial class OuterSubject
     {
         public int Row_ID { get; set; }
         public int TchRoutineID { get; set; }
         public int TchNodeID { get; set; }
-        public string VoucherNo { get; set; }
-        public string CounterSubject { get; set; }
-        public System.DateTime TimeMark { get; set; }
-        public Nullable<decimal> MoneyAmount { get; set; }
-        public string CashOrient { get; set; }
-        public string ClientAcc { get; set; }
         public string RoutineDesc { get; set; }
+        public System.DateTime TimeMark { get; set; }
+        public string ClientAcc { get; set; }
+        public string Abstract { get; set; }
+        public decimal MoneyAmount { get; set; }
+        public string SubjectName { get; set; }
         public string BankName { get; set; }
     }
 }
