@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "转账支票";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model   FATS.Areas.Teachings.Models.V_IndividualDeposit
+@section Styles {
+    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/Teachings/SubjectFiller.css")" rel="Stylesheet" type="text/css" />
+}
+
+@section Scripts {   
+    <script type="text/javascript" src="@Url.Content("~/js/Teachings/SubjectFiller.js")" ></script>
+}
+<div id="maincontainer">
+    <div class="page-header page-header-fix">
+        <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
+    </div>
+    @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
+    <input type="hidden" id="TchRoutineID" value="@ViewBag.TchRoutineID" />
+    <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
+
+    @{ Html.RenderPartial("V_IndividualDeposit", Model); }
+    @{ Html.RenderAction("SubjectFiller", "CommonNode", new { rid = ViewBag.TchRoutineID, nid = ViewBag.TchNodeID }); }
+</div>
+
+@{  Html.RenderPartial("Teaching1Navigator");}

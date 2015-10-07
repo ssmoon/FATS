@@ -363,5 +363,83 @@ namespace FATS.Areas.Settings.Controllers
         }
         #endregion
 
+        #region Outer Subject
+
+        public ActionResult OuterSubject_Init()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                OuterSubject osInfo = dataContainer.OuterSubject.Create();
+                osInfo.TchNodeID = Convert.ToInt32(RouteData.Values["id"]);
+                TeachingNode tchNode = dataContainer.TeachingNode.FirstOrDefault(node => node.Row_ID == osInfo.TchNodeID);
+                osInfo.TchRoutineID = tchNode.RoutineID;
+                return View(osInfo);
+            }
+        }
+
+        public ActionResult OuterSubject_List(int tRoutineID)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                JsonResult result = new JsonResult();
+                result.Data = CommFunctions.WrapClientGridData(dataContainer.OuterSubject.Where(item => item.TchRoutineID == tRoutineID).OrderBy(item => item.RoutineDesc).ToList());
+                return result;
+            }
+        }
+
+        public ActionResult OuterSubject_Insert(OuterSubject info)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                dataContainer.OuterSubject.Add(info);
+                dataContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = info;
+                return result;
+            }
+        }
+
+        public ActionResult OuterSubject_Delete(int glRowID)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                OuterSubject osInfo = dataContainer.OuterSubject.FirstOrDefault(item => item.Row_ID == glRowID);
+                dataContainer.OuterSubject.Remove(osInfo);
+                dataContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = string.Empty;
+                return result;
+            }
+        }
+
+        public ActionResult OuterSubject_Update(OuterSubject info)
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                OuterSubject existedInfo = dataContainer.OuterSubject.FirstOrDefault(item => item.Row_ID == info.Row_ID);
+                dataContainer.Entry<OuterSubject>(existedInfo).CurrentValues.SetValues(info);
+                dataContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = info;
+                return result;
+            }
+        }
+
+        public ActionResult OuterSubject_GetTemplate()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                JsonResult result = new JsonResult();
+                OuterSubject osInfo = dataContainer.OuterSubject.Create();
+                osInfo.TimeMark = DateTime.Now;
+                result.Data = osInfo;
+                return result;
+            }
+        }
+        #endregion
+
     }
 }

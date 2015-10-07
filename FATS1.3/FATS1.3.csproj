@@ -180,17 +180,21 @@
     <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Teachings\Models\V_BankDraft.cs" />
     <Compile Include="Areas\Teachings\Models\V_CollectVoucher.cs" />
+    <Compile Include="Areas\Teachings\Models\V_IndividualWithdraw.cs" />
+    <Compile Include="Areas\Teachings\Models\V_InterestVoucher.cs" />
     <Compile Include="Areas\Teachings\Models\V_OuterSubject.cs" />
     <Compile Include="Areas\Teachings\Models\V_TradeAcceptance.cs" />
     <Compile Include="Areas\Teachings\Models\V_EntrustPaymentVoucher.cs" />
     <Compile Include="Areas\Teachings\Models\V_BusinessProxy.cs" />
     <Compile Include="Areas\Teachings\Models\V_IncomeBill.cs" />
+    <Compile Include="Areas\Teachings\Models\V_IndividualDeposit.cs" />
     <Compile Include="Areas\Teachings\Models\V_TransferCheck.cs" />
     <Compile Include="Areas\Teachings\TeachingsAreaRegistration.cs" />
     <Compile Include="BusinessObject\Converters\BankAcceptBillConverter.cs" />
     <Compile Include="BusinessObject\Converters\CollectAcceptConverter.cs" />
     <Compile Include="BusinessObject\Converters\BankDraftConverter.cs" />
     <Compile Include="BusinessObject\Converters\DebitTransferCheckConverter.cs" />
+    <Compile Include="BusinessObject\Converters\IndividualSavingConverter.cs" />
     <Compile Include="BusinessObject\CurrentUser.cs" />
     <Compile Include="BusinessObject\SharedCasePool.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -344,6 +348,7 @@
     <Content Include="js\Settings\BankAcceptBill.js" />
     <Content Include="js\Settings\CollectAccept.js" />
     <Content Include="js\Settings\EntrustBankPayment.js" />
+    <Content Include="js\Settings\IndividualSaving.js" />
     <Content Include="js\Settings\MoneyRemittance.js" />
     <Content Include="js\Settings\EntrustCorpPayment.js" />
     <Content Include="js\Settings\DebitTransferCheck.js" />
@@ -517,6 +522,12 @@
     <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_14.cshtml" />
     <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_8.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\CashJournal.cshtml" />
+    <Content Include="Areas\Teachings\Views\CommonNode\OuterSubject.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\IndividualDeposit.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\InterestVoucher.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\IndividualWithdraw.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\IndividualDeposit.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\DepositWithdraw.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
     <Content Include="Views\Home\Import.cshtml" />
   </ItemGroup>

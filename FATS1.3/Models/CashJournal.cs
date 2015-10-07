@@ -20,7 +20,7 @@ namespace FATS.Models
         public string VoucherNo { get; set; }
         public string CounterSubject { get; set; }
         public System.DateTime TimeMark { get; set; }
-        public Nullable<decimal> MoneyAmount { get; set; }
+        public decimal MoneyAmount { get; set; }
         public string CashOrient { get; set; }
         public string ClientAcc { get; set; }
         public string RoutineDesc { get; set; }

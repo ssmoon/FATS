@@ -55,7 +55,7 @@
           <Property Name="VoucherNo" Type="varchar" MaxLength="20" />
           <Property Name="CounterSubject" Type="varchar" MaxLength="20" />
           <Property Name="TimeMark" Type="datetime" Nullable="false" />
-          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CashOrient" Type="varchar" MaxLength="5" />
           <Property Name="ClientAcc" Type="varchar" MaxLength="30" />
           <Property Name="RoutineDesc" Type="varchar" MaxLength="40" />
@@ -115,9 +115,9 @@
           <Property Name="BankName" Type="varchar" MaxLength="20" />
           <Property Name="WithdrawTime" Type="datetime" />
           <Property Name="WithdrawClient" Type="varchar" MaxLength="20" />
-          <Property Name="SettleInterestClient" Type="varchar" MaxLength="20" />
+          <Property Name="InterestClient" Type="varchar" MaxLength="20" />
           <Property Name="AccountCreateTime" Type="datetime" />
-          <Property Name="OccurTime" Type="datetime" />
+          <Property Name="InterestTime" Type="datetime" />
           <Property Name="VoucherNo" Type="varchar" MaxLength="20" />
           <Property Name="InterestAmount" Type="money" />
           <Property Name="EntryAmount" Type="money" />
@@ -125,6 +125,7 @@
           <Property Name="TchRoutineID" Type="int" Nullable="false" />
           <Property Name="TchRoutineTag" Type="varchar" MaxLength="10" />
           <Property Name="ClientName" Type="varchar" MaxLength="20" />
+          <Property Name="DepositPeriod" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="DetailedLedger">
           <Key>
@@ -738,15 +739,16 @@
           <Property Name="WithdrawTime" Type="DateTime" Precision="3" />
           <Property Name="WithdrawClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="AccountCreateTime" Type="DateTime" Precision="3" />
-          <Property Name="OccurTime" Type="DateTime" Precision="3" />
           <Property Name="VoucherNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="InterestAmount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="EntryAmount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="ClientAcc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="SettleInterestClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TchRoutineID" Type="Int32" Nullable="false" />
           <Property Name="TchRoutineTag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ClientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DepositPeriod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InterestTime" Type="DateTime" Precision="3" />
+          <Property Name="InterestClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CashJournal">
           <Key>
@@ -758,7 +760,7 @@
           <Property Name="VoucherNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CounterSubject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TimeMark" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="MoneyAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MoneyAmount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CashOrient" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="ClientAcc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="RoutineDesc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
@@ -1116,15 +1118,16 @@
           <EntitySetMapping Name="DepositWithdraw">
             <EntityTypeMapping TypeName="FATSystemModel.DepositWithdraw">
               <MappingFragment StoreEntitySet="DepositWithdraw">
+                <ScalarProperty Name="InterestClient" ColumnName="InterestClient" />
+                <ScalarProperty Name="InterestTime" ColumnName="InterestTime" />
+                <ScalarProperty Name="DepositPeriod" ColumnName="DepositPeriod" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
                 <ScalarProperty Name="TchRoutineTag" ColumnName="TchRoutineTag" />
                 <ScalarProperty Name="TchRoutineID" ColumnName="TchRoutineID" />
-                <ScalarProperty Name="SettleInterestClient" ColumnName="SettleInterestClient" />
                 <ScalarProperty Name="ClientAcc" ColumnName="ClientAcc" />
                 <ScalarProperty Name="EntryAmount" ColumnName="EntryAmount" />
                 <ScalarProperty Name="InterestAmount" ColumnName="InterestAmount" />
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
-                <ScalarProperty Name="OccurTime" ColumnName="OccurTime" />
                 <ScalarProperty Name="AccountCreateTime" ColumnName="AccountCreateTime" />
                 <ScalarProperty Name="WithdrawClient" ColumnName="WithdrawClient" />
                 <ScalarProperty Name="WithdrawTime" ColumnName="WithdrawTime" />

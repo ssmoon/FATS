@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Reflection;
 
 using FATS.Models;
 using FATS.DataDefine;
@@ -163,6 +164,79 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.TchNodeID = node.Row_ID;
 
                 return View("EntrustBankPayment_" + node.Index, tcInfo);
+            }
+        }
+
+        #endregion
+
+        #region Individual Saving
+
+        public ActionResult IndividualDeposit()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+                TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
+                DepositWithdraw targetObj = dataContainer.DepositWithdraw.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
+                ViewBag.TchNodeID = node.Row_ID;
+                ViewBag.TchRoutineID = routine.Row_ID;
+                                
+                Type type = Type.GetType("FATS.BusinessObject.Converters.IndividualDepositConverter");
+                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.Static);
+
+                V_IndividualDeposit modalInfo = (V_IndividualDeposit)method.Invoke(null, new Object[] { targetObj });
+
+                return View(modalInfo);
+            }
+        }
+
+        public ActionResult IndividualWithdraw()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+                TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
+                DepositWithdraw targetObj = dataContainer.DepositWithdraw.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
+                ViewBag.TchNodeID = node.Row_ID;
+                ViewBag.TchRoutineID = routine.Row_ID;
+
+                Type type = Type.GetType("FATS.BusinessObject.Converters.IndividualWithdrawConverter");
+                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.Static);
+
+                V_IndividualWithdraw modalInfo = (V_IndividualWithdraw)method.Invoke(null, new Object[] { targetObj });
+
+                return View(modalInfo);
+            }
+        }
+
+        public ActionResult InterestVoucher()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+                TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
+                DepositWithdraw targetObj = dataContainer.DepositWithdraw.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
+                ViewBag.TchNodeID = node.Row_ID;
+                ViewBag.TchRoutineID = routine.Row_ID;
+
+                Type type = Type.GetType("FATS.BusinessObject.Converters.InterestVoucherConverter");
+                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.Static);
+
+                V_InterestVoucher modalInfo = (V_InterestVoucher)method.Invoke(null, new Object[] { targetObj });
+
+                return View(modalInfo);
             }
         }
 

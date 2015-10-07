@@ -21,14 +21,15 @@ namespace FATS.Models
         public Nullable<System.DateTime> WithdrawTime { get; set; }
         public string WithdrawClient { get; set; }
         public Nullable<System.DateTime> AccountCreateTime { get; set; }
-        public Nullable<System.DateTime> OccurTime { get; set; }
         public string VoucherNo { get; set; }
         public Nullable<decimal> InterestAmount { get; set; }
         public Nullable<decimal> EntryAmount { get; set; }
         public string ClientAcc { get; set; }
-        public string SettleInterestClient { get; set; }
         public int TchRoutineID { get; set; }
         public string TchRoutineTag { get; set; }
         public string ClientName { get; set; }
+        public string DepositPeriod { get; set; }
+        public Nullable<System.DateTime> InterestTime { get; set; }
+        public string InterestClient { get; set; }
     }
 }

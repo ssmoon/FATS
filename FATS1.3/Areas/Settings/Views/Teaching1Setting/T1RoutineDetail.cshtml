@@ -50,8 +50,8 @@
 </ul>
 
 <div class="tabcontainer">
-    <div class="subdata" data-target="basic" style="display: block" data-rtag="@Model.RelTmpRoutine.RoutineTag">
-        @{  Html.RenderAction("Init" + Model.RelTmpRoutine.RoutineTag + "Data", "SpecialNode", new { tchRoutineID = Model.Row_ID }); }
+    <div class="subdata" data-target="basic" style="display: block" data-rtag="@Model.RelTmpRoutine.RoutineTag">    
+        @{  Html.RenderAction("Init" + (Model.RelTmpRoutine.RoutineTag.StartsWith("DW") ? "IndividualSaving" : Model.RelTmpRoutine.RoutineTag) + "Data", "SpecialNode", new { tchRoutineID = Model.Row_ID }); }
 
     </div>
     <div class="subdata" data-target="text">
@@ -89,6 +89,15 @@
         </dl>
         <div class="tablecont">
             <table id="cashjournallist" class="datatable table table-bordered table-striped"></table>
+        </div>
+    </div>
+    <div class="subdata" data-target="os">
+        <dl>
+            <dt>表外科目设置操作指导</dt>
+            <dd>下面是整个教学流程在各个步骤中涉及的表外科目，请逐一填写需要的数据，系统会根据这些数据生成智能化的引导步骤，以分步指导学生的操作。</dd>
+        </dl>
+        <div class="tablecont">
+            <table id="outersubjectlist" class="datatable table table-bordered table-striped"></table>
         </div>
     </div>
     <div class="subdata" data-target="dl">
@@ -551,6 +560,60 @@
                         <div class="col-xs-3">
                             <input type="text" class="form-control" id="cj_ClientAcc" name="ClientAcc" value="" />
                             <span class="help-block" id="h_cj_ClientAcc"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button class="btn btn-primary" data-act="save">保存</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="pop_OuterSubject" tabindex="-1" role="dialog" aria-labelledby="cjModalLabel" aria-hidden="true">
+    <form id="frmOuterSubject" class="form-horizontal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="cjModalLabel">表外科目</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="os_TimeMark" class="col-xs-2 control-label">日期</label>
+                        <div class="col-xs-3">
+                            <div class="input-group date" id="doos_TimeMark" data-date-format="YYYY-MM-DD">
+                                <input type="text" data-valuetype="date" class="form-control" name="TimeMark" id="os_TimeMark" value="" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon-calendar glyphicon"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <label for="os_BankName" class="col-xs-2 control-label">银行名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="os_BankName" name="BankName" value="" />
+                            <span class="help-block" id="h_os_BankName"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="os_SubjectName" class="col-xs-2 control-label">科目名称</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="os_SubjectName" name="SubjectName" value="" />
+                            <span class="help-block" id="h_os_SubjectName"></span>
+                        </div>
+                        <label for="os_ClientAcc" class="col-xs-2 control-label">客户账号</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="os_ClientAcc" name="ClientAcc" value="" />
+                            <span class="help-block" id="h_os_ClientAcc"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="os_MoneyAmount" class="col-xs-2 control-label">金额</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" id="os_MoneyAmount" name="MoneyAmount" value="" />
+                            <span class="help-block" id="h_os_MoneyAmount"></span>
                         </div>
                     </div>
                 </div>

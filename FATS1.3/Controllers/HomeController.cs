@@ -220,7 +220,7 @@ namespace FATS.Controllers
                     DepositWithdraw obj = dbContainer.DepositWithdraw.Create();
                     obj.TchRoutineID = templateTeachingRoutineMapper[Convert.ToString(row["TchRoutineID"])].Row_ID;
                     obj.TchRoutineTag = string.Empty;
-                    obj.OccurTime = Convert.ToDateTime(row["OccurTime"]);
+                    obj.InterestTime = Convert.ToDateTime(row["InterestTime"]);
                     obj.AccountCreateTime = Convert.ToDateTime(row["AccountCreateTime"]);
                     obj.DepositTime = Convert.ToDateTime(row["DepositTime"]);
                     obj.WithdrawTime = Convert.ToDateTime(row["WithdrawTime"]);
@@ -230,7 +230,7 @@ namespace FATS.Controllers
                     obj.DepositClient = Convert.ToString(row["DepositClient"]);
                     obj.WithdrawClient = Convert.ToString(row["WithdrawClient"]);
                     obj.BankName = Convert.ToString(row["BankName"]);
-                    obj.SettleInterestClient = Convert.ToString(row["SettleInterestClient"]);
+                    obj.InterestClient = Convert.ToString(row["InterestClient"]);
                     obj.VoucherNo = Convert.ToString(row["VoucherNo"]);
                     
                     dbContainer.DepositWithdraw.Add(obj);

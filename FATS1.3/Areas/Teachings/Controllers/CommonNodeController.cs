@@ -121,6 +121,27 @@ namespace FATS.Areas.Teachings.Controllers
 
         #endregion
 
+        #region outer subject
+
+        [HttpGet]
+        public ActionResult OuterSubject()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                TeachingNode node = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"]));
+
+                List<OuterSubject> osList = dataContainer.OuterSubject.Where(info => (info.TchNodeID == node.Row_ID) && (info.TchRoutineID == node.RoutineID)).ToList();
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID);
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                node = routine.FindNode(node.Row_ID);
+                ViewBag.NodeName = node.NodeName;
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                return View(osList);
+            }
+        }
+
+        #endregion
+
         #region subject filler 
         public ActionResult SubjectFiller()
         {

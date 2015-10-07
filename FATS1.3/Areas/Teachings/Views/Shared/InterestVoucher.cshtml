@@ -1,0 +1,36 @@
+﻿@model FATS.Areas.Teachings.Models.V_InterestVoucher
+
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+    <tr>
+        <td colspan="7">
+            <div class="billtitle"><span class="bankname">@Model.BankName</span>利息凭证</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7">
+            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.TimeMark); }
+        </td>
+    </tr>    
+    <tr>
+        <td colspan="2" class="titlecol">
+            账号
+        </td>
+        <td colspan="2">
+            摘要
+        </td>
+        <td colspan="2">
+            金额
+        </td>
+    </tr>    
+    <tr>
+        <td colspan="2" class="titlecol">
+            @Model.ClientAcc
+        </td>
+        <td colspan="2">
+            @Model.Abstract
+        </td>
+        <td colspan="2">
+            @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)
+        </td>
+    </tr>    
+</table>

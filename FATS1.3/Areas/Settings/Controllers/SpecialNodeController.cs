@@ -273,5 +273,49 @@ namespace FATS.Areas.Settings.Controllers
             }
         }
         #endregion
+
+        #region individual saving 
+
+        public ActionResult InitIndividualSavingData()
+        {
+             using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = Convert.ToInt32(RouteData.Values["tchRoutineID"]);
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+
+                //all tags: DWHQ_Deposit DWHQ_Withdraw DWHQ_Interest DWHQ_Clear DWZZ_Deposit DWZZ_Withdraw DWLZ_Deposit DWLZ_Withdraw DWZL_Deposit DWZL_Withdraw DWZL_Interest DWTI_Deposit DWTI_Interest DWTI_Withdraw
+                //Section controls which section should be displayed and filled
+                ViewBag.Section = routine.RelTmpRoutine.RoutineTag.Split('_')[1];
+
+                DepositWithdraw info = dataContainer.DepositWithdraw.FirstOrDefault(item => (item.TchRoutineID == tchRoutineID));
+                if (info == null)
+                {
+                    info = dataContainer.DepositWithdraw.Create();
+                    info.TchRoutineID = tchRoutineID;
+                    info.AccountCreateTime = DateTime.Now;
+                    info.DepositTime = DateTime.Now;
+                    info.WithdrawTime = DateTime.Now;
+                    info.InterestTime = DateTime.Now;
+                    dataContainer.DepositWithdraw.Add(info);
+                    dataContainer.SaveChanges();
+                }
+                return View("DepositWithdraw", info);
+            }
+        }
+
+        public ActionResult SaveIndividualSavingData(DepositWithdraw info)
+        {
+              using (FATContainer dataContainer = new FATContainer())
+            {
+                DepositWithdraw orgInfo = dataContainer.DepositWithdraw.Find(info.Row_ID);
+                dataContainer.Entry<DepositWithdraw>(orgInfo).CurrentValues.SetValues(info);
+                dataContainer.SaveChanges();
+
+                JsonResult result = new JsonResult();
+                result.Data = string.Empty;
+                return result;
+            }
+        }
+        #endregion
     }
 }

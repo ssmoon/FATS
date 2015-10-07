@@ -115,6 +115,22 @@ namespace FATS.Areas.Settings.Controllers
                     dataContainer.SubjectItem.Remove(item);
                 }
 
+                IEnumerable<OuterSubject> outerSubjectList = from node in dataContainer.OuterSubject
+                                                           where node.TchRoutineID == teachingRoutineID
+                                                           select node;
+                foreach (OuterSubject item in outerSubjectList)
+                {
+                    dataContainer.OuterSubject.Remove(item);
+                }
+
+                IEnumerable<CashJournal> cashJournalList = from node in dataContainer.CashJournal
+                                                             where node.TchRoutineID == teachingRoutineID
+                                                             select node;
+                foreach (CashJournal item in cashJournalList)
+                {
+                    dataContainer.CashJournal.Remove(item);
+                }
+
                 IEnumerable<DetailedLedger> detailedLedgerList = from node in dataContainer.DetailedLedger
                                                            where node.TchRoutineID == teachingRoutineID
                                                            select node;
@@ -195,6 +211,32 @@ namespace FATS.Areas.Settings.Controllers
                                     info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
                                     info.TimeMark = DateTime.Now;
                                     dataContainer.DetailedLedger.Add(info);
+                                }
+                                break;
+                            }
+                        case "CashJournal":
+                            {
+                                for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                {
+                                    CashJournal info = dataContainer.CashJournal.Create();
+                                    info.TchNodeID = tchNode.Row_ID;
+                                    info.TchRoutineID = routine.Row_ID;
+                                    info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                    info.TimeMark = DateTime.Now;
+                                    dataContainer.CashJournal.Add(info);
+                                }
+                                break;
+                            }
+                        case "OuterSubject":
+                            {
+                                for (int i = 0; i <= tchNode.RelTmpNode.RequireRecord - 1; i++)
+                                {
+                                    OuterSubject info = dataContainer.OuterSubject.Create();
+                                    info.TchNodeID = tchNode.Row_ID;
+                                    info.TchRoutineID = routine.Row_ID;
+                                    info.RoutineDesc = tchNode.GroupIdx + "." + currPhaseName;
+                                    info.TimeMark = DateTime.Now;
+                                    dataContainer.OuterSubject.Add(info);
                                 }
                                 break;
                             }
