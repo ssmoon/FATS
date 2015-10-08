@@ -22,6 +22,10 @@ namespace FATS.BusinessObject
             using (FATContainer dbContainer = new FATContainer())
             {
                 TeachingRoutine resultRoutine = dbContainer.TeachingRoutine.Find(routineID);
+
+                if (resultRoutine == null)
+                    return null;
+
                 if (TeachingRoutinePool.ContainsKey(routineID))
                     return TeachingRoutinePool[routineID];
                 else TeachingRoutinePool.Add(routineID, resultRoutine);

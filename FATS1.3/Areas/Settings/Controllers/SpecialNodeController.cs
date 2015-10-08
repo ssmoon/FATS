@@ -287,28 +287,28 @@ namespace FATS.Areas.Settings.Controllers
                 //Section controls which section should be displayed and filled
                 ViewBag.Section = routine.RelTmpRoutine.RoutineTag.Split('_')[1];
 
-                DepositWithdraw info = dataContainer.DepositWithdraw.FirstOrDefault(item => (item.TchRoutineID == tchRoutineID));
+                IndividualSaving info = dataContainer.IndividualSaving.FirstOrDefault(item => (item.TchRoutineID == tchRoutineID));
                 if (info == null)
                 {
-                    info = dataContainer.DepositWithdraw.Create();
+                    info = dataContainer.IndividualSaving.Create();
                     info.TchRoutineID = tchRoutineID;
                     info.AccountCreateTime = DateTime.Now;
                     info.DepositTime = DateTime.Now;
                     info.WithdrawTime = DateTime.Now;
                     info.InterestTime = DateTime.Now;
-                    dataContainer.DepositWithdraw.Add(info);
+                    dataContainer.IndividualSaving.Add(info);
                     dataContainer.SaveChanges();
                 }
-                return View("DepositWithdraw", info);
+                return View("IndividualSaving", info);
             }
         }
 
-        public ActionResult SaveIndividualSavingData(DepositWithdraw info)
+        public ActionResult SaveIndividualSavingData(IndividualSaving info)
         {
               using (FATContainer dataContainer = new FATContainer())
             {
-                DepositWithdraw orgInfo = dataContainer.DepositWithdraw.Find(info.Row_ID);
-                dataContainer.Entry<DepositWithdraw>(orgInfo).CurrentValues.SetValues(info);
+                IndividualSaving orgInfo = dataContainer.IndividualSaving.Find(info.Row_ID);
+                dataContainer.Entry<IndividualSaving>(orgInfo).CurrentValues.SetValues(info);
                 dataContainer.SaveChanges();
 
                 JsonResult result = new JsonResult();

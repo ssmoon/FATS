@@ -1,23 +1,23 @@
-﻿@model  FATS.Models.DepositWithdraw
+﻿@model  FATS.Models.IndividualSaving
 
 
 <form id="frmCaseBasic" class="form-horizontal">
     @Html.HiddenFor(item => item.TchRoutineID)
     @Html.HiddenFor(item => item.Row_ID)
     <div class="form-group">
-        <label for="AccountCreateTime" class="col-xs-2 control-label">开户时间</label>
-        <div class="input-group date" id="doAccountCreateTime" data-date-format="YYYY-MM-DD">
-            <input type="text" class="form-control" name="AccountCreateTime" id="AccountCreateTime" value="@Model.AccountCreateTime.ToString("yyyy-MM-dd")" />
-            <span class="input-group-addon">
-                <span class="glyphicon-calendar glyphicon"></span>
-            </span>
-        </div>
-        <div class="form-group">
-            <label for="BankName" class="col-xs-2 control-label">银行名称</label>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" id="BankName" name="BankName" value="@Model.BankName" />
-            </div>
+        <label for="BankName" class="col-xs-2 control-label">银行名称</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="BankName" name="BankName" value="@Model.BankName" />
             <span class="help-block" id="h_BankName"></span>
+        </div>
+        <label for="AccountCreateTime" class="col-xs-2 control-label">开户时间</label>
+        <div class="col-xs-3">
+            <div class="input-group date" id="doAccountCreateTime" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="AccountCreateTime" id="AccountCreateTime" value="@Model.AccountCreateTime.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
         </div>
     </div>
     <div class="form-group">
@@ -52,11 +52,14 @@
             <span class="help-block" id="h_DepositClient"></span>
         </div>
         <label for="DepositTime" class="col-xs-2 control-label">存款时间</label>
-        <div class="input-group date" id="doDepositTime" data-date-format="YYYY-MM-DD">
-            <input type="text" class="form-control" name="DepositTime" id="DepositTime" value="@Model.DepositTime.ToString("yyyy-MM-dd")" />
-            <span class="input-group-addon">
-                <span class="glyphicon-calendar glyphicon"></span>
-            </span>
+        <div class="col-xs-3">
+            <div class="input-group date" id="doDepositTime" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="DepositTime" id="DepositTime" value="@Model.DepositTime.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
+
         </div>
     </div>
 
@@ -67,11 +70,13 @@
             <span class="help-block" id="h_WithdrawClient"></span>
         </div>
         <label for="WithdrawTime" class="col-xs-2 control-label">取款时间</label>
-        <div class="input-group date" id="doWithdrawTime" data-date-format="YYYY-MM-DD">
-            <input type="text" class="form-control" name="WithdrawTime" id="WithdrawTime" value="@Model.WithdrawTime.ToString("yyyy-MM-dd")" />
-            <span class="input-group-addon">
-                <span class="glyphicon-calendar glyphicon"></span>
-            </span>
+        <div class="col-xs-3">
+            <div class="input-group date" id="doWithdrawTime" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="WithdrawTime" id="WithdrawTime" value="@Model.WithdrawTime.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
         </div>
     </div>
 
@@ -82,11 +87,13 @@
             <span class="help-block" id="h_InterestClient"></span>
         </div>
         <label for="InterestTime" class="col-xs-2 control-label">利息结算时间</label>
-        <div class="input-group date" id="doInterestTime" data-date-format="YYYY-MM-DD">
-            <input type="text" class="form-control" name="InterestTime" id="InterestTime" value="@Model.InterestTime.ToString("yyyy-MM-dd")" />
-            <span class="input-group-addon">
-                <span class="glyphicon-calendar glyphicon"></span>
-            </span>
+        <div class="col-xs-3">
+            <div class="input-group date" id="doInterestTime" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="InterestTime" id="InterestTime" value="@Model.InterestTime.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
         </div>
     </div>
 
@@ -103,4 +110,4 @@
     </p>
 </form>
 
-<script type="text/javascript" src="@Url.Content("~/js/Settings/IndividualSaving.js")" ></script>
+<script type="text/javascript" src="@Url.Content("~/js/Settings/IndividualSaving.js")"></script>

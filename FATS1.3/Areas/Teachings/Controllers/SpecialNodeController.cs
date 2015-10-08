@@ -178,7 +178,7 @@ namespace FATS.Areas.Teachings.Controllers
                 int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
                 TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
                 TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
-                DepositWithdraw targetObj = dataContainer.DepositWithdraw.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                IndividualSaving targetObj = dataContainer.IndividualSaving.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
                 ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
@@ -186,11 +186,11 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.TchRoutineID = routine.Row_ID;
                                 
                 Type type = Type.GetType("FATS.BusinessObject.Converters.IndividualDepositConverter");
-                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.Static);
+                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
 
                 V_IndividualDeposit modalInfo = (V_IndividualDeposit)method.Invoke(null, new Object[] { targetObj });
-
-                return View(modalInfo);
+    
+                return View("IndividualSaving_Deposit", modalInfo);
             }
         }
 
@@ -201,7 +201,7 @@ namespace FATS.Areas.Teachings.Controllers
                 int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
                 TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
                 TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
-                DepositWithdraw targetObj = dataContainer.DepositWithdraw.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                IndividualSaving targetObj = dataContainer.IndividualSaving.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
                 ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
@@ -209,11 +209,11 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.TchRoutineID = routine.Row_ID;
 
                 Type type = Type.GetType("FATS.BusinessObject.Converters.IndividualWithdrawConverter");
-                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.Static);
+                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
 
                 V_IndividualWithdraw modalInfo = (V_IndividualWithdraw)method.Invoke(null, new Object[] { targetObj });
-
-                return View(modalInfo);
+               
+                return View("IndividualSaving_Withdraw", modalInfo);
             }
         }
 
@@ -224,7 +224,7 @@ namespace FATS.Areas.Teachings.Controllers
                 int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
                 TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
                 TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
-                DepositWithdraw targetObj = dataContainer.DepositWithdraw.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                IndividualSaving targetObj = dataContainer.IndividualSaving.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
                 ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
                 ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
                 ViewBag.NodeName = node.RelTmpNode.NodeName;
@@ -232,11 +232,11 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.TchRoutineID = routine.Row_ID;
 
                 Type type = Type.GetType("FATS.BusinessObject.Converters.InterestVoucherConverter");
-                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.Static);
+                MethodInfo method = type.GetMethod(routine.RelTmpRoutine.RoutineTag, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
 
                 V_InterestVoucher modalInfo = (V_InterestVoucher)method.Invoke(null, new Object[] { targetObj });
 
-                return View(modalInfo);
+                return View("IndividualSaving_Interest", modalInfo);
             }
         }
 

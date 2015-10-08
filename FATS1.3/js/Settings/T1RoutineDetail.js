@@ -93,6 +93,8 @@
     routineDataMng.initCustomerLedgerData();
     routineDataMng.initCashJournalEvent();
     routineDataMng.initCashJournalData();
+    routineDataMng.initOuterSubjectEvent();
+    routineDataMng.initOuterSubjectData();
 })
 
 var routineDataMng = {
@@ -799,7 +801,7 @@ var routineDataMng = {
             },
             fields: {
                 SubjectName: {
-                    container: "#h_os_CounterSubject",
+                    container: "#h_os_SubjectName",
                     validators: {
                         notEmpty: {
                             message: '请填写对方科目名称'
@@ -851,7 +853,7 @@ var routineDataMng = {
     },
 
     initOuterSubjectData: function () {
-        routineDataMng.outerSubjectTable = $('#cashjournallist').dataTable({
+        routineDataMng.outerSubjectTable = $('#outersubjectlist').dataTable({
             "bSort": false,
             "bInfo": false,
             "bFilter": false,
@@ -887,7 +889,7 @@ var routineDataMng = {
                 }
             ],
             "fnDrawCallback": function (oSettings) {
-                $("#cashjournallist a[data-act=edit]").off().on("click", function () {
+                $("#outersubjectlist a[data-act=edit]").off().on("click", function () {
                     var aPos = routineDataMng.outerSubjectTable.fnGetPosition($(this).closest('tr').get(0));
                     routineDataMng.currentRowData = routineDataMng.outerSubjectTable.fnGetData(aPos);
                     $('#pop_OuterSubject').modal('show');

@@ -20,14 +20,13 @@
 <div id="fillerstepper">
     <div class="panel panel-info">
         <div class="panel-heading">待完成的科目</div>
-        <div class="list-group">
-            @int counter = 0;
-            @foreach (FATS.Models.OuterSubject osInfo in Model)
+        <div class="list-group">            
+            @for (int i = 0; i <= Model.Count - 1; i ++)
             {
-                counter++;
+                FATS.Models.OuterSubject osInfo = Model[i];
                 <a href="#" data-status="0" class="list-group-item" data-subject="@osInfo.SubjectName">
                     <span class="glyphicon glyphicon-question-sign"></span> 
-                    表外科目 @counter
+                    表外科目 @(i + 1)
                 </a>
                 
             }

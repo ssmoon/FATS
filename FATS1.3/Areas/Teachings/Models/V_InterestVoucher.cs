@@ -10,7 +10,7 @@ namespace FATS.Areas.Teachings.Models
         public DateTime InterestTime { get; set; }
         public string Abstract { get; set; }
         public string ClientAcc { get; set; }
-        public string SettleInterestClient { get; set; }
+        public string InterestClient { get; set; }
         public decimal InterestAmount { get; set; }
         public string BankName { get; set; }
     }

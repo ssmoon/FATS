@@ -13,20 +13,20 @@
     </tr>
     <tr>
         <td class="verticalcol" rowspan="5">储户填写</td>
-        <td colspan="6">
-            <input type="radio" readonly="readonly" @(Model.DepositType == "活期" ? "checked='checked'" : "") /><label>活期</label>
-            <input type="radio" readonly="readonly" /><label>储蓄卡</label>
-            <input type="radio" readonly="readonly" @(Model.DepositType == "整整" ? "checked='checked'" : "") /><label>整整</label>
-            <input type="radio" readonly="readonly" @(Model.DepositType == "零整" ? "checked='checked'" : "") /><label>零整</label>
-            <input type="radio" readonly="readonly @(Model.DepositType == "整零" ? "checked='checked'" : "")" /><label>整零</label>
-            <input type="radio" readonly="readonly" /><label>定活</label>
-            <input type="radio" readonly="readonly" /><label>教育</label>
-            <input type="radio" readonly="readonly" @(Model.DepositType == "存本" ? "checked='checked'" : "") /><label>存本</label>
-            <input type="radio" readonly="readonly" /><label>其它</label>
+        <td colspan="6" class="savingtype">
+            <input type="radio" disabled="disabled" @(Model.DepositType == "活期" ? "checked='checked'" : "") /><label>活期</label>
+            <input type="radio" disabled="disabled" /><label>储蓄卡</label>
+            <input type="radio" disabled="disabled" @(Model.DepositType == "整整" ? "checked='checked'" : "") /><label>整整</label>
+            <input type="radio" disabled="disabled" @(Model.DepositType == "零整" ? "checked='checked'" : "") /><label>零整</label>
+            <input type="radio" disabled="disabled" @(Model.DepositType == "整零" ? "checked='checked'" : "") " /><label>整零</label>
+            <input type="radio" disabled="disabled" /><label>定活</label>
+            <input type="radio" disabled="disabled" /><label>教育</label>
+            <input type="radio" disabled="disabled" @(Model.DepositType == "存本" ? "checked='checked'" : "") /><label>存本</label>
+            <input type="radio" disabled="disabled" /><label>其它</label>
         </td>       
     </tr>
     <tr>
-        <td colspan="2" class="titlecol">
+        <td colspan="2">
             户名: @Model.DepositClient
         </td>
         <td colspan="2">
@@ -37,7 +37,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2" class="titlecol">
+        <td colspan="2">
             代办人姓名: 
         </td>
         <td colspan="2">
@@ -48,7 +48,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2" class="titlecol">
+        <td colspan="2">
             币种: 人民币
         </td>
         <td colspan="2">
@@ -59,7 +59,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="4" class="titlecol">
+        <td colspan="4">
             新开户地址/电话:
         </td>
         <td colspan="2">

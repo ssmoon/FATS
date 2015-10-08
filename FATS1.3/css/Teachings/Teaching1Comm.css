@@ -50,6 +50,7 @@
 #maincontainer .incorrect i { display: block; color: red; top: 9px; right: 5px; }
 #maincontainer .correct i { display: block; color: green; top: 9px; right: 5px; }
 #maincontainer .checkarea { position: relative; }
+#maincontainer .savingtype label { font-weight: normal; margin: 0px 15px 0px 3px;  }
 .fullcontainer { margin-left: 0px !important; }
 #fillerstepper { position: fixed; top: 100px; left: 0px; display: none; width: 260px; height: 400px; }
 #fillerstepper .glyphicon { float: right; font-weight: 600; } 

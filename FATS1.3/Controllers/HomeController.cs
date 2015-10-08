@@ -102,7 +102,7 @@ namespace FATS.Controllers
             var adapter1 = new OleDbDataAdapter("SELECT * FROM [TeachingRoutine$]", connectionString);
             var adapter2 = new OleDbDataAdapter("SELECT * FROM [RoutineGroup$]", connectionString);
             var adapter3 = new OleDbDataAdapter("SELECT * FROM [TemplateNode$]", connectionString);
-            var adapter4 = new OleDbDataAdapter("SELECT * FROM [DepositWithdraw$]", connectionString);
+            var adapter4 = new OleDbDataAdapter("SELECT * FROM [IndividualSaving$]", connectionString);
             var adapter5 = new OleDbDataAdapter("SELECT * FROM [SubjectItem$]", connectionString);
             var adapter6 = new OleDbDataAdapter("SELECT * FROM [CashJournal$]", connectionString);
             var adapter7 = new OleDbDataAdapter("SELECT * FROM [DetailedLedger$]", connectionString);
@@ -114,7 +114,7 @@ namespace FATS.Controllers
             adapter1.Fill(ds, "TeachingRoutine");
             adapter2.Fill(ds, "RoutineGroup");
             adapter3.Fill(ds, "TemplateNode");
-            adapter4.Fill(ds, "DepositWithdraw");
+            adapter4.Fill(ds, "IndividualSaving");
             adapter5.Fill(ds, "SubjectItem");
             adapter6.Fill(ds, "CashJournal");
             adapter7.Fill(ds, "DetailedLedger");
@@ -125,7 +125,7 @@ namespace FATS.Controllers
             DataTable TeachingRoutine = ds.Tables["TeachingRoutine"];
             DataTable RoutineGroup = ds.Tables["RoutineGroup"];
             DataTable TemplateNode = ds.Tables["TemplateNode"];
-            DataTable DepositWithdraw = ds.Tables["DepositWithdraw"];
+            DataTable IndividualSaving = ds.Tables["IndividualSaving"];
             DataTable SubjectItem = ds.Tables["SubjectItem"];
             DataTable CashJournal = ds.Tables["CashJournal"];
             DataTable DetailedLedger = ds.Tables["DetailedLedger"];
@@ -213,11 +213,11 @@ namespace FATS.Controllers
 
                 Dictionary<string, RoutineGroup> groupMapper = groupList.ToDictionary(n => n.TchRoutineID + "-" + n.GroupIdx);
 
-                foreach (DataRow row in DepositWithdraw.Rows)
+                foreach (DataRow row in IndividualSaving.Rows)
                 {
                     if (row["TchRoutineID"] is DBNull)
                         continue;
-                    DepositWithdraw obj = dbContainer.DepositWithdraw.Create();
+                    IndividualSaving obj = dbContainer.IndividualSaving.Create();
                     obj.TchRoutineID = templateTeachingRoutineMapper[Convert.ToString(row["TchRoutineID"])].Row_ID;
                     obj.TchRoutineTag = string.Empty;
                     obj.InterestTime = Convert.ToDateTime(row["InterestTime"]);
@@ -232,8 +232,8 @@ namespace FATS.Controllers
                     obj.BankName = Convert.ToString(row["BankName"]);
                     obj.InterestClient = Convert.ToString(row["InterestClient"]);
                     obj.VoucherNo = Convert.ToString(row["VoucherNo"]);
-                    
-                    dbContainer.DepositWithdraw.Add(obj);
+                    obj.DepositPeriod = Convert.ToString(row["DepositPeriod"]);
+                    dbContainer.IndividualSaving.Add(obj);
                 }
                 dbContainer.SaveChanges();
 

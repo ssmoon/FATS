@@ -8,7 +8,7 @@
     </tr>
     <tr>
         <td colspan="7">
-            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.TimeMark); }
+            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.InterestTime); }
         </td>
     </tr>    
     <tr>
@@ -30,7 +30,7 @@
             @Model.Abstract
         </td>
         <td colspan="2">
-            @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)
+            @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.InterestAmount)
         </td>
     </tr>    
 </table>

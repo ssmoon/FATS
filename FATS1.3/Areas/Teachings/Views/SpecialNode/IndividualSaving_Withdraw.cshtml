@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model   FATS.Areas.Teachings.Models.V_IndividualDeposit
+@model   FATS.Areas.Teachings.Models.V_IndividualWithdraw
 @section Styles {
     <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/Teachings/SubjectFiller.css")" rel="Stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
     <input type="hidden" id="TchRoutineID" value="@ViewBag.TchRoutineID" />
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
 
-    @{ Html.RenderPartial("V_IndividualDeposit", Model); }
+    @{ Html.RenderPartial("IndividualWithdraw", Model); }
     @{ Html.RenderAction("SubjectFiller", "CommonNode", new { rid = ViewBag.TchRoutineID, nid = ViewBag.TchNodeID }); }
 </div>
 

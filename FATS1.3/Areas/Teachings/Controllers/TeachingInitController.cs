@@ -166,6 +166,11 @@ namespace FATS.Areas.Teachings.Controllers
                 foreach (StudentActivity activity in activityList)
                 {
                     TeachingRoutine routine = casePool.GetRoutine(activity.TchRoutineID);
+                    if (routine == null)
+                    {
+                        result.Data = CommFunctions.WrapClientGridData(new List<StudentActivity>());
+                        return result;
+                    }
                     activity.CaseName = routine.CaseName;
                     activity.TmpRoutineName = routine.RelTmpRoutine.RoutineName;
 

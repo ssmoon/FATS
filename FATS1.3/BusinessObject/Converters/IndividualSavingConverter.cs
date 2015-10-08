@@ -11,42 +11,42 @@ namespace FATS.BusinessObject.Converters
 {
     public class IndividualDepositConverter
     {
-        public static V_IndividualDeposit DWHQ_Deposit(DepositWithdraw orgObj)
+        public static V_IndividualDeposit DWHQ_Deposit(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualDeposit>();
-            V_IndividualDeposit targetObj = Mapper.Map<DepositWithdraw, V_IndividualDeposit>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualDeposit>();
+            V_IndividualDeposit targetObj = Mapper.Map<IndividualSaving, V_IndividualDeposit>(orgObj);
             targetObj.DepositType = "活期";
             return targetObj;
         }
 
-        public static V_IndividualDeposit DWZZ_Deposit(DepositWithdraw orgObj)
+        public static V_IndividualDeposit DWZZ_Deposit(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualDeposit>();
-            V_IndividualDeposit targetObj = Mapper.Map<DepositWithdraw, V_IndividualDeposit>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualDeposit>();
+            V_IndividualDeposit targetObj = Mapper.Map<IndividualSaving, V_IndividualDeposit>(orgObj);
             targetObj.DepositType = "整整";
             return targetObj;
         }
 
-        public static V_IndividualDeposit DWLZ_Deposit(DepositWithdraw orgObj)
+        public static V_IndividualDeposit DWLZ_Deposit(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualDeposit>();
-            V_IndividualDeposit targetObj = Mapper.Map<DepositWithdraw, V_IndividualDeposit>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualDeposit>();
+            V_IndividualDeposit targetObj = Mapper.Map<IndividualSaving, V_IndividualDeposit>(orgObj);
             targetObj.DepositType = "零整";
             return targetObj;
         }
 
-        public static V_IndividualDeposit DWZL_Deposit(DepositWithdraw orgObj)
+        public static V_IndividualDeposit DWZL_Deposit(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualDeposit>();
-            V_IndividualDeposit targetObj = Mapper.Map<DepositWithdraw, V_IndividualDeposit>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualDeposit>();
+            V_IndividualDeposit targetObj = Mapper.Map<IndividualSaving, V_IndividualDeposit>(orgObj);
             targetObj.DepositType = "整零";
             return targetObj;
         }
 
-        public static V_IndividualDeposit DWTI_Deposit(DepositWithdraw orgObj)
+        public static V_IndividualDeposit DWTI_Deposit(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualDeposit>();
-            V_IndividualDeposit targetObj = Mapper.Map<DepositWithdraw, V_IndividualDeposit>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualDeposit>();
+            V_IndividualDeposit targetObj = Mapper.Map<IndividualSaving, V_IndividualDeposit>(orgObj);
             targetObj.DepositType = "本息";
             return targetObj;
         }
@@ -54,50 +54,50 @@ namespace FATS.BusinessObject.Converters
 
     public class IndividualWithdrawConverter
     {
-        public static V_IndividualWithdraw DWHQ_Withdraw(DepositWithdraw orgObj)
+        public static V_IndividualWithdraw DWHQ_Withdraw(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualWithdraw>();
-            V_IndividualWithdraw targetObj = Mapper.Map<DepositWithdraw, V_IndividualWithdraw>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualWithdraw>();
+            V_IndividualWithdraw targetObj = Mapper.Map<IndividualSaving, V_IndividualWithdraw>(orgObj);
             targetObj.WithdrawType = "活期";
             return targetObj;
         }
 
-        public static V_IndividualWithdraw DWHQ_Clear(DepositWithdraw orgObj)
+        public static V_IndividualWithdraw DWHQ_Clear(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualWithdraw>();
-            V_IndividualWithdraw targetObj = Mapper.Map<DepositWithdraw, V_IndividualWithdraw>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualWithdraw>();
+            V_IndividualWithdraw targetObj = Mapper.Map<IndividualSaving, V_IndividualWithdraw>(orgObj);
             targetObj.WithdrawType = "活期";
             return targetObj;
         }
 
-        public static V_IndividualWithdraw DWZZ_Withdraw(DepositWithdraw orgObj)
+        public static V_IndividualWithdraw DWZZ_Withdraw(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualWithdraw>();
-            V_IndividualWithdraw targetObj = Mapper.Map<DepositWithdraw, V_IndividualWithdraw>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualWithdraw>();
+            V_IndividualWithdraw targetObj = Mapper.Map<IndividualSaving, V_IndividualWithdraw>(orgObj);
             targetObj.WithdrawType = "整整";
             return targetObj;
         }
 
-        public static V_IndividualWithdraw DWLZ_Withdraw(DepositWithdraw orgObj)
+        public static V_IndividualWithdraw DWLZ_Withdraw(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualWithdraw>();
-            V_IndividualWithdraw targetObj = Mapper.Map<DepositWithdraw, V_IndividualWithdraw>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualWithdraw>();
+            V_IndividualWithdraw targetObj = Mapper.Map<IndividualSaving, V_IndividualWithdraw>(orgObj);
             targetObj.WithdrawType = "零整";
             return targetObj;
         }
 
-        public static V_IndividualWithdraw DWZL_Withdraw(DepositWithdraw orgObj)
+        public static V_IndividualWithdraw DWZL_Withdraw(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualWithdraw>();
-            V_IndividualWithdraw targetObj = Mapper.Map<DepositWithdraw, V_IndividualWithdraw>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualWithdraw>();
+            V_IndividualWithdraw targetObj = Mapper.Map<IndividualSaving, V_IndividualWithdraw>(orgObj);
             targetObj.WithdrawType = "整零";
             return targetObj;
         }
 
-        public static V_IndividualWithdraw DWTI_Withdraw(DepositWithdraw orgObj)
+        public static V_IndividualWithdraw DWTI_Withdraw(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_IndividualWithdraw>();
-            V_IndividualWithdraw targetObj = Mapper.Map<DepositWithdraw, V_IndividualWithdraw>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_IndividualWithdraw>();
+            V_IndividualWithdraw targetObj = Mapper.Map<IndividualSaving, V_IndividualWithdraw>(orgObj);
             targetObj.WithdrawType = "本息";
             return targetObj;
         }
@@ -105,18 +105,18 @@ namespace FATS.BusinessObject.Converters
 
     public class InterestVoucherConverter
     {
-        public static V_InterestVoucher DWHQ_Interest(DepositWithdraw orgObj)
+        public static V_InterestVoucher DWHQ_Interest(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_InterestVoucher>();
-            V_InterestVoucher targetObj = Mapper.Map<DepositWithdraw, V_InterestVoucher>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_InterestVoucher>();
+            V_InterestVoucher targetObj = Mapper.Map<IndividualSaving, V_InterestVoucher>(orgObj);
             targetObj.Abstract = "结息";
             return targetObj;
         }
 
-        public static V_InterestVoucher DWTI_Interest(DepositWithdraw orgObj)
+        public static V_InterestVoucher DWTI_Interest(IndividualSaving orgObj)
         {
-            Mapper.CreateMap<DepositWithdraw, V_InterestVoucher>();
-            V_InterestVoucher targetObj = Mapper.Map<DepositWithdraw, V_InterestVoucher>(orgObj);
+            Mapper.CreateMap<IndividualSaving, V_InterestVoucher>();
+            V_InterestVoucher targetObj = Mapper.Map<IndividualSaving, V_InterestVoucher>(orgObj);
             targetObj.Abstract = "结息";
             return targetObj;
         }

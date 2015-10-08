@@ -12,24 +12,24 @@ namespace FATS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DepositWithdraw
+    public partial class IndividualSaving
     {
         public int Row_ID { get; set; }
-        public Nullable<System.DateTime> DepositTime { get; set; }
+        public System.DateTime DepositTime { get; set; }
         public string DepositClient { get; set; }
         public string BankName { get; set; }
-        public Nullable<System.DateTime> WithdrawTime { get; set; }
+        public System.DateTime WithdrawTime { get; set; }
         public string WithdrawClient { get; set; }
-        public Nullable<System.DateTime> AccountCreateTime { get; set; }
+        public string InterestClient { get; set; }
+        public System.DateTime AccountCreateTime { get; set; }
+        public System.DateTime InterestTime { get; set; }
         public string VoucherNo { get; set; }
-        public Nullable<decimal> InterestAmount { get; set; }
-        public Nullable<decimal> EntryAmount { get; set; }
+        public decimal InterestAmount { get; set; }
+        public decimal EntryAmount { get; set; }
         public string ClientAcc { get; set; }
         public int TchRoutineID { get; set; }
         public string TchRoutineTag { get; set; }
         public string ClientName { get; set; }
         public string DepositPeriod { get; set; }
-        public Nullable<System.DateTime> InterestTime { get; set; }
-        public string InterestClient { get; set; }
     }
 }

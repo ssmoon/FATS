@@ -220,9 +220,6 @@
     <Compile Include="DataDefine\ConstDefine.cs" />
     <Compile Include="DataDefine\ResourceFileDefine.cs" />
     <Compile Include="DataDefine\RoutineConstDefine.cs" />
-    <Compile Include="Models\DepositWithdraw.cs">
-      <DependentUpon>FATContainer.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DetailedLedger.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -260,6 +257,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IndividualSaving.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MoneyRemittance.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
@@ -526,8 +526,10 @@
     <Content Include="Areas\Teachings\Views\Shared\IndividualDeposit.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\InterestVoucher.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\IndividualWithdraw.cshtml" />
-    <Content Include="Areas\Teachings\Views\SpecialNode\IndividualDeposit.cshtml" />
-    <Content Include="Areas\Settings\Views\SpecialNode\DepositWithdraw.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\IndividualSaving_Deposit.cshtml" />
+    <Content Include="Areas\Settings\Views\SpecialNode\IndividualSaving.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\IndividualSaving_Withdraw.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\IndividualSaving_Interest.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
     <Content Include="Views\Home\Import.cshtml" />
   </ItemGroup>
