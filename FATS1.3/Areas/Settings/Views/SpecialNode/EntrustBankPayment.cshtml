@@ -47,10 +47,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="RemitDate" class="col-xs-2 control-label">委托日期</label>
+        <label for="EntrustDate" class="col-xs-2 control-label">委托日期</label>
         <div class="col-xs-3">
-            <div class="input-group date" id="doRemitDate" data-date-format="YYYY-MM-DD">
-                <input type="text" class="form-control" name="RemitDate" id="RemitDate" value="@Model.EntrustDate.ToString("yyyy-MM-dd")" />
+            <div class="input-group date" id="doEntrustDate" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="EntrustDate" id="EntrustDate" value="@Model.EntrustDate.ToString("yyyy-MM-dd")" />
                 <span class="input-group-addon">
                     <span class="glyphicon-calendar glyphicon"></span>
                 </span>
@@ -60,10 +60,10 @@
     </div>
     <div class="form-group">
 
-        <label for="AffluxDate" class="col-xs-2 control-label">付款日期</label>
+        <label for="PaymentDate" class="col-xs-2 control-label">付款日期</label>
         <div class="col-xs-3">
-            <div class="input-group date" id="doAffluxDate" data-date-format="YYYY-MM-DD">
-                <input type="text" class="form-control" name="AffluxDate" id="AffluxDate" value="@Model.PaymentDate.ToString("yyyy-MM-dd")" />
+            <div class="input-group date" id="doPaymentDate" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="PaymentDate" id="PaymentDate" value="@Model.PaymentDate.ToString("yyyy-MM-dd")" />
                 <span class="input-group-addon">
                     <span class="glyphicon-calendar glyphicon"></span>
                 </span>

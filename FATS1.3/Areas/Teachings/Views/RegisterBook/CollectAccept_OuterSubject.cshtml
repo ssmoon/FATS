@@ -1,0 +1,123 @@
+﻿@model List<FATS.Areas.Teachings.Models.V_CollectAccept_OuterSubject>
+
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+    <tr>
+        <td colspan="11">
+            <div class="billtitle">@Model[Model.Count - 1].BankName 托收承付登记薄</div>
+        </td>
+    </tr>
+    <tr class="titlecol">
+        <td style="width: 100px;">日期</td>
+        <td>金额</td>
+        <td>托收人</td>
+        <td>托收人账号</td>
+        <td>托收方银行</td>
+        <td>承付人</td>
+        <td>承付人账号</td>
+        <td>承付方银行</td>
+        <td>结存金额</td>
+        <td style="width: 100px;">承付期满时间</td>
+        <td style="width: 80px;">办理结果</td>
+    </tr>
+    @for (int i = 0; i <= Model.Count - 2; i++)
+    {
+        <tr>
+            <td>@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model[i].TimeMark)</td>
+            <td>
+                @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model[i].MoneyAmount)
+            </td>
+            <td>
+                @Model[i].RemitterName
+            </td>
+            <td>
+                @Model[i].RemitterAcc
+            </td>
+            <td>
+                @Model[i].RemitterBank
+            </td>
+            <td>
+                @Model[i].PayeeName
+            </td>
+            <td>
+                @Model[i].PayeeAcc
+            </td>
+            <td>
+                @Model[i].PayeeBank
+            </td>
+            <td>
+                @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model[i].FinalAmount)
+            </td>
+            <td>
+                @FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model[i].AcceptDate)
+            </td>
+            <td>
+                @Model[i].OpResult
+            </td>
+        </tr>
+    }
+    <tr>
+        <td>@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model[Model.Count - 1].CollectDate)</td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model[Model.Count - 1].MoneyAmount)" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model[Model.Count - 1].RemitterName" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model[Model.Count - 1].RemitterAcc" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model[Model.Count - 1].RemitterBank" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model[Model.Count - 1].PayeeName" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model[Model.Count - 1].PayeeAcc" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model[Model.Count - 1].PayeeBank" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model[Model.Count - 1].FinalAmount)" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            @FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model[Model.Count - 1].AcceptDate)
+        </td>
+        <td>
+            @Model[Model.Count - 1].OpResult
+        </td>
+    </tr>
+</table>

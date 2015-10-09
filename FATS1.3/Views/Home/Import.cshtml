@@ -12,15 +12,31 @@
 </head>
 <body>
     <div>
-        <input type="button" data-act="deposit" value="导入存款" />
+        <input type="button" data-act="IndividualSaving" value="IndividualSaving" /> <br /><br />
+        <input type="button" data-act="PaySettle" value="PaySettle" />
     </div>
 
     <script>
         $(document).ready(function () {
-            $('input[data-act=deposit]').on('click', function () {
+            $('input[data-act=IndividualSaving]').on('click', function () {
                 $.ajax({
                     type: "POST",
-                    url: "/Home/DoImport",
+                    url: "/Home/DoImport_IndividualSaving",
+                    data: "",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function () {
+                        alert('done');
+                    },
+                    error: function (err) {
+
+                    }
+                });
+            })
+            $('input[data-act=PaySettle]').on('click', function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/DoImport_PaySettle",
                     data: "",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",

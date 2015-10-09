@@ -5,19 +5,19 @@
     @Html.HiddenFor(item => item.TchRoutineID)
     @Html.HiddenFor(item => item.Row_ID)
     <div class="form-group">
-        <label for="RemitterName" class="col-xs-2 control-label">出票人全称</label>
+        <label for="RemitterName" class="col-xs-2 control-label">付款人全称</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="RemitterName" name="RemitterName" value="@Model.RemitterName" />
             <span class="help-block" id="h_RemitterName"></span>
         </div>
-        <label for="RemitterAcc" class="col-xs-2 control-label">出票人账号</label>
+        <label for="RemitterAcc" class="col-xs-2 control-label">付款人账号</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="RemitterAcc" name="RemitterAcc" value="@Model.RemitterAcc" />
             <span class="help-block" id="h_RemitterAcc"></span>
         </div>
     </div>
     <div class="form-group">
-        <label for="RemitterBank" class="col-xs-2 control-label">出票人银行</label>
+        <label for="RemitterBank" class="col-xs-2 control-label">付款人银行</label>
         <div class="col-xs-3">
             <input type="text" class="form-control" id="RemitterBank" name="RemitterBank" value="@Model.RemitterBank" />
         </div>
@@ -27,7 +27,12 @@
         <div class="col-xs-3">
             <input type="text" class="form-control" id="PayeeName" name="PayeeName" value="@Model.PayeeName" />
             <span class="help-block" id="h_PayeeName"></span>
-        </div>        
+        </div>   
+        <label for="PayeeAcc" class="col-xs-2 control-label">收款人账号</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="PayeeAcc" name="PayeeAcc" value="@Model.PayeeAcc" />
+            <span class="help-block" id="h_PayeeAcc"></span>
+        </div>     
     </div>
     <div class="form-group">
         <label for="PayeeBank" class="col-xs-2 control-label">收款人银行</label>
@@ -47,10 +52,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="RemitDate" class="col-xs-2 control-label">委托日期</label>
+        <label for="EntrustDate" class="col-xs-2 control-label">委托日期</label>
         <div class="col-xs-3">
-            <div class="input-group date" id="doRemitDate" data-date-format="YYYY-MM-DD">
-                <input type="text" class="form-control" name="RemitDate" id="RemitDate" value="@Model.EntrustDate.ToString("yyyy-MM-dd")" />
+            <div class="input-group date" id="doEntrustDate" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="EntrustDate" id="EntrustDate" value="@Model.EntrustDate.ToString("yyyy-MM-dd")" />
                 <span class="input-group-addon">
                     <span class="glyphicon-calendar glyphicon"></span>
                 </span>
@@ -60,10 +65,10 @@
     </div>
     <div class="form-group">
 
-        <label for="AffluxDate" class="col-xs-2 control-label">付款日期</label>
+        <label for="PaymentDate" class="col-xs-2 control-label">付款日期</label>
         <div class="col-xs-3">
-            <div class="input-group date" id="doAffluxDate" data-date-format="YYYY-MM-DD">
-                <input type="text" class="form-control" name="AffluxDate" id="AffluxDate" value="@Model.PaymentDate.ToString("yyyy-MM-dd")" />
+            <div class="input-group date" id="doPaymentDate" data-date-format="YYYY-MM-DD">
+                <input type="text" class="form-control" name="PaymentDate" id="PaymentDate" value="@Model.PaymentDate.ToString("yyyy-MM-dd")" />
                 <span class="input-group-addon">
                     <span class="glyphicon-calendar glyphicon"></span>
                 </span>

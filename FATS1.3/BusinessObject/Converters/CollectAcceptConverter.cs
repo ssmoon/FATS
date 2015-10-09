@@ -11,58 +11,50 @@ namespace FATS.BusinessObject.Converters
 {
     public class CollectAcceptConverter
     {
-        public static V_OuterSubject N3_OuterSubject(CollectAccept orgObj)
-        {
-            V_OuterSubject dstObj = new V_OuterSubject();
-            dstObj.Abstract = "";
-            dstObj.BillTitle = "表外科目收入凭证";
-            dstObj.MoneyAmount = orgObj.MoneyAmount;
-            dstObj.OuterSubject = orgObj.OuterSubject;
-            dstObj.CustomerAccNo = orgObj.PayeeAcc;
-            dstObj.TimeMark = orgObj.CollectDate;
-            return dstObj;
-        }
-
-        public static V_OuterSubject N6_OuterSubject(CollectAccept orgObj)
-        {
-            V_OuterSubject dstObj = new V_OuterSubject();
-            dstObj.Abstract = "";
-            dstObj.BillTitle = "表外科目收入凭证";
-            dstObj.MoneyAmount = orgObj.MoneyAmount;
-            dstObj.OuterSubject = orgObj.OuterSubject;
-            dstObj.CustomerAccNo = orgObj.RemitterAcc;
-            dstObj.TimeMark = orgObj.CollectDate;
-            return dstObj;
-        }
-
-        public static V_OuterSubject N11_OuterSubject(CollectAccept orgObj)
-        {
-            V_OuterSubject dstObj = new V_OuterSubject();
-            dstObj.Abstract = "";
-            dstObj.BillTitle = "表外科目收入凭证";
-            dstObj.MoneyAmount = orgObj.MoneyAmount;
-            dstObj.OuterSubject = orgObj.OuterSubject;
-            dstObj.CustomerAccNo = orgObj.PayeeAcc;
-            dstObj.TimeMark = orgObj.AcceptDate;
-            return dstObj;
-        }
-
-        public static V_OuterSubject N17_OuterSubject(CollectAccept orgObj)
-        {
-            V_OuterSubject dstObj = new V_OuterSubject();
-            dstObj.Abstract = "";
-            dstObj.BillTitle = "表外科目收入凭证";
-            dstObj.MoneyAmount = orgObj.MoneyAmount;
-            dstObj.OuterSubject = orgObj.OuterSubject;
-            dstObj.CustomerAccNo = orgObj.RemitterAcc;
-            dstObj.TimeMark = orgObj.AcceptDate;
-            return dstObj;
-        }
-
         public static V_CollectVoucher N2_CollectVoucher(CollectAccept orgObj)
         {
             Mapper.CreateMap<CollectAccept, V_CollectVoucher>();
             return Mapper.Map<CollectAccept, V_CollectVoucher>(orgObj);
+        }
+
+        public static V_CollectAccept_OuterSubject N3_OuterSubject(CollectAccept orgObj)
+        {
+            Mapper.CreateMap<CollectAccept, V_CollectAccept_OuterSubject>();
+            V_CollectAccept_OuterSubject dstObj = Mapper.Map<CollectAccept, V_CollectAccept_OuterSubject>(orgObj);
+            dstObj.BillTitle = "表外科目收入凭证";
+            dstObj.OpResult = "待托收";
+            dstObj.BankName = orgObj.RemitterBank;
+            return dstObj;
+        }
+
+        public static V_CollectAccept_OuterSubject N6_OuterSubject(CollectAccept orgObj)
+        {
+            Mapper.CreateMap<CollectAccept, V_CollectAccept_OuterSubject>();
+            V_CollectAccept_OuterSubject dstObj = Mapper.Map<CollectAccept, V_CollectAccept_OuterSubject>(orgObj);
+            dstObj.BillTitle = "表外科目收入凭证";
+            dstObj.OpResult = "待承付";
+            dstObj.BankName = orgObj.PayeeBank;
+            return dstObj;
+        }
+
+        public static V_CollectAccept_OuterSubject N11_OuterSubject(CollectAccept orgObj)
+        {
+            Mapper.CreateMap<CollectAccept, V_CollectAccept_OuterSubject>();
+            V_CollectAccept_OuterSubject dstObj = Mapper.Map<CollectAccept, V_CollectAccept_OuterSubject>(orgObj);
+            dstObj.BillTitle = "表外科目收入凭证";
+            dstObj.OpResult = "已承付";
+            dstObj.BankName = orgObj.RemitterBank;
+            return dstObj;
+        }
+
+        public static V_CollectAccept_OuterSubject N17_OuterSubject(CollectAccept orgObj)
+        {
+            Mapper.CreateMap<CollectAccept, V_CollectAccept_OuterSubject>();
+            V_CollectAccept_OuterSubject dstObj = Mapper.Map<CollectAccept, V_CollectAccept_OuterSubject>(orgObj);
+            dstObj.BillTitle = "表外科目收入凭证";
+            dstObj.OpResult = "已收款";
+            dstObj.BankName = orgObj.PayeeBank;
+            return dstObj;
         }
 
     }

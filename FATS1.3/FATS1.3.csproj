@@ -179,10 +179,11 @@
     <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
     <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Teachings\Models\V_BankDraft.cs" />
+    <Compile Include="Areas\Teachings\Models\V_EntrustCorpPayment_OuterSubject.cs" />
     <Compile Include="Areas\Teachings\Models\V_CollectVoucher.cs" />
     <Compile Include="Areas\Teachings\Models\V_IndividualWithdraw.cs" />
     <Compile Include="Areas\Teachings\Models\V_InterestVoucher.cs" />
-    <Compile Include="Areas\Teachings\Models\V_OuterSubject.cs" />
+    <Compile Include="Areas\Teachings\Models\V_CollectAccept_OuterSubject.cs" />
     <Compile Include="Areas\Teachings\Models\V_TradeAcceptance.cs" />
     <Compile Include="Areas\Teachings\Models\V_EntrustPaymentVoucher.cs" />
     <Compile Include="Areas\Teachings\Models\V_BusinessProxy.cs" />
@@ -194,6 +195,8 @@
     <Compile Include="BusinessObject\Converters\CollectAcceptConverter.cs" />
     <Compile Include="BusinessObject\Converters\BankDraftConverter.cs" />
     <Compile Include="BusinessObject\Converters\DebitTransferCheckConverter.cs" />
+    <Compile Include="BusinessObject\Converters\EntrustBankPaymentConverter.cs" />
+    <Compile Include="BusinessObject\Converters\EntrustCorpPaymentConverter.cs" />
     <Compile Include="BusinessObject\Converters\IndividualSavingConverter.cs" />
     <Compile Include="BusinessObject\CurrentUser.cs" />
     <Compile Include="BusinessObject\SharedCasePool.cs" />
@@ -530,6 +533,17 @@
     <Content Include="Areas\Settings\Views\SpecialNode\IndividualSaving.cshtml" />
     <Content Include="Areas\Teachings\Views\SpecialNode\IndividualSaving_Withdraw.cshtml" />
     <Content Include="Areas\Teachings\Views\SpecialNode\IndividualSaving_Interest.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\MoneyRemittance_2.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\EntrustCorpPayment_2.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\CollectAccept_OuterSubject.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\EntrustCorpPayment_3.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\EntrustCorpPayment_OuterSubject.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\EntrustBankPayment_OuterSubject.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\EntrustCorpPayment_13.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\EntrustCorpPayment_5.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\EntrustCorpPayment_10.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\EntrustBankPayment_12.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\EntrustBankPayment_3.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
     <Content Include="Views\Home\Import.cshtml" />
   </ItemGroup>

@@ -1,18 +1,15 @@
 ﻿@{
-    ViewBag.Title = "托收承付登记簿";
+    ViewBag.Title = "委托收款登记簿";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model FATS.Models.CollectAccept
+@model FATS.Models.EntrustCorpPayment
 
 @section Styles {
     <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/Teachings/OuterSubject.css")" rel="Stylesheet" type="text/css" />
 }
 
-@section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/js/Teachings/OuterSubject.js")"></script>
-}
 <div id="maincontainer" class="fullcontainer">
     <div class="page-header page-header-fix">
         <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
@@ -20,8 +17,8 @@
     @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
     @Html.HiddenFor(info => info.TchRoutineID)
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
-    @Html.Partial("CollectAccept_OuterSubject", new List<FATS.Areas.Teachings.Models.V_CollectAccept_OuterSubject>() { FATS.BusinessObject.Converters.CollectAcceptConverter.N3_OuterSubject(Model), FATS.BusinessObject.Converters.CollectAcceptConverter.N11_OuterSubject(Model) })
 
+    @Html.Partial("EntrustCorpPayment_OuterSubject", new List<FATS.Areas.Teachings.Models.V_EntrustPayment_OuterSubject>() { FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N3_OuterSubject(Model), FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N13_OuterSubject(Model) })
 </div>
 
 @{  Html.RenderPartial("Teaching1Navigator");}

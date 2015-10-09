@@ -1,9 +1,9 @@
 ﻿@{
-    ViewBag.Title = "托收凭证";
+    ViewBag.Title = "CollectAccept_2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model  FATS.Models.CollectAccept
+@model  FATS.Models.EntrustCorpPayment
 @section Styles {
     <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
 }
@@ -16,7 +16,7 @@
     @Html.HiddenFor(info => info.TchRoutineID)
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
 
-    @{ Html.RenderPartial("CollectVoucher", FATS.BusinessObject.Converters.CollectAcceptConverter.N2_CollectVoucher(Model)); }
+    @{ Html.RenderPartial("CollectVoucher", FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N2_CollectVoucher(Model)); }
     
     @Html.Partial("NeedNoAction")
 </div>

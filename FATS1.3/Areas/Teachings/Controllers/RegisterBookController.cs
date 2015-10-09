@@ -41,5 +41,26 @@ namespace FATS.Areas.Teachings.Controllers
         }
 
         #endregion
+
+        #region EntrustCorpPayment
+
+        public ActionResult EntrustCorpPayment()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+                TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
+                EntrustCorpPayment tcInfo = dataContainer.EntrustCorpPayment.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
+                ViewBag.TchNodeID = node.Row_ID;
+
+                return View("EntrustCorpPayment_" + node.RelTmpNode.NodeIndex, tcInfo);
+            }
+        }
+
+        #endregion
     }
 }
