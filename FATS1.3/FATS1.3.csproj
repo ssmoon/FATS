@@ -202,6 +202,7 @@
     <Compile Include="BusinessObject\SharedCasePool.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UICommonController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\BankAcceptBill.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -343,7 +344,6 @@
     <Content Include="js\jquery-1.11.0.min.js" />
     <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="js\jquery.tmpl.min.js" />
-    <Content Include="js\jquery.confirm.min.js" />
     <Content Include="js\jquery.validate.bootstrap.popover.min.js" />
     <Content Include="js\jQuery.Validation.min.js" />
     <Content Include="js\moment-with-langs.min.js" />
@@ -367,6 +367,7 @@
     <Content Include="js\Teachings\SubjectFiller.js" />
     <Content Include="js\Teachings\Teaching1Comm.js" />
     <Content Include="js\underscore-min.js" />
+    <Content Include="js\User\Register.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -546,6 +547,7 @@
     <Content Include="Areas\Teachings\Views\RegisterBook\EntrustBankPayment_3.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
     <Content Include="Views\Home\Import.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\R2-2.resx">
