@@ -1,7 +1,14 @@
 ﻿$(document).ready(function () {
-    $("#routineoverview .group[data-groupidx=" + $("#CurrGroup").val() + "]").addClass("currgroup");
-    $("#routineoverview .arrowcontainer").css("height", $("#routineoverview .mainprocess").css("height"));
-    $("#routineoverview .arrowcontainer").css("background-position", "8px " + ((Number($("#CurrGroup").val()) - 1) * 190 + 13) + "px");
+    if ($("#routineoverview").length > 0) {    
+        $("#routineoverview .group[data-groupidx=" + $("#CurrGroup").val() + "]").addClass("currgroup");
+        $("#routineoverview .arrowcontainer").css("height", $("#routineoverview .mainprocess").css("height"));
+        var groupRelativePos = (Number($("#CurrGroup").val()) - 1) * 190;
+        $("#routineoverview .arrowcontainer").css("background-position", "8px " + (groupRelativePos + 13) + "px");
+        $("#routineoverview .currphase").css("top", (groupRelativePos == 0 ? 0 : (groupRelativePos - 20)) + "px");
+        $("#routineoverview .group[data-node-id]").on("click", function() {
+            window.location = "/Teachings/CommonNode/Guide/" + $(this).attr("data-node-id");
+        })
+    }
     navigationT1Mng.initEvent();
     if ($("#CurrGroup").length > 0)
         navigationT1Mng.checkStatus = 1;

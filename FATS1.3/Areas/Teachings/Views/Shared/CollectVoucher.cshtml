@@ -32,12 +32,11 @@
         <td>@Model.RemitterBank</td>
     </tr>
     <tr>
-        <td colspan="3" class="titlecol">
-            金额<br />人民币(大写):
-            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        <td class="titlecol">
+            金额
         </td>
-        <td colspan="3">
-            @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        <td colspan="5">
+            @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)
         </td>
     </tr>
     <tr>

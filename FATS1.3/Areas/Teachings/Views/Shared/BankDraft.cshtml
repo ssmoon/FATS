@@ -18,21 +18,19 @@
         <td>@Model.RemitterAcc</td>
     </tr>    
     <tr>
-        <td colspan="3" class="titlecol">
-            出票金额<br />人民币(大写):
-            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.MoneyAmount }); }
+        <td colspan="1" class="titlecol">
+            出票金额           
         </td>
-        <td colspan="3">
-            ￥ @{ FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount); }
+        <td colspan="5">
+            @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)
         </td>
     </tr>
     <tr>
-        <td colspan="3" class="titlecol">
-            实际结算金额<br />人民币(大写):
-            @{  Html.RenderAction("CapitalMoney", "UICommon", new { area = string.Empty, money = Model.CloseAmount }); }
+        <td colspan="1" class="titlecol">
+            实际结算金额            
         </td>
-        <td colspan="3">
-            @{  Html.RenderAction("TabledMoney", "UICommon", new { area = string.Empty, money = Model.CloseAmount }); }            
+        <td colspan="5">
+           @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.CloseAmount)   
         </td>
     </tr>
     <tr>

@@ -1,6 +1,8 @@
-﻿$(document).ready(function () {    
-    subjectFillerMng.initEvent();
-    subjectFillerMng.initCtrls();
+﻿$(document).ready(function () {
+    if ($("#subjectfiller").length > 0) {
+        subjectFillerMng.initEvent();
+        subjectFillerMng.initCtrls();
+    }
 });
 
 var subjectFillerMng = {

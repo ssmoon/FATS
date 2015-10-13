@@ -1,0 +1,115 @@
+﻿@model FATS.Areas.Teachings.Models.V_BankAcceptBill_OuterSubject
+
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+    <tr>
+        <td colspan="11">
+            <div class="billtitle">@Model.PayeeBank 承兑汇票登记薄</div>
+        </td>
+    </tr>
+    <tr class="titlecol">
+        <td style="width: 100px;">日期</td>
+        <td>出票人</td>
+        <td>出票人账号</td>
+        <td>出票方银行</td>
+        <td>承付人</td>
+        <td>承付人账号</td>
+        <td>承付方银行</td>
+        <td>汇票金额</td>
+        <td style="width: 100px;">汇票到期日</td>
+        <td style="width: 80px;">办理结果</td>
+    </tr>
+    @if (Model.CurrStatus == 0)
+    { 
+    <tr>
+        <td>@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model.TimeMark)</td>       
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model.RemitterName" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model.RemitterAcc" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model.RemitterBank" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model.PayeeName" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model.PayeeAcc" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@Model.PayeeBank" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            <div class="form-group checkarea">
+                <label class="sr-only"></label>
+                <input type="text" maxlength="20" placeholder="" data-correct="@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)" data-operror="" class="form-control" />
+                <i class="form-control-feedback" />
+            </div>
+        </td>
+        <td>
+            @FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model.DrawBillDate)
+        </td>      
+        <td>
+            @Model.OpResult
+        </td>
+    </tr>
+    }
+    else
+    {
+      <tr>
+        <td>@FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model.IncomeBillDate)</td>       
+        <td>
+            @Model.RemitterName
+        </td>
+        <td>
+           @Model.RemitterAcc
+        </td>
+        <td>
+            @Model.RemitterBank
+        </td>
+        <td>
+           @Model.PayeeName
+        </td>
+        <td>
+           @Model.PayeeAcc
+        </td>
+        <td>
+            @Model.PayeeBank
+        </td>
+        <td>
+           @FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount)
+        </td>
+        <td>
+            @FATS.DataDefine.CommFunctions.FormatDateTimeToCompact(Model.DrawBillDate)
+        </td>      
+        <td>
+            @Model.OpResult
+        </td>
+    </tr>
+    }
+</table>

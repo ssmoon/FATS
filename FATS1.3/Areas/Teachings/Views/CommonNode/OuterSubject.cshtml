@@ -6,9 +6,6 @@
 @model  List<FATS.Models.OuterSubject>
 @using FATS.DataDefine;
 
-@section Styles {
-    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />    
-}
 
 @section Scripts {
     <script type="text/javascript" src="@Url.Content("~/js/Teachings/LedgerShared.js")" ></script>   
@@ -46,7 +43,7 @@
         <table class="table table-bordered table-condensed" cellspacing="8">
             <thead>
                 <tr class="titlecol">
-                    <td colspan="5"><div class="billtitle"><span class="bankname">@osInfo.BankName</span>表外科目登记簿</div></td>
+                    <td colspan="5"><div class="billtitle"><span class="bankname">@osInfo.BankName</span>表外科目凭证</div></td>
                 </tr>
                 <tr class="titlecol">
                     <td class="date" style="width: 100px;">日期</td>

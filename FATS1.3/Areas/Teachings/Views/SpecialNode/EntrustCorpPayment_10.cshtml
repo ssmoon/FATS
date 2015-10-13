@@ -4,9 +4,6 @@
 }
 
 @model  FATS.Models.EntrustCorpPayment
-@section Styles {
-    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />
-}
 
 <div id="maincontainer">
     <div class="page-header page-header-fix">
@@ -18,7 +15,7 @@
 
     @{ Html.RenderPartial("CollectVoucher", FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N2_CollectVoucher(Model)); }
     
-    @Html.Partial("NeedNoAction")
+    @Html.Partial("NeedNoAction", true)
 </div>
 
 @{  Html.RenderPartial("Teaching1Navigator");}

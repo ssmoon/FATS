@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "表外科目登记簿";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model FATS.Models.BankAcceptBill
+
+<div id="maincontainer" class="fullcontainer">
+    <div class="page-header page-header-fix">
+        <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
+    </div>
+    @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
+    @Html.HiddenFor(info => info.TchRoutineID)
+    <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
+
+    @{ Html.RenderPartial("CollectAccept_OuterSubject", new List<FATS.Areas.Teachings.Models.V_CollectAccept_OuterSubject>() {  FATS.BusinessObject.Converters.BankAcceptBillConverter.N10_CollectAccept_OuterSubject(Model) } ); }
+
+</div>
+
+@{  Html.RenderPartial("Teaching1Navigator");}

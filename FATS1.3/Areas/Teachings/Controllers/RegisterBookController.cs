@@ -42,6 +42,23 @@ namespace FATS.Areas.Teachings.Controllers
 
         #endregion
 
+        public ActionResult BankAcceptBill()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+                TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
+                BankAcceptBill tcInfo = dataContainer.BankAcceptBill.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
+                ViewBag.TchNodeID = node.Row_ID;
+
+                return View("BankAcceptBill_" + node.RelTmpNode.NodeIndex, tcInfo);
+            }
+        }
+
         #region EntrustCorpPayment
 
         public ActionResult EntrustCorpPayment()

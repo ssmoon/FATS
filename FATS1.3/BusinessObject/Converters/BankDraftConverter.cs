@@ -14,7 +14,9 @@ namespace FATS.BusinessObject.Converters
         public static V_BusinessProxy N2_BusinessProxy(BankDraft orgObj)
         {
             Mapper.CreateMap<BankDraft, V_BusinessProxy>();
-            return Mapper.Map<BankDraft, V_BusinessProxy>(orgObj);
+            V_BusinessProxy dstObj = Mapper.Map<BankDraft, V_BusinessProxy>(orgObj);
+            dstObj.BankName = orgObj.RemitterBank;
+            return dstObj;
         }
 
         public static V_BankDraft N7_BankDraft(BankDraft orgObj)

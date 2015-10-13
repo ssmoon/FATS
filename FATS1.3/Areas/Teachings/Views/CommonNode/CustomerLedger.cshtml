@@ -6,11 +6,6 @@
 @model  List<FATS.Models.CustomerLedger>
 @using FATS.DataDefine;
 
-
-@section Styles {
-    <link href="@Url.Content("~/css/Teachings/Teaching1Comm.css")" rel="Stylesheet" type="text/css" />    
-}
-
 @section Scripts {
     <script type="text/javascript" src="@Url.Content("~/js/Teachings/LedgerShared.js")" ></script>   
 }   
@@ -50,10 +45,10 @@
                 <table cellspacing="8" class="table table-bordered table-condensed">
                     <thead>
                         <tr class="titlecol">
-                            <td colspan="9"><div class="billtitle"><span class="bankname">@clInfo.BankName</span>分户账</div></td>
+                            <td colspan="8"><div class="billtitle"><span class="bankname">@clInfo.BankName</span>分户账</div></td>
                         </tr>
                         <tr>
-                            <td colspan="9">
+                            <td colspan="8">
                                 <span class="metatitle">户名:</span><span class="metadata">@clInfo.CustomerName</span>
                                 <span class="metatitle">账号:</span><span class="metadata">@clInfo.CustomerAccNo</span>
                             </td>
@@ -62,7 +57,6 @@
                             <td class="date" colspan="2" style="width: 125px;">年&nbsp;@clInfo.BalanceTime.Year</td>
                             <td class="digest" rowspan="2" style="width: 90px;">摘要</td>
                             <td class="digest" rowspan="2" style="width: 100px;">凭证号码</td>
-                            <td class="digest" rowspan="2" style="width: 130px;">对方科目</td>
                             <td class="digest" rowspan="2" style="width: 90px;">借方</td>
                             <td class="digest" rowspan="2" style="width: 90px;">贷方</td>
                             <td class="digest" rowspan="2" style="width: 80px;">借或贷</td>
@@ -80,8 +74,7 @@
                                 @clInfo.BalanceTime.Day
                             </td>
                             <td>@clInfo.BalanceAbstract</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>                           
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>借</td>
@@ -103,14 +96,7 @@
                                     <input type="text" maxlength="20" placeholder="凭证号" data-correct="@clInfo.VoucherNo" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "对方科目提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "对方科目错误")" class="form-control" />
                                     <i class="form-control-feedback" />
                                 </div>
-                            </td>
-                            <td>
-                                <div class="form-group checkarea">
-                                    <label class="sr-only"></label>
-                                    <input type="text" maxlength="20" placeholder="对方科目" data-correct="@clInfo.TargetSubject" data-operror="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要提示")" data-ophint="@HttpContext.GetGlobalResourceObject(ResourceFileDefine.ResourceFile_CustomerLedger, "发生项摘要错误")" class="form-control" />
-                                    <i class="form-control-feedback" />
-                                </div>
-                            </td>
+                            </td>                          
                             <td>
                                 <div class="form-group checkarea">
                                     <label class="sr-only"></label>

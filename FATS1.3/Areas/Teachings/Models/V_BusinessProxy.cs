@@ -17,5 +17,6 @@ namespace FATS.Areas.Teachings.Models
         public decimal MoneyAmount { get; set; }
         public DateTime ProxyDate { get; set; }
         public string Purpose { get; set; }
+        public string BankName { get; set; }
     }
 }

@@ -18,7 +18,7 @@
 
     @{ Html.RenderPartial("CollectVoucher", FATS.BusinessObject.Converters.CollectAcceptConverter.N2_CollectVoucher(Model)); }
     
-    @Html.Partial("NeedNoAction")
+    @Html.Partial("NeedNoAction", true)
 </div>
 
 @{  Html.RenderPartial("Teaching1Navigator");}

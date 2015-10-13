@@ -30,7 +30,7 @@
                 {
             <div class="downconnector"></div>
                 }
-            <div class="group" data-groupidx="@tchNode.RelTmpNode.GroupIdx">
+            <div class="group" data-groupidx="@tchNode.RelTmpNode.GroupIdx" data-node-id="@tchNode.Row_ID">
                 <div class="groupidx">步骤 @tchNode.GroupIdx</div>
                 <div class="grouptitle">@tchNode.RelTmpNode.NodeName</div>
             </div>    
@@ -58,3 +58,11 @@
     <div class="clearfix"></div>
 </div>
 @{  Html.RenderPartial("Teaching1Navigator"); }
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+        })
+    </script>
+}   

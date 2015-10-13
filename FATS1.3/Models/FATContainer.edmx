@@ -91,7 +91,6 @@
           <Property Name="BalanceAbstract" Type="nvarchar" MaxLength="20" />
           <Property Name="BalanceTime" Type="datetime" Nullable="false" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
-          <Property Name="TargetSubject" Type="nvarchar" MaxLength="50" />
           <Property Name="DebitSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CreditSum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Abstract" Type="nvarchar" MaxLength="20" />
@@ -431,7 +430,6 @@
           <Property Name="BalanceAbstract" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="BalanceTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SubjectName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="TargetSubject" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="DebitSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="CreditSum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Abstract" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
@@ -800,7 +798,6 @@
                 <ScalarProperty Name="BalanceAbstract" ColumnName="BalanceAbstract" />
                 <ScalarProperty Name="BalanceTime" ColumnName="BalanceTime" />
                 <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
-                <ScalarProperty Name="TargetSubject" ColumnName="TargetSubject" />
                 <ScalarProperty Name="DebitSum" ColumnName="DebitSum" />
                 <ScalarProperty Name="CreditSum" ColumnName="CreditSum" />
                 <ScalarProperty Name="Abstract" ColumnName="Abstract" />

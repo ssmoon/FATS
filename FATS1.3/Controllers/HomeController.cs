@@ -345,7 +345,6 @@ namespace FATS.Controllers
                     obj.TimeMark = Convert.ToDateTime(row["TimeMark"]);
                     obj.BalanceTime = Convert.ToDateTime(row["BalanceTime"]);
                     obj.DCChoice = Convert.ToString(row["DCChoice"]);
-                    obj.TargetSubject = Convert.ToString(row["TargetSubject"]);
                     obj.CustomerAccNo = Convert.ToString(row["CustomerAccNo"]);
                     obj.CustomerName = Convert.ToString(row["CustomerName"]);
                     obj.VoucherNo = Convert.ToString(row["VoucherNo"]);
@@ -508,15 +507,22 @@ namespace FATS.Controllers
                     if (row["流程"] is DBNull)
                         continue;
                     RoutineGroup obj = dbContainer.RoutineGroup.Create();
-                    obj.GroupText = Convert.ToString(row["分组名称"]);
+                    obj.GroupText = Convert.ToString(row["案例文字"]);
                     obj.GroupIdx = Convert.ToInt32(row["分组号"]);
                     obj.RoutineIntro = Convert.ToString(row["案例介绍"]);
                     obj.TchRoutineID = templateTeachingRoutineMapper[Convert.ToString(row["流程"])].Row_ID;
-                    obj.RoutineDesc = obj.GroupIdx + "." + Convert.ToString(row["案例文字"]);
+                    obj.RoutineDesc = obj.GroupIdx + "." + Convert.ToString(row["分组名称"]);
                     groupList.Add(obj);
                     dbContainer.RoutineGroup.Add(obj);
                 }
-                dbContainer.SaveChanges();
+                try
+                {
+                    dbContainer.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
 
                 Dictionary<string, RoutineGroup> groupMapper = groupList.ToDictionary(n => n.TchRoutineID + "-" + n.GroupIdx);
 
@@ -625,7 +631,6 @@ namespace FATS.Controllers
                     obj.TimeMark = Convert.ToDateTime(row["时间"]);
                     obj.BalanceTime = Convert.ToDateTime(row["余额时间"]);
                     obj.DCChoice = Convert.ToString(row["借或贷"]);
-                    obj.TargetSubject = Convert.ToString(row["对方科目"]);
                     obj.CustomerAccNo = Convert.ToString(row["客户账号"]);
                     obj.CustomerName = Convert.ToString(row["客户名称"]);
                     obj.VoucherNo = Convert.ToString(row["凭证号"]);

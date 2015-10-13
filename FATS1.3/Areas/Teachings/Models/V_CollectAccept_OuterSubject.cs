@@ -21,5 +21,6 @@ namespace FATS.Areas.Teachings.Models
         public System.DateTime CollectDate { get; set; }
         public System.DateTime AcceptDate { get; set; }
         public string OpResult { get; set; }
+        public System.DateTime TimeMark { get; set; }
     }
 }

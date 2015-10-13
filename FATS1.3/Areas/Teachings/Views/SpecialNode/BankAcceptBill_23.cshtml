@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "电子清算划收款专用凭证";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model  FATS.Models.BankAcceptBill
+
+<div id="maincontainer">
+    <div class="page-header page-header-fix">
+        <h3>@ViewBag.NodeName<small>@ViewBag.RoutineName</small></h3>
+    </div>
+    @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
+    @Html.HiddenFor(info => info.TchRoutineID)
+    <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
+
+    @{ Html.RenderPartial("ElectronicVoucher", FATS.BusinessObject.Converters.BankAcceptBillConverter.N23_ElectronicVoucher(Model)); }
+    @{ Html.RenderAction("SubjectFiller", "CommonNode", new { rid = Model.TchRoutineID, nid = ViewBag.TchNodeID }); }
+</div>
+
+@{  Html.RenderPartial("Teaching1Navigator");}
+

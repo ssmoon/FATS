@@ -17,6 +17,7 @@ namespace FATS.Areas.Teachings.Models
         public decimal MoneyAmount { get; set; }
         public System.DateTime CollectDate { get; set; }
         public System.DateTime AcceptDate { get; set; }
-        public string Purpose { get; set; }        
+        public string Purpose { get; set; }
+        public string BankName { get; set; }
     }
 }

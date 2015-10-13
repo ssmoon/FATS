@@ -20,7 +20,6 @@ namespace FATS.Models
         public string BalanceAbstract { get; set; }
         public System.DateTime BalanceTime { get; set; }
         public string SubjectName { get; set; }
-        public string TargetSubject { get; set; }
         public decimal DebitSum { get; set; }
         public decimal CreditSum { get; set; }
         public string Abstract { get; set; }

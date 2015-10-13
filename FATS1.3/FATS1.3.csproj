@@ -39,9 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+    <Reference Include="AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
@@ -179,6 +179,9 @@
     <Compile Include="Areas\Teachings\Controllers\TeachingInitController.cs" />
     <Compile Include="Areas\Teachings\Controllers\SpecialNodeController.cs" />
     <Compile Include="Areas\Teachings\Models\V_BankDraft.cs" />
+    <Compile Include="Areas\Teachings\Models\V_BankAcceptBill_OuterSubject.cs" />
+    <Compile Include="Areas\Teachings\Models\V_ElectronicVoucher.cs" />
+    <Compile Include="Areas\Teachings\Models\V_SpecialTransferVoucher.cs" />
     <Compile Include="Areas\Teachings\Models\V_EntrustCorpPayment_OuterSubject.cs" />
     <Compile Include="Areas\Teachings\Models\V_CollectVoucher.cs" />
     <Compile Include="Areas\Teachings\Models\V_IndividualWithdraw.cs" />
@@ -192,6 +195,7 @@
     <Compile Include="Areas\Teachings\Models\V_TransferCheck.cs" />
     <Compile Include="Areas\Teachings\TeachingsAreaRegistration.cs" />
     <Compile Include="BusinessObject\Converters\BankAcceptBillConverter.cs" />
+    <Compile Include="BusinessObject\Converters\MoneyRemittanceConverter.cs" />
     <Compile Include="BusinessObject\Converters\CollectAcceptConverter.cs" />
     <Compile Include="BusinessObject\Converters\BankDraftConverter.cs" />
     <Compile Include="BusinessObject\Converters\DebitTransferCheckConverter.cs" />
@@ -324,7 +328,6 @@
     <Content Include="css\Teachings\CommonNode.css" />
     <Content Include="css\Teachings\SelectT1Case.css" />
     <Content Include="css\Teachings\SpecialNode.css" />
-    <Content Include="css\Teachings\OuterSubject.css" />
     <Content Include="css\Teachings\SubjectFiller.css" />
     <Content Include="css\Teachings\Teaching1Comm.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -342,6 +345,7 @@
     <Content Include="js\bootstrapValidator.min.js" />
     <Content Include="js\datatables.js" />
     <Content Include="js\jquery-1.11.0.min.js" />
+    <Content Include="js\jquery.confirm.min.js" />
     <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="js\jquery.tmpl.min.js" />
     <Content Include="js\jquery.validate.bootstrap.popover.min.js" />
@@ -524,7 +528,7 @@
     <Content Include="Areas\Teachings\Views\RegisterBook\CollectAccept_17.cshtml" />
     <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_8.cshtml" />
     <Content Include="Areas\Teachings\Views\SpecialNode\CollectAccept_14.cshtml" />
-    <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_8.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_6.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\CashJournal.cshtml" />
     <Content Include="Areas\Teachings\Views\CommonNode\OuterSubject.cshtml" />
     <Content Include="Areas\Teachings\Views\Shared\IndividualDeposit.cshtml" />
@@ -545,6 +549,18 @@
     <Content Include="Areas\Teachings\Views\SpecialNode\EntrustCorpPayment_10.cshtml" />
     <Content Include="Areas\Teachings\Views\RegisterBook\EntrustBankPayment_12.cshtml" />
     <Content Include="Areas\Teachings\Views\RegisterBook\EntrustBankPayment_3.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\SpecialTransferVoucher.cshtml" />
+    <Content Include="Areas\Teachings\Views\Shared\ElectronicVoucher.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankAcceptBill_2.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_OuterSubject.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankAcceptBill_17.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankAcceptBill_12.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankAcceptBill_23.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_20.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_10.cshtml" />
+    <Content Include="Areas\Teachings\Views\RegisterBook\BankAcceptBill_26.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\MoneyRemittance_7.cshtml" />
+    <Content Include="Areas\Teachings\Views\SpecialNode\BankAcceptBill_9.cshtml" />
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
     <Content Include="Views\Home\Import.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
