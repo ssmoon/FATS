@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FATSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="ActivationCode">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivateCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CurrStatus" Type="int" />
+          <Property Name="RelUserID" Type="int" />
+        </EntityType>
         <EntityType Name="BankAcceptBill">
           <Key>
             <PropertyRef Name="Row_ID" />
@@ -175,6 +184,8 @@
           <Property Name="CurrStatus" Type="smallint" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="School" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="FATUserGroup">
           <Key>
@@ -367,6 +378,7 @@
           <Property Name="ItemValue" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityContainer Name="FATSystemModelStoreContainer">
+          <EntitySet Name="ActivationCode" EntityType="Self.ActivationCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BankAcceptBill" EntityType="Self.BankAcceptBill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BankDraft" EntityType="Self.BankDraft" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashJournal" EntityType="Self.CashJournal" Schema="dbo" store:Type="Tables" />
@@ -419,6 +431,7 @@
           <EntitySet Name="CashJournal" EntityType="FATSystemModel.CashJournal" />
           <EntitySet Name="OuterSubject" EntityType="FATSystemModel.OuterSubject" />
           <EntitySet Name="IndividualSaving" EntityType="FATSystemModel.IndividualSaving" />
+          <EntitySet Name="ActivationCode" EntityType="FATSystemModel.ActivationCode" />
           </EntityContainer>
         <EntityType Name="CustomerLedger">
           <Key>
@@ -474,6 +487,8 @@
           <Property Name="CurrStatus" Type="Int16" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FATUserGroup">
           <Key>
@@ -781,6 +796,14 @@
           <Property Name="ClientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="DepositPeriod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="ActivationCode">
+          <Key>
+            <PropertyRef Name="Row_ID" />
+          </Key>
+          <Property Name="Row_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivateCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrStatus" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -834,6 +857,8 @@
           <EntitySetMapping Name="FATUser">
             <EntityTypeMapping TypeName="FATSystemModel.FATUser">
               <MappingFragment StoreEntitySet="FATUser">
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
                 <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="IsStudent" ColumnName="IsStudent" />
@@ -1167,6 +1192,15 @@
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="DepositClient" ColumnName="DepositClient" />
                 <ScalarProperty Name="DepositTime" ColumnName="DepositTime" />
+                <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivationCode">
+            <EntityTypeMapping TypeName="FATSystemModel.ActivationCode">
+              <MappingFragment StoreEntitySet="ActivationCode">
+                <ScalarProperty Name="CurrStatus" ColumnName="CurrStatus" />
+                <ScalarProperty Name="ActivateCode" ColumnName="ActivateCode" />
                 <ScalarProperty Name="Row_ID" ColumnName="Row_ID" />
               </MappingFragment>
             </EntityTypeMapping>

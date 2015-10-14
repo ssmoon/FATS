@@ -48,5 +48,6 @@ namespace FATS.Models
         public DbSet<CashJournal> CashJournal { get; set; }
         public DbSet<OuterSubject> OuterSubject { get; set; }
         public DbSet<IndividualSaving> IndividualSaving { get; set; }
+        public DbSet<ActivationCode> ActivationCode { get; set; }
     }
 }

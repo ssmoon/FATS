@@ -12,17 +12,10 @@ namespace FATS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FATUser
+    public partial class ActivationCode
     {
         public int Row_ID { get; set; }
-        public string UserName { get; set; }
-        public short IsStudent { get; set; }
-        public short IsTeacher { get; set; }
-        public short IsAdmin { get; set; }
-        public short CurrStatus { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public string Password { get; set; }
-        public string UserCode { get; set; }
-        public string School { get; set; }
+        public string ActivateCode { get; set; }
+        public Nullable<int> CurrStatus { get; set; }
     }
 }

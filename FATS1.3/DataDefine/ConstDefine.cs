@@ -13,6 +13,10 @@ namespace FATS.DataDefine
         public const int UserStatus_Invalid = -1;
         public const int UserStatus_Valid = 11;
 
+        public const int ActivationCode_Status_Unused = 0;
+        public const int ActivationCode_Status_Used = 11;
+
+
         public const string SessionKey_FinishedRoutineID = "FinishedRoutineID";
         public const string ViewData_CaseText = "CaseDesc";
     }

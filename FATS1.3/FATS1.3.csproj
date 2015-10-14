@@ -207,6 +207,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UICommonController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\ActivationCode.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BankAcceptBill.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -371,6 +374,7 @@
     <Content Include="js\Teachings\SubjectFiller.js" />
     <Content Include="js\Teachings\Teaching1Comm.js" />
     <Content Include="js\underscore-min.js" />
+    <Content Include="js\User\Login.js" />
     <Content Include="js\User\Register.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -564,6 +568,7 @@
     <None Include="Properties\PublishProfiles\FATS.pubxml" />
     <Content Include="Views\Home\Import.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\R2-2.resx">

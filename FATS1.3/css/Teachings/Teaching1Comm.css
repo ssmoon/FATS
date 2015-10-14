@@ -44,6 +44,7 @@
 #routineoverview .mainprocess .downconnector { background: url(../../Images/arrow_tobottom.png) no-repeat 105px 2px; height: 90px; } 
 
 #maincontainer { margin-left: 300px;  min-height: 600px; }
+#maincontainer .casedesc { font-size: 15px; line-height: 25px; }
 #maincontainer .titlecol { text-align: center; vertical-align: middle;  }
 #maincontainer .checkarea i { position: absolute; }
 #maincontainer .incorrect input { border-color: red; background-image: url(../../) }

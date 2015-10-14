@@ -24,6 +24,7 @@ namespace FATS.BusinessObject.Converters
             dstObj.BillTitle = "表外科目收入凭证";
             dstObj.OpResult = "待托收";
             dstObj.BankName = orgObj.RemitterBank;
+            dstObj.TimeMark = orgObj.CollectDate;
             return dstObj;
         }
 
@@ -34,6 +35,7 @@ namespace FATS.BusinessObject.Converters
             dstObj.BillTitle = "表外科目收入凭证";
             dstObj.OpResult = "待承付";
             dstObj.BankName = orgObj.PayeeBank;
+            dstObj.TimeMark = orgObj.CollectDate;
             return dstObj;
         }
 
@@ -43,7 +45,8 @@ namespace FATS.BusinessObject.Converters
             V_CollectAccept_OuterSubject dstObj = Mapper.Map<CollectAccept, V_CollectAccept_OuterSubject>(orgObj);
             dstObj.BillTitle = "表外科目收入凭证";
             dstObj.OpResult = "已承付";
-            dstObj.BankName = orgObj.RemitterBank;
+            dstObj.BankName = orgObj.PayeeBank;
+            dstObj.TimeMark = orgObj.AcceptDate;
             return dstObj;
         }
 
@@ -53,7 +56,8 @@ namespace FATS.BusinessObject.Converters
             V_CollectAccept_OuterSubject dstObj = Mapper.Map<CollectAccept, V_CollectAccept_OuterSubject>(orgObj);
             dstObj.BillTitle = "表外科目收入凭证";
             dstObj.OpResult = "已收款";
-            dstObj.BankName = orgObj.PayeeBank;
+            dstObj.BankName = orgObj.RemitterBank;
+            dstObj.TimeMark = orgObj.AcceptDate;
             return dstObj;
         }
 

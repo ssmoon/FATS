@@ -36,3 +36,9 @@ footer .right { float: right; }
 .billtitle { font-size: 18px; font-weight: normal; text-align: center; color: #414141; }
 .billtitle .bankname { font-size: 18px; margin-right: 20px;  font-weight: bold; }
 .billtime { text-align: center; color: #666666; }
+
+.userarea { width: 700px; margin: 0px auto; min-height: 600px; background-color: #f1f1f1; padding: 30px 40px; }
+.userarea h2 { margin: 0px 40px; border-bottom: 1px solid #999999; text-align: center; margin-bottom: 40px; padding-bottom: 20px; }
+.userarea button { margin-right: 20px; margin-top: 20px; }
+.userarea .btn-primary { width: 100px; }
+.userarea .alert { display: none; }

@@ -15,7 +15,7 @@
     @{  Html.RenderPartial("CaseHeaderDesc", @ViewData["CaseDesc"]); }
     @Html.HiddenFor(info => info.TchRoutineID)
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
-    @Html.Partial("CollectAccept_OuterSubject", new List<FATS.Areas.Teachings.Models.V_CollectAccept_OuterSubject>() { FATS.BusinessObject.Converters.CollectAcceptConverter.N3_OuterSubject(Model), FATS.BusinessObject.Converters.CollectAcceptConverter.N11_OuterSubject(Model) })
+    @Html.Partial("CollectAccept_OuterSubject", new List<FATS.Areas.Teachings.Models.V_CollectAccept_OuterSubject>() { FATS.BusinessObject.Converters.CollectAcceptConverter.N6_OuterSubject(Model), FATS.BusinessObject.Converters.CollectAcceptConverter.N11_OuterSubject(Model) })
 
 </div>
 

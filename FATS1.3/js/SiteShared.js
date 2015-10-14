@@ -5,11 +5,14 @@
     },
     showSaveSuccess: function (targetButton) {
         targetButton.button('reset');
-        targetButton.popover({ content: "保存成功" });
+        targetButton.popover({ content: "成功" });
         targetButton.popover('show');
         setTimeout(function () {
             targetButton.popover('destroy');
         }, 1500);
+    },
+    showSaveEnd: function (targetButton) {
+        targetButton.button('reset');        
     },
 
     SerializeFormObjs: function (fields) {
