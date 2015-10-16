@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "CollectAccept_2";
+    ViewBag.Title = "托收凭证";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,9 +13,9 @@
     @Html.HiddenFor(info => info.TchRoutineID)
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
 
-    @{ Html.RenderPartial("CollectVoucher", FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N2_CollectVoucher(Model)); }
+    @{ Html.RenderPartial("CollectVoucher", FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N4_CollectVoucher(Model)); }
     
-    @Html.Partial("NeedNoAction", true)
+    @{ Html.RenderAction("SubjectFiller", "CommonNode", new { rid = Model.TchRoutineID, nid = ViewBag.TchNodeID }); }
 </div>
     
 @{  Html.RenderPartial("Teaching1Navigator");}

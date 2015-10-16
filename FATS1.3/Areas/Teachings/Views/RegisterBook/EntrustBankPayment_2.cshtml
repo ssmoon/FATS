@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model FATS.Models.EntrustCorpPayment
+@model FATS.Models.EntrustBankPayment
 
 <div id="maincontainer" class="fullcontainer">
     <div class="page-header page-header-fix">
@@ -13,7 +13,7 @@
     @Html.HiddenFor(info => info.TchRoutineID)
     <input type="hidden" id="TchNodeID" value="@ViewBag.TchNodeID" />
 
-    @Html.Partial("EntrustCorpPayment_OuterSubject", new List<FATS.Areas.Teachings.Models.V_EntrustPayment_OuterSubject>() { FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N3_OuterSubject(Model), FATS.BusinessObject.Converters.EntrustCorpPaymentConverter.N13_OuterSubject(Model) })
+    @Html.Partial("CollectAccept_OuterSubject", new List<FATS.Areas.Teachings.Models.V_CollectAccept_OuterSubject>() { FATS.BusinessObject.Converters.EntrustBankPaymentConverter.N2_OuterSubject(Model) })
 </div>
 
 @{  Html.RenderPartial("Teaching1Navigator");}
