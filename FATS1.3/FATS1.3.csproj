@@ -236,6 +236,9 @@
     </Compile>
     <Compile Include="Exceptions\BusinessRuleCheckExcpetions.cs" />
     <Compile Include="Exceptions\UserSessionExpiredException.cs" />
+    <Compile Include="Models\Discount.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EntrustBankPayment.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -272,6 +275,9 @@
     <Compile Include="Models\IndividualSaving.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Loan.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MoneyRemittance.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
@@ -284,6 +290,9 @@
     <Compile Include="Models\PartialObjs\TeachingRoutine.cs" />
     <Compile Include="Models\PartialObjs\TemplateRoutine.cs" />
     <Compile Include="Models\RoutineGroup.cs">
+      <DependentUpon>FATContainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitSaving.cs">
       <DependentUpon>FATContainer.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserErrorHint.cs">

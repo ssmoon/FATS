@@ -13,7 +13,8 @@
 <body>
     <div>
         <input type="button" data-act="IndividualSaving" value="IndividualSaving" /> <br /><br />
-        <input type="button" data-act="PaySettle" value="PaySettle" />
+        <input type="button" data-act="PaySettle" value="PaySettle" /><br /><br />
+        <input type="button" data-act="UnitSaving" value="UnitSaving" />
     </div>
 
     <script>
@@ -37,6 +38,22 @@
                 $.ajax({
                     type: "POST",
                     url: "/Home/DoImport_PaySettle",
+                    data: "",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function () {
+                        alert('done');
+                    },
+                    error: function (err) {
+
+                    }
+                });
+            })
+
+            $('input[data-act=UnitSaving]').on('click', function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/DoImport_UnitSaving",
                     data: "",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
