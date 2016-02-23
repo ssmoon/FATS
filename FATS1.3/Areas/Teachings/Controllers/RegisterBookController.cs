@@ -42,6 +42,7 @@ namespace FATS.Areas.Teachings.Controllers
 
         #endregion
 
+        #region BankAcceptBill
         public ActionResult BankAcceptBill()
         {
             using (FATContainer dataContainer = new FATContainer())
@@ -58,6 +59,8 @@ namespace FATS.Areas.Teachings.Controllers
                 return View("BankAcceptBill_" + node.RelTmpNode.NodeIndex, tcInfo);
             }
         }
+
+        #endregion
 
         #region EntrustCorpPayment
 
@@ -96,6 +99,44 @@ namespace FATS.Areas.Teachings.Controllers
                 ViewBag.TchNodeID = node.Row_ID;
 
                 return View("EntrustBankPayment_" + node.RelTmpNode.NodeIndex, tcInfo);
+            }
+        }
+
+        #endregion
+
+        #region Loan
+
+        public ActionResult MortgageLoanGrant()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+                TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
+                Loan tcInfo = dataContainer.Loan.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
+                ViewBag.TchNodeID = node.Row_ID;
+
+                return View(node.RelTmpNode.Tag, tcInfo);
+            }
+        }
+
+        public ActionResult MortgageLoanRevoke()
+        {
+            using (FATContainer dataContainer = new FATContainer())
+            {
+                int tchRoutineID = dataContainer.TeachingNode.Find(Convert.ToInt32(RouteData.Values["id"])).RoutineID;
+                TeachingRoutine routine = SharedCasePool.GetCasePool().GetRoutine(tchRoutineID);
+                TeachingNode node = routine.NodeList[Convert.ToInt32(RouteData.Values["id"])];
+                Loan tcInfo = dataContainer.Loan.FirstOrDefault(info => (info.TchRoutineID == node.RoutineID));
+                ViewData[ConstDefine.ViewData_CaseText] = SharedCasePool.GetCasePool().GetRoutine(node.RoutineID).GroupList[node.GroupIdx].GroupText;
+                ViewBag.RoutineName = routine.RelTmpRoutine.RoutineName;
+                ViewBag.NodeName = node.RelTmpNode.NodeName;
+                ViewBag.TchNodeID = node.Row_ID;
+
+                return View(node.RelTmpNode.Tag, tcInfo);
             }
         }
 

@@ -1113,13 +1113,16 @@ namespace FATS.Controllers
                     Loan obj = dbContainer.Loan.Create();
                     obj.TchRoutineID = templateTeachingRoutineMapper[Convert.ToString(row["流程"])].Row_ID;
                     obj.TchRoutineTag = string.Empty;
-                    obj.TimeMark = Convert.ToDateTime(row["日期"]);
-                    obj.EntryAmount = row["金额"] is DBNull ? 0 : Convert.ToDecimal(row["金额"]);
-                    obj.ClientAcc = Convert.ToString(row["账号"]);
+                    obj.LoanDate = Convert.ToDateTime(row["借款日期"]);
+                    obj.RepayDate = Convert.ToDateTime(row["还贷日期"]);
+                    obj.MoneyAmount = row["金额"] is DBNull ? 0 : Convert.ToDecimal(row["金额"]);
+                    obj.InterestAmount = row["利息"] is DBNull ? 0 : Convert.ToDecimal(row["利息"]);
+                    obj.InterestRate = row["利率"] is DBNull ? 0 : Convert.ToSingle(row["利率"]);
+                    obj.LoanAcc = Convert.ToString(row["贷款户账号"]);
+                    obj.RepayAcc = Convert.ToString(row["存款户账号"]);
                     obj.ClientName = Convert.ToString(row["单位名称"]);
-                    obj.BankName = Convert.ToString(row["银行名称"]);
-                    obj.VoucherNo = Convert.ToString(row["凭证号码"]);
-                    obj.MoneySource = Convert.ToString(row["来源"]);
+                    obj.BankName = Convert.ToString(row["银行名称"]);                    
+                    obj.LoanType = Convert.ToString(row["贷款各类"]);
                     obj.Purpose = Convert.ToString(row["用途"]);
 
                     dbContainer.Loan.Add(obj);
@@ -1130,19 +1133,25 @@ namespace FATS.Controllers
                 {
                     if (row["流程"] is DBNull)
                         continue;
-                    Discount obj = dbContainer.Discount.Create();
+                    Discounting obj = dbContainer.Discounting.Create();
                     obj.TchRoutineID = templateTeachingRoutineMapper[Convert.ToString(row["流程"])].Row_ID;
                     obj.TchRoutineTag = string.Empty;
                     obj.TimeMark = Convert.ToDateTime(row["日期"]);
+                    obj.DraftDate = Convert.ToDateTime(row["出票日"]);
+                    obj.DueDate = Convert.ToDateTime(row["到期日"]);
                     obj.EntryAmount = row["金额"] is DBNull ? 0 : Convert.ToDecimal(row["金额"]);
                     obj.ClientAcc = Convert.ToString(row["账号"]);
                     obj.ClientName = Convert.ToString(row["单位名称"]);
                     obj.BankName = Convert.ToString(row["银行名称"]);
-                    obj.VoucherNo = Convert.ToString(row["凭证号码"]);
-                    obj.MoneySource = Convert.ToString(row["来源"]);
-                    obj.Purpose = Convert.ToString(row["用途"]);
+                    obj.AcceptBank = Convert.ToString(row["承兑银行"]);
+                    obj.VoucherNo = Convert.ToString(row["汇票号"]);
+                    obj.VoucherType = Convert.ToString(row["汇票种类"]);
+                    obj.DiscountAmount = Convert.ToDecimal(row["实付贴现金额"]);
+                    obj.DiscountInterest = Convert.ToDecimal(row["贴现利息"]);
+                    obj.DiscountRate = Convert.ToSingle(row["贴现率"]);
 
-                    dbContainer.Discount.Add(obj);
+
+                    dbContainer.Discounting.Add(obj);
                 }
 
                 dbContainer.SaveChanges();

@@ -29,9 +29,9 @@
         <EntityTypeShape EntityType="FATSystemModel.OuterSubject" Width="1.5" PointX="3.375" PointY="14.75" />
         <EntityTypeShape EntityType="FATSystemModel.IndividualSaving" Width="1.5" PointX="0.75" PointY="13.75" />
         <EntityTypeShape EntityType="FATSystemModel.ActivationCode" Width="1.5" PointX="13.375" PointY="7.75" />
-        <EntityTypeShape EntityType="FATSystemModel.Discount" Width="1.5" PointX="14.375" PointY="10.75" />
-        <EntityTypeShape EntityType="FATSystemModel.Loan" Width="1.5" PointX="7" PointY="15.25" />
         <EntityTypeShape EntityType="FATSystemModel.UnitSaving" Width="1.5" PointX="14.375" PointY="14.75" />
+        <EntityTypeShape EntityType="FATSystemModel.Discounting" Width="1.5" PointX="12" PointY="14.75" />
+        <EntityTypeShape EntityType="FATSystemModel.Loan" Width="1.5" PointX="14.125" PointY="10.5" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

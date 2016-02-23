@@ -49,8 +49,8 @@ namespace FATS.Models
         public DbSet<OuterSubject> OuterSubject { get; set; }
         public DbSet<IndividualSaving> IndividualSaving { get; set; }
         public DbSet<ActivationCode> ActivationCode { get; set; }
-        public DbSet<Discount> Discount { get; set; }
-        public DbSet<Loan> Loan { get; set; }
         public DbSet<UnitSaving> UnitSaving { get; set; }
+        public DbSet<Discounting> Discounting { get; set; }
+        public DbSet<Loan> Loan { get; set; }
     }
 }

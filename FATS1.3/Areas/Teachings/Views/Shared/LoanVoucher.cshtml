@@ -1,0 +1,38 @@
+﻿@model FATS.Areas.Teachings.Models.V_LoanVoucher
+
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+    <tr>
+        <td colspan="6">
+            <div class="billtitle"><span class="bankname">@Model.BankName</span>借款凭证</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6">
+            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.LoanDate); }
+        </td>
+    </tr>
+    <tr>       
+        <td class="titlecol">借款人全称</td>
+        <td colspan="3">@Model.ClientName</td>
+        <td class="titlecol">贷款户账号</td>
+        <td>@Model.LoanAcc</td>        
+    </tr>
+    <tr>
+        <td class="titlecol">贷款种类</td>
+        <td>@Model.LoanType</td>
+        <td class="titlecol">利率</td>
+        <td>@Model.InterestRate</td>
+        <td class="titlecol">存款户账号</td>
+        <td>@Model.RepayAcc</td>
+    </tr>
+    <tr>
+        <td class="titlecol">贷款金额</td>
+        <td colspan="5">@{ FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.MoneyAmount); }</td>
+    </tr>
+    <tr>
+        <td class="titlecol">用途</td>
+        <td colspan="2">@Model.Purpose</td>
+        <td class="titlecol">还款日期</td>
+        <td colspan="2">@{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.RepayDate); }</td>
+    </tr>
+</table>

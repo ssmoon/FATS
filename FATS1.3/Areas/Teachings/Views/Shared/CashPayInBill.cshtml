@@ -1,0 +1,35 @@
+﻿@model FATS.Areas.Teachings.Models.V_CashPayInBill
+
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+    <tr>
+        <td colspan="6">
+            <div class="billtitle"><span class="bankname">@Model.BankName</span>还贷凭证</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6">
+            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.TimeMark); }
+        </td>
+    </tr>
+    <tr>
+        <td class="titlecol">收款人户名</td>
+        <td colspan="3">@Model.ClientName</td>
+    </tr>
+    <tr>
+        <td class="titlecol">收款人账号</td>
+        <td>@Model.ClientAcc</td>
+        <td class="titlecol">收款人开户行</td>
+        <td>@Model.BankName</td>
+    </tr>
+    <tr>
+        <td class="titlecol">缴款人</td>
+        <td>@Model.PayInMan</td>
+        <td class="titlecol">款项来源</td>
+        <td>@Model.MoneySource</td>
+    </tr>
+    <tr>
+        <td class="titlecol">金额</td>
+        <td colspan="3">@{ FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.EntryAmount); }</td>
+    </tr>
+
+</table>

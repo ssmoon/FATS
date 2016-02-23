@@ -12,7 +12,7 @@ namespace FATS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Discount
+    public partial class Discounting
     {
         public int Row_ID { get; set; }
         public System.DateTime TimeMark { get; set; }
@@ -23,7 +23,12 @@ namespace FATS.Models
         public string ClientAcc { get; set; }
         public int TchRoutineID { get; set; }
         public string TchRoutineTag { get; set; }
-        public string Purpose { get; set; }
-        public string MoneySource { get; set; }
+        public System.DateTime DraftDate { get; set; }
+        public System.DateTime DueDate { get; set; }
+        public decimal DiscountInterest { get; set; }
+        public decimal DiscountAmount { get; set; }
+        public float DiscountRate { get; set; }
+        public string AcceptBank { get; set; }
+        public string VoucherType { get; set; }
     }
 }

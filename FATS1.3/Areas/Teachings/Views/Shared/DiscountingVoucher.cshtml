@@ -1,0 +1,58 @@
+﻿@model FATS.Areas.Teachings.Models.V_DiscountingVoucher
+
+<table class="table table-bordered table-condensed" cellspacing="8" style="margin: 20px 0px;">
+    <tr>
+        <td colspan="6">
+            <div class="billtitle"><span class="bankname">@Model.BankName</span>贴现凭证</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6">
+            @{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.TimeMark); }
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="3" class="titlecol">贴现汇票</td>
+        <td class="titlecol">各类</td>
+        <td>@Model.VoucherType  @Model.VoucherNo</td>
+        <td rowspan="3" class="titlecol">持票人</td>
+        <td class="titlecol">名称</td>
+        <td>@Model.ClientName</td>
+    </tr>
+    <tr>
+        <td class="titlecol">出票日</td>
+        <td>@{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.DraftDate); }</td>
+        <td class="titlecol">账号</td>
+        <td>@Model.ClientAcc</td>
+    </tr>
+    <tr>
+        <td class="titlecol">到期日</td>
+        <td>@{ FATS.DataDefine.CommFunctions.FormatDateTimeToNormal(Model.DueDate); }</td>
+        <td class="titlecol">开户银行</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="titlecol" colspan="2">汇票承兑人</td>
+        <td>@Model.AcceptBank</td>
+        <td class="titlecol">账号</td>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="titlecol" colspan="2">汇票金额</td>
+        <td colspan="4">@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.EntryAmount)</td>      
+    </tr>
+    <tr>
+        <td colspan="6">
+            <table>
+                <tr>
+                    <td>贴现率</td>
+                    <td>@Model.DiscountRate</td>
+                    <td>贴现利息</td>
+                    <td>@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.DiscountInterest)</td>
+                    <td>实付贴现金额</td>
+                    <td>@FATS.DataDefine.CommFunctions.FormatMoneyToString(Model.DiscountAmount)</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
